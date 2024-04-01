@@ -159,7 +159,7 @@
             android:title="@string/enable_fingerprint_ripple_effect_title"
             android:summary="@string/enable_fingerprint_ripple_effect_summary"
             android:defaultValue="true"
-            lineage:position="bottom" />
+            lineage:position="solo" />
 
     </PreferenceCategory>
 
