@@ -1,5 +1,6 @@
 /*
  * Copyright (C) 2016-2021 crDroid Android Project
+ * Copyright (C) 2023-2024 the risingOS Android Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,115 +16,95 @@
  */
 package com.crdroid.settings.fragments.about;
 
-import android.annotation.Nullable;
-import android.app.Fragment;
-import android.content.res.Resources;
+import android.os.AsyncTask;
 import android.os.Bundle;
-import android.graphics.Color;
-import android.graphics.Typeface;
-import android.text.Spannable;
+import android.text.Html;
+import android.text.method.LinkMovementMethod;
 import android.text.SpannableStringBuilder;
-import android.text.style.ForegroundColorSpan;
 import android.text.style.StyleSpan;
-import android.util.Log;
-import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.LinearLayout;
-import android.widget.LinearLayout.LayoutParams;
 import android.widget.TextView;
 
 import androidx.preference.PreferenceFragment;
 
 import com.android.settings.R;
 
-import java.io.FileReader;
+import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.regex.Pattern;
+import java.net.HttpURLConnection;
+import java.net.URL;
 import java.util.regex.Matcher;
-
-import com.android.internal.logging.nano.MetricsProto;
+import java.util.regex.Pattern;
 
 public class ChangelogFragment extends PreferenceFragment {
 
     TextView textView;
 
-    private static final String CHANGELOG_PATH = "/system/etc/Changelog.txt";
+    private static final String README_URL = "https://raw.githubusercontent.com/RisingTechOSS/risingOS_changelogs/fourteen/README.md";
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
-            Bundle savedInstanceState) {
+                             Bundle savedInstanceState) {
         return inflater.inflate(R.layout.changelog, container, false);
     }
 
     @Override
-    public void onViewCreated(final View view, @Nullable Bundle savedInstanceState) {
+    public void onViewCreated(final View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-
         textView = view.findViewById(R.id.changelog_text);
-
-        InputStreamReader inputReader = null;
-        String text = null;
-        StringBuilder data = new StringBuilder();
-
-        Pattern date = Pattern.compile("(={20}|\\d{4}-\\d{2}-\\d{2})");
-        Pattern commit = Pattern.compile("([a-f0-9]{7})");
-        Pattern committer = Pattern.compile("\\[(\\D.*?)]");
-        Pattern title = Pattern.compile("(\\R\\s+[\\*]\\s.*)");
-
-        try {
-            char tmp[] = new char[2048];
-            int numRead;
-
-            inputReader = new FileReader(CHANGELOG_PATH);
-            while ((numRead = inputReader.read(tmp)) >= 0) {
-                data.append(tmp, 0, numRead);
-            }
-//            text = data.toString();
-        } catch (IOException e) {
-//            text = getString(R.string.changelog_error);
-        } finally {
-            try {
-                if (inputReader != null) {
-                    inputReader.close();
-                }
-            } catch (IOException e) {
-            }
-        }
-
-        SpannableStringBuilder sb = new SpannableStringBuilder(data);
-        Resources.Theme theme = getContext().getTheme();
-        TypedValue typedValue = new TypedValue();
-        theme.resolveAttribute(android.R.attr.colorAccent, typedValue, true);
-        final int color = getContext().getColor(typedValue.resourceId);
-
-        Matcher m = date.matcher(data);
-        while (m.find()){
-            sb.setSpan(new ForegroundColorSpan(color), m.start(1), m.end(1), Spannable.SPAN_INCLUSIVE_INCLUSIVE);
-            sb.setSpan(new StyleSpan(Typeface.BOLD), m.start(1), m.end(1), Spannable.SPAN_INCLUSIVE_INCLUSIVE);
-        }
-        m = commit.matcher(data);
-        while (m.find()){
-            sb.setSpan(new StyleSpan(Typeface.NORMAL), m.start(1), m.end(1), Spannable.SPAN_INCLUSIVE_INCLUSIVE);
-        }
-        m = committer.matcher(data);
-        while (m.find()){
-            sb.setSpan(new ForegroundColorSpan(color), m.start(1), m.end(1), Spannable.SPAN_INCLUSIVE_INCLUSIVE);
-            sb.setSpan(new StyleSpan(Typeface.NORMAL), m.start(1), m.end(1), Spannable.SPAN_INCLUSIVE_INCLUSIVE);
-        }
-        m = title.matcher(data);
-        while (m.find()){
-            sb.setSpan(new ForegroundColorSpan(color), m.start(1), m.end(1), Spannable.SPAN_INCLUSIVE_INCLUSIVE);
-            sb.setSpan(new StyleSpan(Typeface.BOLD), m.start(1), m.end(1), Spannable.SPAN_INCLUSIVE_INCLUSIVE);
-        }
-
-        textView.setText(sb);
+        new FetchReadmeTask().execute(README_URL);
     }
 
+    private class FetchReadmeTask extends AsyncTask<String, Void, String> {
+
+        @Override
+        protected String doInBackground(String... params) {
+            String readmeUrl = params[0];
+            try {
+                URL url = new URL(readmeUrl);
+                HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+                connection.setRequestMethod("GET");
+                InputStreamReader inputStreamReader = new InputStreamReader(connection.getInputStream());
+                BufferedReader bufferedReader = new BufferedReader(inputStreamReader);
+                StringBuilder stringBuilder = new StringBuilder();
+                String line;
+                while ((line = bufferedReader.readLine()) != null) {
+                    stringBuilder.append(line).append("\n");
+                }
+                bufferedReader.close();
+                inputStreamReader.close();
+                return stringBuilder.toString();
+            } catch (IOException e) {
+                return "";
+            }
+        }
+
+        @Override
+        protected void onPostExecute(String result) {
+            if (result != null) {
+                Pattern pattern = Pattern.compile("\\*\\*(.*?)\\*\\*");
+                Matcher matcher = pattern.matcher(result);
+                SpannableStringBuilder spannableBuilder = new SpannableStringBuilder();
+                int lastEnd = 0;
+                while (matcher.find()) {
+                    int start = matcher.start();
+                    int end = matcher.end();
+                    String matchedText = matcher.group(1);
+                    spannableBuilder.append(result.subSequence(lastEnd, start));
+                    spannableBuilder.append(matchedText, new StyleSpan(android.graphics.Typeface.BOLD), SpannableStringBuilder.SPAN_EXCLUSIVE_EXCLUSIVE);
+                    lastEnd = end;
+                }
+                spannableBuilder.append(result.subSequence(lastEnd, result.length()));
+                textView.setText(spannableBuilder);
+                textView.setMovementMethod(LinkMovementMethod.getInstance());
+            }
+        }
+    }
+    
     @Override
     public void onCreatePreferences(Bundle savedInstanceState, String rootKey) {
-
     }
 }
