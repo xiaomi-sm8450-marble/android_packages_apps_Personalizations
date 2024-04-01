@@ -119,6 +119,12 @@
             android:defaultValue="true"
             lineage:position="solo" />
 
+    </PreferenceCategory>
+
+    <PreferenceCategory
+        android:key="lockscreen_udfps_category"
+        android:title="@string/udfps_settings_title">
+        
         <com.android.settings.preferences.ui.AdaptivePreference
             android:key="udfps_icon_picker"
             android:icon="@drawable/ic_fp_selector"
@@ -140,6 +146,12 @@
             android:summary="@string/screen_off_udfps_summary"
             android:defaultValue="false"
             lineage:position="bottom" />
+
+    </PreferenceCategory>
+
+    <PreferenceCategory
+        android:key="lockscreen_fp_category"
+        android:title="@string/lockscreen_fp_category_title">
 
         <!--<com.crdroid.settings.preferences.SystemSettingSwitchPreference
             android:key="fp_success_vibrate"
