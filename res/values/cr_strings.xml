@@ -47,6 +47,7 @@
 
      <!-- Device Info screen -->
     <string name="firmware_name_text">risingOS</string>
+    <string name="firmware_name_version">risingOS version</string>
     <string name="firmware_build_type_title">Build type</string>
     <string name="firmware_build_summary_title">By maintainer</string>
     <string name="build_is_official_title">#Official</string>
