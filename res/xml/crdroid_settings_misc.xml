@@ -60,6 +60,7 @@
         </com.android.settings.preferences.ui.AdaptivePreference>
 
         <com.android.settings.preferences.ui.AdaptivePreference
+            android:key="navigation"
             android:icon="@drawable/ic_navigation"
             android:title="@string/nav_settings_title"
             android:summary="@string/nav_settings_summary"

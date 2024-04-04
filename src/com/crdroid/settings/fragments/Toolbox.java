@@ -47,12 +47,25 @@ import java.util.ArrayList;
 public class Toolbox extends SettingsPreferenceFragment {
 
     public static final String TAG = "Toolbox";
+    private static final String KEY_QUICKSWITCH_PREFERENCE = "quickswitch";
+    private static final String KEY_NAVIGATION_PREFERENCE = "navigation";
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
         addPreferencesFromResource(R.xml.crdroid_settings_misc);
+        final boolean targetHasSingleLauncher = SystemProperties.getInt("persist.sys.target_has_single_launcher", 0) != 0;
+        PreferenceScreen preferenceScreen = getPreferenceScreen();
+        if (targetHasSingleLauncher) {
+            Preference quickSwitchPreference = findPreference(KEY_QUICKSWITCH_PREFERENCE);
+            if (quickSwitchPreference != null) {
+                preferenceScreen.removePreference(quickSwitchPreference);
+            }
+            Preference navigationPreference = findPreference(KEY_NAVIGATION_PREFERENCE);
+            if (navigationPreference != null) {
+                navigationPreference.setLayoutResource(R.layout.top_level_preference_bottom_card);
+            }
+        }
     }
 
     @Override
