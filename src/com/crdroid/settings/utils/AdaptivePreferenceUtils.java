@@ -18,6 +18,7 @@ package com.crdroid.settings.utils;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.os.Handler;
+import android.provider.Settings;
 import android.util.AttributeSet;
 import com.android.settings.R;
 import android.widget.Toast;
@@ -27,6 +28,7 @@ import com.android.internal.util.crdroid.ThemeUtils;
 public class AdaptivePreferenceUtils {
 
     private static final String overlayThemeTarget  = "com.android.systemui";
+    private static final String SETTINGS_THEME_PROP  = "settings_theme_style";
 
     public static void refreshTheme(Context context) {
         final ThemeUtils themeUtils = new ThemeUtils(context);
@@ -40,12 +42,12 @@ public class AdaptivePreferenceUtils {
         }, Toast.LENGTH_SHORT + 500L);
     }
 
-    public static Position getPosition(Context context, AttributeSet attrs) {
+    public static String getPosition(Context context, AttributeSet attrs) {
         TypedArray typedArray = context.obtainStyledAttributes(attrs, R.styleable.AdaptivePreference);
         String positionAttribute = typedArray.getString(R.styleable.AdaptivePreference_position);
         typedArray.recycle();
 
-        return Position.fromAttribute(positionAttribute);
+        return positionAttribute;
     }
     
     public static boolean isLineageSettings(Context context, AttributeSet attrs) {
@@ -57,30 +59,78 @@ public class AdaptivePreferenceUtils {
     }
 
     public static int getLayoutResourceId(Context context, AttributeSet attrs) {
-        Position position = getPosition(context, attrs);
-        
+        final String positionString = getPosition(context, attrs);
+        return getLayoutResourceId(context, positionString, false);
+    }
+    
+    public static int getLayoutResourceId(Context context, String positionString, boolean isHomePage) {
+        int defaultSettingsTheme = isHomePage ? Settings.System.getInt(context.getContentResolver(), SETTINGS_THEME_PROP, 0) : 0;
+        final Position position = Position.fromAttribute(positionString);
+
+        if (positionString != null && positionString.equals("wellbeing")) {
+            switch (defaultSettingsTheme) {
+                case 0:
+                default:
+                    return R.layout.top_level_preference_wellbeing_card;
+                case 1:
+                    return R.layout.top_level_preference_wellbeing_ayan;
+            }
+        } else if (positionString != null && positionString.equals("google")) {
+            switch (defaultSettingsTheme) {
+                case 0:
+                default:
+                    return R.layout.top_level_preference_google_card;
+                case 1:
+                    return R.layout.top_level_preference_google_ayan;
+            }
+        }
+
         if (position == null) {
-            return R.layout.top_level_preference_middle_card;
+            switch (defaultSettingsTheme) {
+                case 0:
+                default:
+                    return R.layout.top_level_preference_middle_card;
+                case 1:
+                    return R.layout.top_level_preference_middle_ayan;
+            }
         }
 
         switch (position) {
             case TOP:
-                return R.layout.top_level_preference_top_card;
+                switch (defaultSettingsTheme) {
+                    case 0:
+                    default:
+                        return R.layout.top_level_preference_top_card;
+                    case 1:
+                        return R.layout.top_level_preference_top_ayan;
+                }
             case BOTTOM:
-                return R.layout.top_level_preference_bottom_card;
+                switch (defaultSettingsTheme) {
+                    case 0:
+                    default:
+                        return R.layout.top_level_preference_bottom_card;
+                    case 1:
+                        return R.layout.top_level_preference_bottom_ayan;
+                }
             case MIDDLE:
-                return R.layout.top_level_preference_middle_card;
+                switch (defaultSettingsTheme) {
+                    case 0:
+                    default:
+                        return R.layout.top_level_preference_middle_card;
+                    case 1:
+                        return R.layout.top_level_preference_middle_ayan;
+                }
+            default:
             case SOLO:
                 return R.layout.top_level_preference_solo_card;
             case NONE:
                 return -1;
-            default:
-                return R.layout.top_level_preference_solo_card;
         }
     }
-    
+
     public static int getSeekBarLayoutResourceId(Context context, AttributeSet attrs) {
-        Position position = getPosition(context, attrs);
+        final String positionString = getPosition(context, attrs);
+        final Position position = Position.fromAttribute(positionString);
         
         if (position == null) {
             return R.layout.preference_custom_seekbar_middle;

@@ -74,21 +74,21 @@ public class PreferenceLayoutUtil {
             return;
         }
         if ("top_level_wellbeing".equals(key) && Utils.isPackageInstalled(context, PACKAGE_WELLBEING)) {
-            preference.setLayoutResource(R.layout.top_level_preference_wellbeing_card);
+            preference.setLayoutResource(AdaptivePreferenceUtils.getLayoutResourceId(context, "wellbeing", true));
         } else if ("top_level_google".equals(key) && Utils.isPackageInstalled(context, PACKAGE_GOOGLE_SERVICES)) {
-            preference.setLayoutResource(R.layout.top_level_preference_google_card);
+            preference.setLayoutResource(AdaptivePreferenceUtils.getLayoutResourceId(context, "google", true));
         } else if (topPreferences.contains(key)) {
-            preference.setLayoutResource(R.layout.top_level_preference_top_card);
+            preference.setLayoutResource(AdaptivePreferenceUtils.getLayoutResourceId(context, "top", true));
         } else if (middlePreferences.contains(key)) {
-            preference.setLayoutResource(R.layout.top_level_preference_middle_card);
+            preference.setLayoutResource(AdaptivePreferenceUtils.getLayoutResourceId(context, "middle", true));
         } else if (bottomPreferences.contains(key)) {
-            preference.setLayoutResource(R.layout.top_level_preference_bottom_card);
+            preference.setLayoutResource(AdaptivePreferenceUtils.getLayoutResourceId(context, "bottom", true));
         } else {
             // highlight injected top level preference e.g OEM parts
             int order = extraPreferenceOrder - 1;
             updateStartOrder(order);
             preference.setOrder(order);
-            preference.setLayoutResource(R.layout.top_level_preference_solo_card);
+            preference.setLayoutResource(AdaptivePreferenceUtils.getLayoutResourceId(context, "solo", true));
         }
     }
 }
