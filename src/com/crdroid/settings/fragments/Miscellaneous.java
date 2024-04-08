@@ -39,6 +39,8 @@ import java.util.List;
 
 import lineageos.providers.LineageSettings;
 
+import com.android.internal.util.rising.SystemRestartUtils;
+
 @SearchIndexable
 public class Miscellaneous extends SettingsPreferenceFragment implements
         Preference.OnPreferenceChangeListener {
@@ -48,12 +50,14 @@ public class Miscellaneous extends SettingsPreferenceFragment implements
     private static final String SYS_GAMES_SPOOF = "persist.sys.pixelprops.games";
     private static final String SYS_PHOTOS_SPOOF = "persist.sys.pixelprops.gphotos";
     private static final String SYS_NETFLIX_SPOOF = "persist.sys.pixelprops.netflix";
+    private static final String SYS_GMS_SPOOF = "persist.sys.pixelprops.gms";
 
     private static final String KEY_FORCE_FULL_SCREEN = "display_cutout_force_fullscreen_settings";
     private static final String SMART_PIXELS = "smart_pixels";
 
     private Preference mShowCutoutForce;
     private Preference mSmartPixels;
+    private Preference mGmsSpoof;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -64,6 +68,9 @@ public class Miscellaneous extends SettingsPreferenceFragment implements
         final PreferenceScreen prefScreen = getPreferenceScreen();
         Context mContext = getActivity().getApplicationContext();
         final Resources res = getResources();
+        
+        mGmsSpoof = (Preference) findPreference(SYS_GMS_SPOOF);
+        mGmsSpoof.setOnPreferenceChangeListener(this);
 
 	    final String displayCutout =
             mContext.getResources().getString(com.android.internal.R.string.config_mainBuiltInDisplayCutout);
@@ -82,6 +89,10 @@ public class Miscellaneous extends SettingsPreferenceFragment implements
 
     @Override
     public boolean onPreferenceChange(Preference preference, Object newValue) {
+        if (preference == mGmsSpoof) {
+            SystemRestartUtils.showSystemRestartDialog(getContext());
+            return true;
+        }
         return false;
     }
 
