@@ -23,6 +23,7 @@
     <string name="crdroid_settings_summary">Open goodness</string>
     <string name="reset_settings_title">Reset settings</string>
     <string name="reset_settings_message">This will reset most crdroid settings to their default values for the current user. Would you like to continue?</string>
+    <string name="search_homepage">Search</string>
 
     <!-- Changelog -->
     <string name="changelog_rising_title">What\'s New?</string>
