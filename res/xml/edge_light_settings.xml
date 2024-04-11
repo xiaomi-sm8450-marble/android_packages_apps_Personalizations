@@ -26,7 +26,8 @@
     <com.crdroid.settings.preferences.SystemSettingSwitchPreference
         android:key="edge_light_enabled"
         android:title="@string/enable"
-        android:defaultValue="false" />
+        android:defaultValue="false"
+        lineage:position="top" />
 
     <com.crdroid.settings.preferences.SystemSettingSwitchPreference
         android:key="edge_light_always_trigger_on_pulse"
@@ -56,6 +57,7 @@
         android:key="edge_light_custom_color"
         android:title="@string/custom_color"
         android:defaultValue="#FFFFFF"
-        android:dependency="edge_light_enabled" />
+        android:dependency="edge_light_enabled"
+        lineage:position="bottom" />
 
 </PreferenceScreen>
