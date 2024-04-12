@@ -29,6 +29,7 @@ import android.widget.ImageView
 class WallpaperView : ImageView {
 
     private val handler = Handler()
+    private var currentWallpaperDrawable: Drawable? = null
 
     private val wallpaperChecker = object : Runnable {
         override fun run() {
@@ -61,26 +62,13 @@ class WallpaperView : ImageView {
     private fun setWallpaperPreview() {
         val wallpaperManager = WallpaperManager.getInstance(context)
         val wallpaperDrawable: Drawable? = wallpaperManager.drawable
-        wallpaperDrawable?.let {
-            val wallpaperBitmap = drawableToBitmap(it)
-            setImageBitmap(wallpaperBitmap)
-        }
-    }
 
-    private fun drawableToBitmap(drawable: Drawable): Bitmap {
-        if (drawable is BitmapDrawable) {
-            return drawable.bitmap
+        if (wallpaperDrawable != currentWallpaperDrawable) {
+            currentWallpaperDrawable = wallpaperDrawable
+            wallpaperDrawable?.let {
+                setImageDrawable(it)
+            }
         }
-        val bitmap = Bitmap.createBitmap(
-            drawable.intrinsicWidth,
-            drawable.intrinsicHeight,
-            Bitmap.Config.ARGB_8888
-        )
-        val canvas = Canvas(bitmap)
-        drawable.setBounds(0, 0, canvas.width, canvas.height)
-        drawable.draw(canvas)
-
-        return bitmap
     }
 
     override fun onDetachedFromWindow() {
