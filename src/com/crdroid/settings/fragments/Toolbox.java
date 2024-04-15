@@ -35,6 +35,7 @@ import androidx.preference.Preference.OnPreferenceChangeListener;
 import androidx.preference.SwitchPreference;
 
 import com.android.internal.logging.nano.MetricsProto;
+import com.android.internal.util.rising.SystemRestartUtils;
 import com.android.settings.R;
 import com.android.settings.SettingsPreferenceFragment;
 import com.android.settings.search.BaseSearchIndexProvider;
@@ -44,11 +45,14 @@ import java.util.List;
 import java.util.ArrayList;
 
 @SearchIndexable
-public class Toolbox extends SettingsPreferenceFragment {
+public class Toolbox extends SettingsPreferenceFragment implements Preference.OnPreferenceChangeListener {
 
     public static final String TAG = "Toolbox";
     private static final String KEY_QUICKSWITCH_PREFERENCE = "quickswitch";
     private static final String KEY_NAVIGATION_PREFERENCE = "navigation";
+    private static final String SYS_GMS_SPOOF = "persist.sys.pixelprops.gms";
+
+    private Preference mGmsSpoof;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -66,6 +70,17 @@ public class Toolbox extends SettingsPreferenceFragment {
                 navigationPreference.setLayoutResource(R.layout.top_level_preference_bottom_card);
             }
         }
+        mGmsSpoof = (Preference) findPreference(SYS_GMS_SPOOF);
+        mGmsSpoof.setOnPreferenceChangeListener(this);
+    }
+
+    @Override
+    public boolean onPreferenceChange(Preference preference, Object newValue) {
+        if (preference == mGmsSpoof) {
+            SystemRestartUtils.showSystemRestartDialog(getContext());
+            return true;
+        }
+        return false;
     }
 
     @Override
