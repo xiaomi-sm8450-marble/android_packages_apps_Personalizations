@@ -74,6 +74,8 @@ public class AdaptivePreferenceUtils {
                     return R.layout.top_level_preference_wellbeing_card;
                 case 1:
                     return R.layout.top_level_preference_wellbeing_ayan;
+                case 2:
+                    return R.layout.top_level_preference_wellbeing_card_material;
             }
         } else if (positionString != null && positionString.equals("google")) {
             switch (defaultSettingsTheme) {
@@ -82,6 +84,8 @@ public class AdaptivePreferenceUtils {
                     return R.layout.top_level_preference_google_card;
                 case 1:
                     return R.layout.top_level_preference_google_ayan;
+                case 2:
+                    return R.layout.top_level_preference_google_card_material;
             }
         }
 
@@ -92,6 +96,8 @@ public class AdaptivePreferenceUtils {
                     return R.layout.top_level_preference_middle_card;
                 case 1:
                     return R.layout.top_level_preference_middle_ayan;
+                case 2:
+                    return R.layout.top_level_preference_middle_card_material;
             }
         }
 
@@ -103,6 +109,8 @@ public class AdaptivePreferenceUtils {
                         return R.layout.top_level_preference_top_card;
                     case 1:
                         return R.layout.top_level_preference_top_ayan;
+                    case 2:
+                        return R.layout.top_level_preference_top_card_material;
                 }
             case BOTTOM:
                 switch (defaultSettingsTheme) {
@@ -111,6 +119,8 @@ public class AdaptivePreferenceUtils {
                         return R.layout.top_level_preference_bottom_card;
                     case 1:
                         return R.layout.top_level_preference_bottom_ayan;
+                    case 2:
+                        return R.layout.top_level_preference_bottom_card_material;
                 }
             case MIDDLE:
                 switch (defaultSettingsTheme) {
@@ -119,6 +129,8 @@ public class AdaptivePreferenceUtils {
                         return R.layout.top_level_preference_middle_card;
                     case 1:
                         return R.layout.top_level_preference_middle_ayan;
+                    case 2:
+                        return R.layout.top_level_preference_middle_card_material;
                 }
             default:
             case SOLO:
