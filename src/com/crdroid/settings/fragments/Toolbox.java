@@ -49,7 +49,6 @@ public class Toolbox extends SettingsPreferenceFragment implements Preference.On
 
     public static final String TAG = "Toolbox";
     private static final String KEY_QUICKSWITCH_PREFERENCE = "quickswitch";
-    private static final String KEY_NAVIGATION_PREFERENCE = "navigation";
     private static final String SYS_GMS_SPOOF = "persist.sys.pixelprops.gms";
 
     private Preference mGmsSpoof;
@@ -63,11 +62,7 @@ public class Toolbox extends SettingsPreferenceFragment implements Preference.On
         if (targetHasSingleLauncher) {
             Preference quickSwitchPreference = findPreference(KEY_QUICKSWITCH_PREFERENCE);
             if (quickSwitchPreference != null) {
-                preferenceScreen.removePreference(quickSwitchPreference);
-            }
-            Preference navigationPreference = findPreference(KEY_NAVIGATION_PREFERENCE);
-            if (navigationPreference != null) {
-                navigationPreference.setLayoutResource(R.layout.top_level_preference_bottom_card);
+                quickSwitchPreference.setEnabled(false);
             }
         }
         mGmsSpoof = (Preference) findPreference(SYS_GMS_SPOOF);

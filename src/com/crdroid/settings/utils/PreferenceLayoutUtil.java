@@ -34,7 +34,6 @@ public class PreferenceLayoutUtil {
 
     private static final Set<String> topPreferences = new HashSet<>(Arrays.asList(
             "top_level_network",
-            "top_level_system",
             "top_level_apps",
             "top_level_accessibility",
             "top_level_emergency",
@@ -48,7 +47,9 @@ public class PreferenceLayoutUtil {
             "top_level_storage",
             "top_level_notifications",
             "top_level_communal",
-            "top_level_safety_center"
+            "top_level_safety_center",
+            "top_level_system",
+            "top_level_accounts"
     ));
 
     private static final Set<String> bottomPreferences = new HashSet<>(Arrays.asList(
@@ -56,7 +57,6 @@ public class PreferenceLayoutUtil {
             "top_level_sound",
             "top_level_wallpaper",
             "top_level_location",
-            "top_level_accounts",
             "top_level_about_device"
     ));
     
@@ -73,9 +73,11 @@ public class PreferenceLayoutUtil {
         if (EXCLUDE_LIST.contains(key)) {
             return;
         }
-        if ("top_level_wellbeing".equals(key) && Utils.isPackageInstalled(context, PACKAGE_WELLBEING)) {
+        boolean isWellbeingInstalled = Utils.isPackageInstalled(context, PACKAGE_WELLBEING);
+        boolean isGoogleServiceInstalled = Utils.isPackageInstalled(context, PACKAGE_GOOGLE_SERVICES);
+        if ("top_level_wellbeing".equals(key) && isWellbeingInstalled) {
             preference.setLayoutResource(AdaptivePreferenceUtils.getLayoutResourceId(context, "wellbeing", true));
-        } else if ("top_level_google".equals(key) && Utils.isPackageInstalled(context, PACKAGE_GOOGLE_SERVICES)) {
+        } else if ("top_level_google".equals(key) && isGoogleServiceInstalled) {
             preference.setLayoutResource(AdaptivePreferenceUtils.getLayoutResourceId(context, "google", true));
         } else if (topPreferences.contains(key)) {
             preference.setLayoutResource(AdaptivePreferenceUtils.getLayoutResourceId(context, "top", true));
