@@ -1586,4 +1586,8 @@
     <!-- Adaptive Charging -->
     <string name="adaptive_charging_enabled_title">Optimized Charging</string>
     <string name="adaptive_charging_enabled_summary">Enable adaptive power strategy while device is charging</string>
+
+    <!-- QS Bluetooth auto on -->
+    <string name="qs_bt_auto_on_title">Automatic Bluetooth on</string>
+    <string name="qs_bt_auto_on_summary">Always turn on Bluetooth when pressing the Bluetooth QS tile</string>
 </resources>
