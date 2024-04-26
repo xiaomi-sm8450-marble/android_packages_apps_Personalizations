@@ -1455,6 +1455,7 @@
     <string name="quickswitch_launcher_summary">Customize default homescreen app</string>
     <string name="nothing_launcher_customizations_title">Nothing launcher customizations</string>
     <string name="nothing_launcher_customizations_summary">Customize nothing launcher homescreen app</string>
+    <string name="quickswitch_not_supported">QuickSwitch is not supported; the system only has one launcher.</string>
     
    <!-- Font styles -->
     <string name="font_styles_title">Font Styles</string>

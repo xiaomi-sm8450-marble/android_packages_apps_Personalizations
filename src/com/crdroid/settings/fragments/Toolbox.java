@@ -63,6 +63,7 @@ public class Toolbox extends SettingsPreferenceFragment implements Preference.On
             Preference quickSwitchPreference = findPreference(KEY_QUICKSWITCH_PREFERENCE);
             if (quickSwitchPreference != null) {
                 quickSwitchPreference.setEnabled(false);
+                quickSwitchPreference.setSummary(R.string.quickswitch_not_supported);
             }
         }
         mGmsSpoof = (Preference) findPreference(SYS_GMS_SPOOF);
