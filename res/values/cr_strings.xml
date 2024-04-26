@@ -681,6 +681,8 @@
     <!-- Pocket judge -->
     <string name="pocket_judge_title">Pocket detection</string>
     <string name="pocket_judge_summary">Block screen and button inputs when device is in pocket</string>
+    <string name="always_on_pocket_mode_enabled_title">Always on Pocket mode</string>
+    <string name="always_on_pocket_mode_summary">Always block screen and button inputs when screen is turned on</string>
 
     <!-- Disable HW keys -->
     <string name="hwkeys_disabled_title">Disable HW keys</string>
