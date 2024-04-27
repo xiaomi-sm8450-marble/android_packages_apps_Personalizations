@@ -22,29 +22,25 @@
         <androidx.cardview.widget.CardView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:minWidth="48dp"
-            android:minHeight="48dp"
             android:layout_alignParentStart="true"
             app:cardBackgroundColor="#00000000"
             app:cardElevation="0dp">
 
             <LinearLayout
                 android:id="@+id/icon_frame"
-                android:layout_width="48dp"
-                android:layout_height="48dp"
-                android:layout_marginStart="8dp"
-                android:layout_marginEnd="16dp">
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="20dp">
 
                 <androidx.preference.internal.PreferenceImageView
                     android:id="@android:id/icon"
                     android:padding="16dp"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
                     android:background="@drawable/custom_surface_color_rounded"
                     android:tint="@color/top_level_preference_icon_tint"/>
 
             </LinearLayout>
-
         </androidx.cardview.widget.CardView>
 
         <RelativeLayout

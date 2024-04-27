@@ -76,7 +76,6 @@
 
         <com.android.settings.preferences.ui.AdaptivePreference
             android:key="power_menu"
-            android:icon="@drawable/ic_settings_powermenu"
             android:title="@string/power_menu_title"
             android:summary="@string/power_menu_summary"
             android:fragment="com.crdroid.settings.fragments.buttons.PowerMenuActions"
@@ -351,7 +350,6 @@
 
         <com.android.settings.preferences.ui.AdaptiveListPreference
             android:key="volume_key_cursor_control"
-            android:icon="@drawable/ic_cursor"
             android:dialogTitle="@string/volbtn_cursor_control_title"
             android:title="@string/volbtn_cursor_control_title"
             android:entries="@array/volbtn_cursor_control_entries"

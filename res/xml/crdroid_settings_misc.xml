@@ -124,22 +124,6 @@
             android:summary="@string/three_finger_gesture_summary"
             android:defaultValue="false" />
 
-        <!-- Sensor block per package -->
-        <com.android.settings.preferences.ui.AdaptivePreference
-            android:key="sensor_block_settings"
-            android:icon="@drawable/ic_remote"
-            android:title="@string/sensor_block_title"
-            android:summary="@string/sensor_block_summary"
-            android:fragment="com.crdroid.settings.fragments.misc.SensorBlock"/>
-
-        <!-- Smart Pixels -->
-        <com.android.settings.preferences.ui.AdaptivePreference
-            android:key="smart_pixels"
-            android:icon="@drawable/ic_smart_pixels"
-            android:title="@string/smart_pixels_title" 
-            android:summary="@string/smart_pixels_summary" 
-            android:fragment="com.crdroid.settings.fragments.ui.SmartPixels" />
-
         <!-- Unlock FPS for specific games -->
         <com.crdroid.settings.preferences.SystemPropertySwitchPreference
             android:key="persist.sys.pixelprops.games"
@@ -152,6 +136,21 @@
             android:title="@string/use_photos_spoof_title"
             android:summary="@string/use_photos_spoof_summary"
             android:defaultValue="true"
+             />
+            
+        <!-- Sensor block per package -->
+        <com.android.settings.preferences.ui.AdaptivePreference
+            android:key="sensor_block_settings"
+            android:title="@string/sensor_block_title"
+            android:summary="@string/sensor_block_summary"
+            android:fragment="com.crdroid.settings.fragments.misc.SensorBlock"/>
+
+        <!-- Smart Pixels -->
+        <com.android.settings.preferences.ui.AdaptivePreference
+            android:key="smart_pixels"
+            android:title="@string/smart_pixels_title" 
+            android:summary="@string/smart_pixels_summary" 
+            android:fragment="com.crdroid.settings.fragments.ui.SmartPixels"
             app:position="bottom" />
 
     </PreferenceCategory>

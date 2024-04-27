@@ -70,7 +70,6 @@
         android:title="@string/lockscreen_weather_category">
 
         <com.android.settings.preferences.ui.AdaptivePreference
-            android:icon="@drawable/ic_weather_settings"
             android:title="@string/weather_settings_title"
             android:summary="@string/weather_settings_summary"
             lineage:position="top">
@@ -127,7 +126,6 @@
         
         <com.android.settings.preferences.ui.AdaptivePreference
             android:key="udfps_icon_picker"
-            android:icon="@drawable/ic_fp_selector"
             android:title="@string/udfps_icon_picker_title"
             android:summary="@string/udfps_icon_picker_summary"
             android:fragment="com.crdroid.settings.fragments.lockscreen.UdfpsIconPicker"
@@ -135,7 +133,6 @@
 
         <com.android.settings.preferences.ui.AdaptivePreference
             android:key="udfps_recognizing_animation_preview"
-            android:icon="@drawable/ic_fp_selector"
             android:title="@string/udfps_recog_animation_effect_title"
             android:summary="@string/udfps_recog_animation_effect_summary"
             android:fragment="com.crdroid.settings.fragments.lockscreen.UdfpsAnimation" />

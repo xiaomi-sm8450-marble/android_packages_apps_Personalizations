@@ -1489,8 +1489,8 @@
     <string name="theme_customization_ui_style_summary">Set custom style for your interface</string>
     
     <!-- Custom Clock Style -->
-    <string name="lockscreen_clock_category_title">Lockscreen Clock</string>
-    <string name="lockscreen_clock_category_summary">Configure lockscreen clock styles</string>
+    <string name="lockscreen_clock_category_title">Lockscreen clock and widgets</string>
+    <string name="lockscreen_clock_category_summary">Configure lockscreen clock and widgets</string>
     <string name="custom_clock_style">Custom Clock Style</string>
     
     <!-- Lockscreen widgets  -->

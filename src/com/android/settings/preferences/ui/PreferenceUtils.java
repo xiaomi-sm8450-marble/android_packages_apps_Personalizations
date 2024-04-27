@@ -20,6 +20,9 @@ import androidx.preference.Preference;
 import androidx.preference.PreferenceCategory;
 import androidx.preference.PreferenceGroup;
 import androidx.preference.PreferenceScreen;
+
+import android.content.Context;
+import android.provider.Settings;
 import android.util.Log;
 
 import com.android.settingslib.widget.IllustrationPreference;
@@ -40,6 +43,8 @@ import java.util.Set;
 
 import com.android.settings.R;
 
+import com.crdroid.settings.utils.AdaptivePreferenceUtils;
+
 public class PreferenceUtils {
     private static final String TAG = "PreferenceUtils";
 
@@ -48,8 +53,9 @@ public class PreferenceUtils {
             List<String> middlePrefs,
             List<String> bottomPrefs,
             List<String> soloPrefs,
-            PreferenceGroup screen) {
-        setupExtraPreferences(topPrefs, middlePrefs, bottomPrefs, soloPrefs, screen, false);
+            PreferenceGroup screen,
+            Context context) {
+        setupExtraPreferences(topPrefs, middlePrefs, bottomPrefs, soloPrefs, screen, context, false);
     }
 
     public static void setupExtraPreferences(
@@ -58,6 +64,7 @@ public class PreferenceUtils {
             List<String> bottomPrefs,
             List<String> soloPrefs,
             PreferenceGroup screen,
+            Context context,
             boolean forceThemeMiddle) {
         if (screen == null || 
             (topPrefs.isEmpty() && middlePrefs.isEmpty() 
@@ -68,7 +75,7 @@ public class PreferenceUtils {
         for (Preference preference : allPreferences) {
             String key = preference.getKey();
             if (key != null) {
-                int layoutResource = getLayoutResourceForKey(key, topPrefs, middlePrefs, bottomPrefs, soloPrefs, forceThemeMiddle);
+                int layoutResource = getLayoutResourceForKey(context, key, topPrefs, middlePrefs, bottomPrefs, soloPrefs, forceThemeMiddle);
                 if (layoutResource != 0 && !getExcludedPrefClass().contains(preference.getClass())) {
                     preference.setLayoutResource(layoutResource);
                 }
@@ -91,30 +98,27 @@ public class PreferenceUtils {
         return exclusionList;
     }
 
-    private static int getLayoutResourceForKey(String key, List<String> topPrefs, List<String> middlePrefs,
+    private static int getLayoutResourceForKey(Context context, String key, List<String> topPrefs, List<String> middlePrefs,
                                                 List<String> bottomPrefs, List<String> soloPrefs,
                                                 boolean forceThemeMiddle) {
         if (!topPrefs.isEmpty() && topPrefs.contains(key)) {
-            return R.layout.top_level_preference_top_card;
+            return AdaptivePreferenceUtils.getLayoutResourceId(context, "top", false);
         } else if (!middlePrefs.isEmpty() && middlePrefs.contains(key)) {
-            return R.layout.top_level_preference_middle_card;
+            return AdaptivePreferenceUtils.getLayoutResourceId(context, "middle", false);
         } else if (!bottomPrefs.isEmpty() && bottomPrefs.contains(key)) {
-            return R.layout.top_level_preference_bottom_card;
+            return AdaptivePreferenceUtils.getLayoutResourceId(context, "bottom", false);
         } else if (!soloPrefs.isEmpty() && soloPrefs.contains(key)) {
-            return R.layout.top_level_preference_solo_card;
+            return AdaptivePreferenceUtils.getLayoutResourceId(context, "solo", false);
         } else if (forceThemeMiddle && middlePrefs.isEmpty()) {
-            return R.layout.top_level_preference_middle_card;
+            return AdaptivePreferenceUtils.getLayoutResourceId(context, "middle", false);
         } else {
             return 0;
         }
     }
 
-    public static void setLayoutResources(List<Preference> preferences) {
+    public static void setLayoutResources(Context context, List<Preference> preferences) {
         int minOrder = Integer.MAX_VALUE;
         int maxOrder = Integer.MIN_VALUE;
-        int topCardLayoutResId = R.layout.top_level_preference_top_card;
-        int middleCardLayoutResId = R.layout.top_level_preference_middle_card;
-        int bottomCardLayoutResId = R.layout.top_level_preference_bottom_card;
 
         for (Preference preference : preferences) {
             if (preference.isVisible()) {
@@ -132,11 +136,11 @@ public class PreferenceUtils {
             if (preference.isVisible() && !getExcludedPrefClass().contains(preference.getClass())) {
                 int order = preference.getOrder();
                 if (order == minOrder) {
-                    preference.setLayoutResource(topCardLayoutResId);
+                    preference.setLayoutResource(AdaptivePreferenceUtils.getLayoutResourceId(context, "top", false));
                 } else if (order == maxOrder) {
-                    preference.setLayoutResource(bottomCardLayoutResId);
+                    preference.setLayoutResource(AdaptivePreferenceUtils.getLayoutResourceId(context, "bottom", false));
                 } else {
-                    preference.setLayoutResource(middleCardLayoutResId);
+                    preference.setLayoutResource(AdaptivePreferenceUtils.getLayoutResourceId(context, "middle", false));
                 }
             }
         }

@@ -66,7 +66,7 @@
 
         <com.crdroid.settings.preferences.SystemSettingListPreference
             android:entries="@array/widget_entries"
-            android:icon="@drawable/ic_lock_clock"
+            android:icon="@drawable/widgets"
             android:title="@string/main_custom_widgets1"
             android:key="main_custom_widgets1"
             android:entryValues="@array/widget_values" 
@@ -75,7 +75,7 @@
 
         <com.crdroid.settings.preferences.SystemSettingListPreference
             android:entries="@array/widget_entries"
-            android:icon="@drawable/ic_lock_clock"
+            android:icon="@drawable/widgets"
             android:title="@string/main_custom_widgets2"
             android:key="main_custom_widgets2"
             android:entryValues="@array/widget_values"
@@ -84,7 +84,7 @@
 
         <com.crdroid.settings.preferences.SystemSettingListPreference
             android:entries="@array/widget_entries"
-            android:icon="@drawable/ic_lock_clock"
+            android:icon="@drawable/action_key"
             android:title="@string/custom_widgets1"
             android:key="custom_widgets1"
             android:entryValues="@array/widget_values" 
@@ -93,7 +93,7 @@
 
         <com.crdroid.settings.preferences.SystemSettingListPreference
             android:entries="@array/widget_entries"
-            android:icon="@drawable/ic_lock_clock"
+            android:icon="@drawable/action_key"
             android:title="@string/custom_widgets2"
             android:key="custom_widgets2"
             android:entryValues="@array/widget_values"
@@ -102,7 +102,7 @@
 
         <com.crdroid.settings.preferences.SystemSettingListPreference
             android:entries="@array/widget_entries"
-            android:icon="@drawable/ic_lock_clock"
+            android:icon="@drawable/action_key"
             android:title="@string/custom_widgets3"
             android:key="custom_widgets3"
             android:entryValues="@array/widget_values" 
@@ -111,7 +111,7 @@
 
         <com.crdroid.settings.preferences.SystemSettingListPreference
             android:entries="@array/widget_entries"
-            android:icon="@drawable/ic_lock_clock"
+            android:icon="@drawable/action_key"
             android:title="@string/custom_widgets4"
             android:key="custom_widgets4"
             android:entryValues="@array/widget_values" 

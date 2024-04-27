@@ -43,5 +43,6 @@
         settings:min="10"
         settings:interval="10"
         settings:units="@string/unit_seconds"
-        android:dependency="adaptive_playback_enabled" />
+        android:dependency="adaptive_playback_enabled"
+        app:position="solo" />
 </PreferenceScreen>
