@@ -42,6 +42,8 @@ import com.crdroid.settings.preferences.CustomSeekBarPreference;
 
 import lineageos.providers.LineageSettings;
 
+import com.android.internal.util.rising.SystemRestartUtils;
+
 import java.util.List;
 import java.util.ArrayList;
 
@@ -59,6 +61,7 @@ public class QuickSettings extends SettingsPreferenceFragment implements
     private static final String KEY_PREF_TILE_ANIM_INTERPOLATOR = "qs_tile_animation_interpolator";
     private static final String KEY_QS_UI_STYLE  = "qs_tile_ui_style";
     private static final String KEY_QS_PANEL_STYLE  = "qs_panel_style";
+    private static final String KEY_QS_COMPACT_PLAYER  = "qs_compact_media_player_mode";
 
     private ListPreference mShowBrightnessSlider;
     private ListPreference mBrightnessSliderPosition;
@@ -68,6 +71,7 @@ public class QuickSettings extends SettingsPreferenceFragment implements
     private ListPreference mTileAnimationInterpolator;
     private ListPreference mQsUI;
     private ListPreference mQsPanelStyle;
+    private Preference mQsCompactPlayer;
 
     private static ThemeUtils mThemeUtils;
 
@@ -115,6 +119,9 @@ public class QuickSettings extends SettingsPreferenceFragment implements
 
         mQsPanelStyle = (ListPreference) findPreference(KEY_QS_PANEL_STYLE);
         mQsPanelStyle.setOnPreferenceChangeListener(this);
+        
+        mQsCompactPlayer = (Preference) findPreference(KEY_QS_COMPACT_PLAYER);
+        mQsCompactPlayer.setOnPreferenceChangeListener(this);
 
         checkQSOverlays(mContext);
     }
@@ -146,6 +153,9 @@ public class QuickSettings extends SettingsPreferenceFragment implements
                     Settings.System.QS_PANEL_STYLE, value, UserHandle.USER_CURRENT);
             updateQsPanelStyle(getActivity());
             checkQSOverlays(getActivity());
+            return true;
+        } else if (preference == mQsCompactPlayer) {
+            SystemRestartUtils.showSystemUIRestartDialog(getActivity());
             return true;
         }
         return false;
