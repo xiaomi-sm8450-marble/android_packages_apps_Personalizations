@@ -62,6 +62,7 @@ public class QuickSettings extends SettingsPreferenceFragment implements
     private static final String KEY_QS_UI_STYLE  = "qs_tile_ui_style";
     private static final String KEY_QS_PANEL_STYLE  = "qs_panel_style";
     private static final String KEY_QS_COMPACT_PLAYER  = "qs_compact_media_player_mode";
+    private static final String KEY_QS_WIDGETS_ENABLED  = "qs_widgets_enabled";
 
     private ListPreference mShowBrightnessSlider;
     private ListPreference mBrightnessSliderPosition;
@@ -72,6 +73,7 @@ public class QuickSettings extends SettingsPreferenceFragment implements
     private ListPreference mQsUI;
     private ListPreference mQsPanelStyle;
     private Preference mQsCompactPlayer;
+    private Preference mQsWidgetsPref;
 
     private static ThemeUtils mThemeUtils;
 
@@ -89,6 +91,8 @@ public class QuickSettings extends SettingsPreferenceFragment implements
 
         mShowBrightnessSlider = findPreference(KEY_SHOW_BRIGHTNESS_SLIDER);
         mShowBrightnessSlider.setOnPreferenceChangeListener(this);
+        mQsWidgetsPref = findPreference(KEY_QS_WIDGETS_ENABLED);
+        mQsWidgetsPref.setOnPreferenceChangeListener(this);
         boolean showSlider = LineageSettings.Secure.getIntForUser(resolver,
                 LineageSettings.Secure.QS_SHOW_BRIGHTNESS_SLIDER, 1, UserHandle.USER_CURRENT) > 0;
 
@@ -155,6 +159,11 @@ public class QuickSettings extends SettingsPreferenceFragment implements
             checkQSOverlays(getActivity());
             return true;
         } else if (preference == mQsCompactPlayer) {
+            SystemRestartUtils.showSystemUIRestartDialog(getActivity());
+            return true;
+        } else if (preference == mQsWidgetsPref) {
+            LineageSettings.Secure.putIntForUser(resolver,
+                    LineageSettings.Secure.QS_SHOW_BRIGHTNESS_SLIDER, 0, UserHandle.USER_CURRENT);
             SystemRestartUtils.showSystemUIRestartDialog(getActivity());
             return true;
         }
