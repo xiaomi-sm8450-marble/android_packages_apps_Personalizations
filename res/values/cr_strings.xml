@@ -1790,4 +1790,10 @@
     <string name="google_spoof_title">Spoof google apps</string>
     <string name="google_spoof_summary">Spoof a few google apps to Pixel 8 Pro</string>
     <string name="google_spoof_option_disabled">Enabling Google apps spoofing is not needed by current device</string>
+
+    <!-- Backup/Restore settings -->
+    <string name="backup_settings_title">Backup Personalization Settings</string>
+    <string name="backup_settings_summary">Save your personalization settings to a file</string>
+    <string name="restore_settings_title">Restore Personalization Settings</string>
+    <string name="restore_settings_summary">Restore your personalization settings from a backup file</string>
 </resources>
