@@ -137,9 +137,19 @@
             android:summary="@string/backup_settings_summary"/>
 
         <com.android.settings.preferences.ui.AdaptivePreference
+            android:key="upload_backup_to_drive"
+            android:title="@string/upload_backup_to_drive_title"
+            android:summary="@string/upload_backup_to_drive_summary" />
+
+        <com.android.settings.preferences.ui.AdaptivePreference
             android:key="restore_personalization_settings"
             android:title="@string/restore_settings_title"
-            android:summary="@string/restore_settings_summary"
+            android:summary="@string/restore_settings_summary" />
+
+        <com.android.settings.preferences.ui.AdaptivePreference
+            android:key="download_backup_from_drive"
+            android:title="@string/download_backup_from_drive_title"
+            android:summary="@string/download_backup_from_drive_summary"
             app:position="bottom" />
 
     </PreferenceCategory>

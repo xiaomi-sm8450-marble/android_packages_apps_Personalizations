@@ -19,19 +19,15 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.ContentResolver;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
-import android.os.Handler;
-import android.os.SystemProperties;
-import android.preference.PreferenceManager;
 import android.provider.Settings;
 import android.util.Log;
 import android.widget.Toast;
 
 import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
-import androidx.preference.ListPreference;
+import androidx.core.content.FileProvider;
 import androidx.preference.Preference;
 import androidx.preference.PreferenceScreen;
 
@@ -40,28 +36,19 @@ import com.android.settings.R;
 import com.android.settings.SettingsPreferenceFragment;
 import com.android.settings.search.BaseSearchIndexProvider;
 import com.android.settingslib.search.SearchIndexable;
-import com.android.settings.preferences.ui.AdaptiveListPreference;
-import com.crdroid.settings.preferences.CustomSeekBarPreference;
-import com.crdroid.settings.preferences.GlobalSettingSwitchPreference;
-import com.crdroid.settings.preferences.RisingSystemSettingListPreference;
-import com.crdroid.settings.preferences.SystemPropertyListPreference;
-import com.crdroid.settings.preferences.SecureSettingListPreference;
-import com.crdroid.settings.preferences.SecureSettingSwitchPreference;
-import com.crdroid.settings.preferences.SystemSettingListPreference;
-import com.crdroid.settings.preferences.SystemSettingSeekBarPreference;
-import com.crdroid.settings.preferences.SystemSettingSwitchPreference;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.io.InputStream;
+import java.io.File;
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.OutputStream;
 import java.nio.charset.StandardCharsets;
 import java.util.Arrays;
 import java.util.Iterator;
 import java.util.List;
-import java.util.Map;
 
 @SearchIndexable
 public class Toolbox extends SettingsPreferenceFragment {
@@ -69,9 +56,13 @@ public class Toolbox extends SettingsPreferenceFragment {
     private static final String TAG = "Toolbox";
     private static final String BACKUP_PERSONALIZATION_SETTINGS = "backup_personalization_settings";
     private static final String RESTORE_PERSONALIZATION_SETTINGS = "restore_personalization_settings";
+    private static final String UPLOAD_BACKUP_TO_DRIVE = "upload_backup_to_drive";
+    private static final String DOWNLOAD_BACKUP_FROM_DRIVE = "download_backup_from_drive";
 
     private ActivityResultLauncher<Intent> backupLauncher;
     private ActivityResultLauncher<Intent> restoreLauncher;
+    private ActivityResultLauncher<Intent> uploadLauncher;
+    private ActivityResultLauncher<Intent> downloadLauncher;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -110,6 +101,35 @@ public class Toolbox extends SettingsPreferenceFragment {
             }
         });
 
+        // Initialize ActivityResultLaunchers for file selection
+        uploadLauncher = registerForActivityResult(new ActivityResultContracts.StartActivityForResult(), result -> {
+            if (result.getResultCode() == Activity.RESULT_OK && result.getData() != null) {
+                Uri uri = result.getData().getData();
+                if (uri != null) {
+                    Log.d(TAG, "Selected file URI: " + uri.toString());
+                    uploadFileToDrive(mContext, uri);
+                } else {
+                    Log.e(TAG, "Selected file URI is null");
+                }
+            } else {
+                Log.e(TAG, "Upload activity result not OK or data is null");
+            }
+        });
+
+        downloadLauncher = registerForActivityResult(new ActivityResultContracts.StartActivityForResult(), result -> {
+            if (result.getResultCode() == Activity.RESULT_OK && result.getData() != null) {
+                Uri uri = result.getData().getData();
+                if (uri != null) {
+                    Log.d(TAG, "Download URI: " + uri.toString());
+                    restoreSettings(mContext, uri);
+                } else {
+                    Log.e(TAG, "Download URI is null");
+                }
+            } else {
+                Log.e(TAG, "Download activity result not OK or data is null");
+            }
+        });
+
         // Backup settings
         Preference backupPref = findPreference(BACKUP_PERSONALIZATION_SETTINGS);
         backupPref.setOnPreferenceClickListener(preference -> {
@@ -123,6 +143,22 @@ public class Toolbox extends SettingsPreferenceFragment {
         restorePref.setOnPreferenceClickListener(preference -> {
             Log.d(TAG, "Restore option clicked");
             chooseFileForRestore();
+            return true;
+        });
+
+        // Upload backup to Google Drive
+        Preference uploadToDrivePref = findPreference(UPLOAD_BACKUP_TO_DRIVE);
+        uploadToDrivePref.setOnPreferenceClickListener(preference -> {
+            Log.d(TAG, "Upload to Drive option clicked");
+            chooseFileForUpload();
+            return true;
+        });
+
+        // Download backup from Google Drive
+        Preference downloadFromDrivePref = findPreference(DOWNLOAD_BACKUP_FROM_DRIVE);
+        downloadFromDrivePref.setOnPreferenceClickListener(preference -> {
+            Log.d(TAG, "Download from Drive option clicked");
+            downloadBackupFromDrive();
             return true;
         });
     }
@@ -147,23 +183,67 @@ public class Toolbox extends SettingsPreferenceFragment {
         restoreLauncher.launch(intent);
     }
 
+    private void chooseFileForUpload() {
+        Intent intent = new Intent(Intent.ACTION_OPEN_DOCUMENT);
+        intent.setType("application/json");
+        Log.d(TAG, "Launching file picker for upload");
+        uploadLauncher.launch(intent);
+    }
+
+    private void uploadFileToDrive(Context context, Uri fileUri) {
+        try {
+            context.getContentResolver().takePersistableUriPermission(fileUri, Intent.FLAG_GRANT_READ_URI_PERMISSION | Intent.FLAG_GRANT_WRITE_URI_PERMISSION);
+            Intent uploadIntent = new Intent(Intent.ACTION_SEND);
+            uploadIntent.setType("application/json");
+            uploadIntent.putExtra(Intent.EXTRA_STREAM, fileUri);
+            uploadIntent.setPackage("com.google.android.apps.docs");
+            uploadIntent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION | Intent.FLAG_GRANT_WRITE_URI_PERMISSION | Intent.FLAG_ACTIVITY_NEW_TASK);
+            if (uploadIntent.resolveActivity(context.getPackageManager()) != null) {
+                context.startActivity(uploadIntent);
+            } else {
+                Toast.makeText(context, "Google Drive app not installed.", Toast.LENGTH_SHORT).show();
+            }
+        } catch (Exception e) {
+            Log.e(TAG, "Failed to upload file to Google Drive: " + e.getMessage(), e);
+            Toast.makeText(context, "Failed to upload file to Google Drive.", Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    private void downloadBackupFromDrive() {
+        Intent downloadIntent = new Intent(Intent.ACTION_GET_CONTENT);
+        downloadIntent.setType("application/json");
+        downloadIntent.addCategory(Intent.CATEGORY_OPENABLE);
+        downloadIntent.setPackage("com.google.android.apps.docs");
+
+        if (downloadIntent.resolveActivity(getContext().getPackageManager()) != null) {
+            downloadLauncher.launch(downloadIntent);
+        } else {
+            Toast.makeText(getContext(), "Google Drive app not installed.", Toast.LENGTH_SHORT).show();
+        }
+    }
+
     private void backupSettings(Context context, Uri uri) {
         try {
             JSONObject json = new JSONObject();
 
             // Add system settings
             addSystemSettingKeys(json);
-        
+
             // Add secure settings
             addSecureSettingKeys(json);
-        
+
             // Add global settings
             addGlobalSettingKeys(json);
 
             // Write the JSON object to the backup file
             try (OutputStream outputStream = context.getContentResolver().openOutputStream(uri)) {
                 if (outputStream != null) {
-                    outputStream.write(json.toString().getBytes());
+                    outputStream.write(json.toString().getBytes(StandardCharsets.UTF_8));
+                    // Save the backup locally
+                    File backupFile = new File(context.getCacheDir(), "personalization_settings_backup.json");
+                    try (OutputStream os = new FileOutputStream(backupFile)) {
+                        os.write(json.toString().getBytes(StandardCharsets.UTF_8));
+                    }
                     Toast.makeText(getActivity(), "Personalization settings backed up successfully!", Toast.LENGTH_SHORT).show();
                 }
             }
