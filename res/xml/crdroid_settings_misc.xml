@@ -29,11 +29,19 @@
         android:title="@string/gen_tb_settings_title">
 
         <com.android.settings.preferences.ui.AdaptivePreference
+            android:key="backup_restore"
+            android:icon="@drawable/ic_backup"
+            android:title="@string/backup_restore_title"
+            android:summary="@string/backup_restore_title_summary"
+            android:fragment="com.crdroid.settings.fragments.BackupRestore"
+            app:position="top" />
+
+        <com.android.settings.preferences.ui.AdaptivePreference
             android:icon="@drawable/ic_settings_buttons"
             android:title="@string/buttons_settings_title"
             android:summary="@string/buttons_settings_summary"
             android:fragment="com.crdroid.settings.fragments.Buttons"
-            app:position="top" />
+             />
 
         <!-- Display Cutout -->
         <com.android.settings.preferences.ui.AdaptivePreference
@@ -129,27 +137,7 @@
             android:key="smart_pixels"
             android:title="@string/smart_pixels_title" 
             android:summary="@string/smart_pixels_summary" 
-            android:fragment="com.crdroid.settings.fragments.ui.SmartPixels" />
-
-        <com.android.settings.preferences.ui.AdaptivePreference
-            android:key="backup_personalization_settings"
-            android:title="@string/backup_settings_title"
-            android:summary="@string/backup_settings_summary"/>
-
-        <com.android.settings.preferences.ui.AdaptivePreference
-            android:key="upload_backup_to_drive"
-            android:title="@string/upload_backup_to_drive_title"
-            android:summary="@string/upload_backup_to_drive_summary" />
-
-        <com.android.settings.preferences.ui.AdaptivePreference
-            android:key="restore_personalization_settings"
-            android:title="@string/restore_settings_title"
-            android:summary="@string/restore_settings_summary" />
-
-        <com.android.settings.preferences.ui.AdaptivePreference
-            android:key="download_backup_from_drive"
-            android:title="@string/download_backup_from_drive_title"
-            android:summary="@string/download_backup_from_drive_summary"
+            android:fragment="com.crdroid.settings.fragments.ui.SmartPixels"
             app:position="bottom" />
 
     </PreferenceCategory>
