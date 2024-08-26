@@ -1800,6 +1800,13 @@
     <string name="upload_backup_to_drive_summary">Upload the backup file to your Google Drive</string>
     <string name="download_backup_from_drive_title">Download Backup from Drive</string>
     <string name="download_backup_from_drive_summary">Download the backup file from your Google Drive to restore settings</string>
+    <string name="gdrive_not_installed">Google Drive app not installed.</string>
+    <string name="backup_success">Personalization settings backed up successfully!</string>
+    <string name="backup_failed">Failed to backup settings</string>
+    <string name="backup_restore_success">Personalization settings restored successfully!</string>
+    <string name="backup_restore_failed">Failed to restore settings</string>
+    <string name="json_read_failed">Failed to read JSON content.</string>
+    <string name="backup_upload_failed">Failed to upload file to Google Drive.</string>
 
     <!-- Boot Animation Preview Strings -->
     <string name="boot_animation_preview_desc">Preview of the selected boot animation</string>
