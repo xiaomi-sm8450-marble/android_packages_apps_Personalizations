@@ -19,9 +19,11 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.ContentResolver;
 import android.content.Intent;
+import android.database.Cursor;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.UserHandle;
+import android.provider.OpenableColumns;
 import android.provider.Settings;
 import android.util.Log;
 import android.widget.Toast;
@@ -105,9 +107,14 @@ public class BackupRestore extends SettingsPreferenceFragment {
             if (result.getResultCode() == Activity.RESULT_OK && result.getData() != null) {
                 Uri uri = result.getData().getData();
                 if (uri != null) {
-                    mContext.getContentResolver().takePersistableUriPermission(uri, Intent.FLAG_GRANT_READ_URI_PERMISSION | Intent.FLAG_GRANT_WRITE_URI_PERMISSION);
-                    Log.d(TAG, "Selected file URI: " + uri.toString());
-                    uploadFileToDrive(mContext, uri);
+                    String fileName = getFileNameFromUri(uri);
+                    if ("personalization_settings_backup.json".equals(fileName)) {
+                        mContext.getContentResolver().takePersistableUriPermission(uri, Intent.FLAG_GRANT_READ_URI_PERMISSION | Intent.FLAG_GRANT_WRITE_URI_PERMISSION);
+                        Log.d(TAG, "Selected file URI: " + uri.toString());
+                        uploadFileToDrive(mContext, uri);
+                    } else {
+                        Toast.makeText(mContext, getContext().getString(R.string.backup_file_name_warning), Toast.LENGTH_SHORT).show();
+                    }
                 } else {
                     Log.e(TAG, "Selected file URI is null");
                 }
@@ -339,6 +346,23 @@ public class BackupRestore extends SettingsPreferenceFragment {
             Log.e(TAG, "Error reading JSON from file: " + e.getMessage(), e);
             return null;
         }
+    }
+    
+    private String getFileNameFromUri(Uri uri) {
+        String fileName = null;
+        if (uri.getScheme().equals("content")) {
+            try (Cursor cursor = getContentResolver().query(uri, null, null, null, null)) {
+                if (cursor != null && cursor.moveToFirst()) {
+                    int nameIndex = cursor.getColumnIndex(OpenableColumns.DISPLAY_NAME);
+                    if (nameIndex >= 0) {
+                        fileName = cursor.getString(nameIndex);
+                    }
+                }
+            }
+        } else if (uri.getScheme().equals("file")) {
+            fileName = new File(uri.getPath()).getName();
+        }
+        return fileName;
     }
 
     /**

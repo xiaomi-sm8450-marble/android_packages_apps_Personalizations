@@ -1809,6 +1809,7 @@
     <string name="backup_restore_failed">Failed to restore settings</string>
     <string name="json_read_failed">Failed to read JSON content.</string>
     <string name="backup_upload_failed">Failed to upload file to Google Drive.</string>
+    <string name="backup_file_name_warning">Please select the correct file: personalization_settings_backup.json</string>
 
     <!-- Boot Animation Preview Strings -->
     <string name="boot_animation_preview_desc">Preview of the selected boot animation</string>
