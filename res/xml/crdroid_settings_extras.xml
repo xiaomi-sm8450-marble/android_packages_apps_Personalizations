@@ -20,13 +20,20 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:title="@string/misc_title">
 
+        <!-- Cache Cleaner -->
+        <com.crdroid.settings.preferences.SystemSettingSwitchPreference
+            android:key="cache_cleaner_enabled"
+            android:title="@string/cache_cleaner_title"
+            android:summary="@string/cache_cleaner_summary"
+            android:defaultValue="false"
+            app:position="top" />
+
         <!-- Rotation button -->
         <com.crdroid.settings.preferences.SystemSettingSwitchPreference
             android:key="enable_rotation_button"
             android:title="@string/floating_rotation_button_title"
             android:summary="@string/floating_rotation_button_summary"
-            android:defaultValue="true"
-            app:position="top" />
+            android:defaultValue="true" />
 
         <!-- Pocket Judge -->
         <com.crdroid.settings.preferences.SecureSettingSwitchPreference

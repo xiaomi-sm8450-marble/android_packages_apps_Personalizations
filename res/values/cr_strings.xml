@@ -16,6 +16,10 @@
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
 
+    <!-- Cache cleaner -->
+    <string name="cache_cleaner_title">Cache Cleaner</string>
+    <string name="cache_cleaner_summary">Enable the cache cleaner service to automatically clear app caches.</string>
+
     <!-- Extras -->
     <string name="extras_toolbox_title">Extras</string>
     <string name="extras_toolbox_summary">Extra toolbox features</string>
