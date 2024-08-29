@@ -132,6 +132,12 @@
             android:dependency="pocket_mode_enabled"
             android:defaultValue="false" />
 
+        <com.android.settings.preferences.ui.AdaptivePreference
+            android:key="smart_power_off"
+            android:title="@string/smart_power_off_title"
+            android:summary="@string/smart_power_off_time_summary"
+            android:fragment="com.crdroid.settings.fragments.SmartPowerOff" />
+
         <!-- Smart Pixels -->
         <com.android.settings.preferences.ui.AdaptivePreference
             android:key="smart_pixels"
