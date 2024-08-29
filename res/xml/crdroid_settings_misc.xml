@@ -43,6 +43,13 @@
             android:fragment="com.crdroid.settings.fragments.Buttons"
              />
 
+        <com.android.settings.preferences.ui.AdaptivePreference
+            android:key="extras"
+            android:icon="@drawable/ic_cog"
+            android:title="@string/extras_toolbox_title"
+            android:summary="@string/extras_toolbox_summary"
+            android:fragment="com.crdroid.settings.fragments.Extras" />
+
         <!-- Display Cutout -->
         <com.android.settings.preferences.ui.AdaptivePreference
             android:key="display_cutout_force_fullscreen_settings"
@@ -103,48 +110,6 @@
             android:summary="@string/quickswitch_launcher_summary" 
             android:fragment="com.crdroid.settings.fragments.QuickSwitch"
             app:position="bottom" /> 
-
-    </PreferenceCategory>
-
-    <PreferenceCategory
-        android:key="others_toolbox"
-        android:title="@string/category_name_toolbox_others">
-
-        <!-- Rotation button -->
-        <com.crdroid.settings.preferences.SystemSettingSwitchPreference
-            android:key="enable_rotation_button"
-            android:title="@string/floating_rotation_button_title"
-            android:summary="@string/floating_rotation_button_summary"
-            android:defaultValue="true"
-            app:position="top" />
-
-        <!-- Pocket Judge -->
-        <com.crdroid.settings.preferences.SecureSettingSwitchPreference
-            android:key="pocket_mode_enabled"
-            android:title="@string/pocket_judge_title"
-            android:summary="@string/pocket_judge_summary"
-            android:defaultValue="false" />
-            
-        <com.crdroid.settings.preferences.SecureSettingSwitchPreference
-            android:key="always_on_pocket_mode_enabled"
-            android:title="@string/always_on_pocket_mode_enabled_title"
-            android:summary="@string/always_on_pocket_mode_summary"
-            android:dependency="pocket_mode_enabled"
-            android:defaultValue="false" />
-
-        <com.android.settings.preferences.ui.AdaptivePreference
-            android:key="smart_power_off"
-            android:title="@string/smart_power_off_title"
-            android:summary="@string/smart_power_off_time_summary"
-            android:fragment="com.crdroid.settings.fragments.SmartPowerOff" />
-
-        <!-- Smart Pixels -->
-        <com.android.settings.preferences.ui.AdaptivePreference
-            android:key="smart_pixels"
-            android:title="@string/smart_pixels_title" 
-            android:summary="@string/smart_pixels_summary" 
-            android:fragment="com.crdroid.settings.fragments.ui.SmartPixels"
-            app:position="bottom" />
 
     </PreferenceCategory>
 

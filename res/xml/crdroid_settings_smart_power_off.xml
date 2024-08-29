@@ -31,6 +31,7 @@
             android:key="power_off_time_preference"
             android:icon="@drawable/ic_uptime"
             android:title="@string/smart_power_off_time_title"
+            android:dependency="smart_power_off_enabled"
             android:summary="@string/smart_power_off_time_summary"
             app:position="solo" />
             
