@@ -24,6 +24,7 @@ import android.os.Bundle;
 import android.os.UserHandle;
 import android.provider.MediaStore;
 import android.provider.Settings;
+import android.widget.Toast;
 
 import androidx.preference.ListPreference;
 import androidx.preference.Preference;
@@ -329,9 +330,13 @@ public class QuickSettings extends SettingsPreferenceFragment implements
     @Override
     public boolean onPreferenceTreeClick(Preference preference) {
         if (preference == mQsWidgetPhoto) {
-            Intent intent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
-            intent.setType("image/*");
-            startActivityForResult(intent, CUSTOM_IMAGE_REQUEST_CODE);
+            try {
+                Intent intent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+                intent.setType("image/*");
+                startActivityForResult(intent, CUSTOM_IMAGE_REQUEST_CODE);
+            } catch(Exception e) {
+                Toast.makeText(getContext(), R.string.qs_header_needs_gallery, Toast.LENGTH_LONG).show();
+            }
             return true;
         }
         return super.onPreferenceTreeClick(preference);
