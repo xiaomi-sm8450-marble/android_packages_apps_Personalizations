@@ -153,6 +153,13 @@
             android:defaultValue="true"
             lineage:position="top" />
 
+        <!-- Settings homepage showcase -->
+        <com.crdroid.settings.preferences.SystemSettingSwitchPreference
+            android:key="settings_homepage_showcase"
+            android:title="@string/settings_homepage_showcase_title"
+            android:summary="@string/settings_homepage_showcase_summary"
+            android:defaultValue="false" />
+
         <!-- Multi user avatar on homepage -->
         <com.crdroid.settings.preferences.SystemSettingSwitchPreference
             android:key="show_multi_user_avatar_on_homepage"

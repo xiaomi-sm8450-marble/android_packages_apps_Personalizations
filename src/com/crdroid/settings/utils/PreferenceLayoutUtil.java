@@ -17,6 +17,7 @@ package com.crdroid.settings.utils;
 
 import android.content.Context;
 import androidx.preference.Preference;
+import android.provider.Settings;
 import com.android.internal.util.crdroid.Utils;
 
 import java.util.Arrays;
@@ -55,8 +56,7 @@ public class PreferenceLayoutUtil {
             "top_level_connected_devices",
             "top_level_sound",
             "top_level_wallpaper",
-            "top_level_location",
-            "top_level_system"
+            "top_level_location"
     ));
     
     private static final Set<String> EXCLUDE_LIST = new HashSet<>(Arrays.asList(
@@ -68,6 +68,8 @@ public class PreferenceLayoutUtil {
     }
 
     public static void setUpPreferenceLayout(Preference preference, Context context) {
+        boolean showHomePageShowcase = Settings.System.getInt(
+            context.getContentResolver(), "settings_homepage_showcase", 0) != 0;
         String key = preference.getKey();
         if (EXCLUDE_LIST.contains(key)) {
             return;
@@ -84,8 +86,13 @@ public class PreferenceLayoutUtil {
             preference.setLayoutResource(AdaptivePreferenceUtils.getLayoutResourceId(context, "middle", true));
         } else if (bottomPreferences.contains(key)) {
             preference.setLayoutResource(AdaptivePreferenceUtils.getLayoutResourceId(context, "bottom", true));
+        } else if (key.equals("top_level_system")) {
+            preference.setLayoutResource(AdaptivePreferenceUtils.getLayoutResourceId(context, 
+                showHomePageShowcase ? "bottom" : "middle", true));
         } else if (key.equals("top_level_about_device")) {
-            preference.setLayoutResource(R.layout.top_level_preference_about);
+            preference.setLayoutResource(showHomePageShowcase ? 
+                R.layout.top_level_preference_about : AdaptivePreferenceUtils.getLayoutResourceId(context, "bottom", true));
+            preference.setOrder(showHomePageShowcase ? -151 : 11);
         } else {
             // highlight injected top level preference e.g OEM parts
             int order = extraPreferenceOrder - 1;
