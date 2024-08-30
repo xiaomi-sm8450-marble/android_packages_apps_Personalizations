@@ -40,6 +40,7 @@
 
     <!-- BootAnimation Styles -->
     <string name="boot_animation_styles_title">Bootanimation Styles</string>
+    <string name="boot_animation_applied">Bootanimation applied</string>
 
     <!-- Play Integrit Fix JSON Update -->
     <string name="toast_spoofing_success">Successfully downloaded pif.json. Spoofing as %1$s for play integrity.</string>
