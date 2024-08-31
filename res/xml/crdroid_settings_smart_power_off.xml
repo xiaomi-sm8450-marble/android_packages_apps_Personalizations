@@ -24,7 +24,7 @@
             android:key="smart_power_off_enabled"
             android:title="@string/smart_power_off_title"
             android:summary="@string/smart_power_off_summary"
-            android:defaultValue="true"
+            android:defaultValue="false"
             app:position="solo" />
 
         <com.android.settings.preferences.ui.AdaptivePreference
