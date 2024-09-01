@@ -130,5 +130,6 @@
         <item>auto_rotate</item>
         <item>device_state_auto_rotate</item>
         <item>dashboard_tile_pref_org.lineageos.settings.doze.DozeSettingsActivity</item>
+        <item>dashboard_tile_pref_com.harshit.nabuextensions.tap2wake.Tap2WakeSettingsActivity</item>
     </string-array>
 </resources>
