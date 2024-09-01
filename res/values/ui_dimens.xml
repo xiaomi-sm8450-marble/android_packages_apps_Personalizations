@@ -15,6 +15,7 @@
 -->
 
 <resources>
+    <dimen name="device_showcase_margin_end">-120dp</dimen>
     <dimen name="page_margin">16dp</dimen>
     <dimen name="sound_engine_profile_card_height">128dp</dimen>
     <dimen name="sound_engine_profile_card_radius">22dp</dimen>
