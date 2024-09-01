@@ -588,6 +588,12 @@
     <string name="doze_vibrate">Vibrate</string>
     <string name="doze_vibrate_summary">Duration to vibrate when pulsing notifications</string>
     <string name="sensor_warning_message">Settings based on sensors are subject to hardware compatibility. Enabling sensors for ambient display may increase power drain.</string>
+    <string name="doze_pulse_on_pickup_title">Pulse on pickup</string>
+    <string name="doze_pulse_on_pickup_summary">Pulse notifications on device pickup (requires lift to wake feature enabled)</string>
+    <string name="doze_pulse_on_double_tap_title">Pulse on double tap</string>
+    <string name="doze_pulse_on_double_tap_summary">Pulse notifications on double tap (requires tap to wake feature enabled)</string>
+    <string name="doze_pulse_on_single_tap_title">Pulse on tap </string>
+    <string name="doze_pulse_on_single_tap_summary">Pulse notifications on single tap (requires tap to wake feature enabled)</string>
 
     <!-- Edge light -->
     <string name="edge_light_title">Edge light</string>
