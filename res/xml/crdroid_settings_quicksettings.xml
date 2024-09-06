@@ -193,6 +193,15 @@
             android:dependency="qs_widgets_photo_showcase_enabled"
             android:summary="@string/qs_widgets_photo_showcase_image_summary" />
 
+        <com.crdroid.settings.preferences.SystemSettingSeekBarPreference
+            android:key="fling_animation_duration"
+            android:title="@string/fling_animation_duration_title"
+            android:defaultValue="0"
+            settings:interval="50"
+            settings:units="ms"
+            android:max="1000"
+            android:min="0" />
+
         <com.android.settings.preferences.ui.AdaptiveListPreference
             android:key="qs_tile_ui_style"
             android:title="@string/qs_tile_ui_style_title"
