@@ -146,6 +146,7 @@ public class AdaptivePreferenceUtils {
             case MIDDLE:
                 return context.getResources().getIdentifier("preference_compose_custom_middle" + layout, "layout", "com.android.settings");
             case SOLO:
+                return context.getResources().getIdentifier("preference_compose_custom_solo" + layout, "layout", "com.android.settings");
             default:
                 return context.getResources().getIdentifier("preference_compose", "layout", "com.android.settings");
             case NONE:

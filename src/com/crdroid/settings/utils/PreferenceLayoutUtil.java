@@ -69,41 +69,67 @@ public class PreferenceLayoutUtil {
 
     public static void setUpPreferenceLayout(Preference preference, Context context) {
         boolean showHomePageShowcase = Settings.System.getInt(
-            context.getContentResolver(), "settings_homepage_showcase", 0) != 0;
+                context.getContentResolver(), "settings_homepage_showcase", 0) != 0;
+        boolean showAvatarCard = Settings.System.getInt(
+                context.getContentResolver(), "show_avatar_card_on_homepage", 0) != 0;
         String key = preference.getKey();
         if (EXCLUDE_LIST.contains(key)) {
             return;
         }
         boolean isWellbeingInstalled = Utils.isPackageInstalled(context, PACKAGE_WELLBEING);
         boolean isGoogleServiceInstalled = Utils.isPackageInstalled(context, PACKAGE_GOOGLE_SERVICES);
-        if ("top_level_wellbeing".equals(key) && isWellbeingInstalled) {
-            preference.setLayoutResource(AdaptivePreferenceUtils.getLayoutResourceId(context, "wellbeing", true));
-        } else if ("top_level_google".equals(key) && isGoogleServiceInstalled) {
-            preference.setLayoutResource(AdaptivePreferenceUtils.getLayoutResourceId(context, "google", true));
-        } else if (topPreferences.contains(key)) {
-            preference.setLayoutResource(AdaptivePreferenceUtils.getLayoutResourceId(context, "top", true));
-        } else if (middlePreferences.contains(key)) {
-            preference.setLayoutResource(AdaptivePreferenceUtils.getLayoutResourceId(context, "middle", true));
-        } else if (bottomPreferences.contains(key)) {
-            preference.setLayoutResource(AdaptivePreferenceUtils.getLayoutResourceId(context, "bottom", true));
-        } else if (key.equals("top_level_system")) {
-            preference.setLayoutResource(AdaptivePreferenceUtils.getLayoutResourceId(context, 
-                showHomePageShowcase ? "bottom" : "middle", true));
-        } else if (key.equals("top_level_about_device")) {
-            preference.setLayoutResource(showHomePageShowcase ? 
-                R.layout.top_level_preference_about : AdaptivePreferenceUtils.getLayoutResourceId(context, "bottom", true));
-            preference.setOrder(showHomePageShowcase ? -151 : 11);
-        } else {
-            // highlight injected top level preference e.g OEM parts
-            int order = extraPreferenceOrder - 1;
-            updateStartOrder(order);
-            preference.setOrder(order);
-            preference.setLayoutResource(AdaptivePreferenceUtils.getLayoutResourceId(context, "solo", true));
+        switch (key) {
+            case "top_level_wellbeing":
+                if (isWellbeingInstalled) {
+                    setPreferenceLayout(preference, context, "wellbeing", true);
+                }
+                break;
+            case "top_level_google":
+                if (isGoogleServiceInstalled) {
+                    setPreferenceLayout(preference, context, "google", true);
+                }
+                break;
+            case "top_level_system":
+                setPreferenceLayout(preference, context, showHomePageShowcase ? "bottom" : "middle", true);
+                break;
+            case "top_level_about_device":
+                preference.setLayoutResource(showHomePageShowcase ?
+                        R.layout.top_level_preference_about :
+                        AdaptivePreferenceUtils.getLayoutResourceId(context, "bottom", true));
+                preference.setOrder(showHomePageShowcase ? -151 : 11);
+                break;
+            case "top_level_usercard":
+                if (showAvatarCard) {
+                    preference.setVisible(true);
+                    preference.setLayoutResource(R.layout.top_level_usercard);
+                    preference.setOrder(-152);
+                } else {
+                    preference.setVisible(false);
+                }
+                break;
+            case "top_level_display":
+                preference.setOrder(-150);
+            case "top_level_wallpaper":
+                preference.setOrder(-140);
+            default:
+                // Handle other preferences (e.g., OEM parts)
+                if (topPreferences.contains(key)) {
+                    setPreferenceLayout(preference, context, "top", true);
+                } else if (middlePreferences.contains(key)) {
+                    setPreferenceLayout(preference, context, "middle", true);
+                } else if (bottomPreferences.contains(key)) {
+                    setPreferenceLayout(preference, context, "bottom", true);
+                } else {
+                    int order = extraPreferenceOrder - 1;
+                    updateStartOrder(order);
+                    preference.setOrder(order);
+                    setPreferenceLayout(preference, context, "solo", true);
+                }
+                break;
         }
-        if (key.equals("top_level_display")) {
-            preference.setOrder(-150);
-        } else if (key.equals("top_level_wallpaper")) {
-            preference.setOrder(-140);
-        }
+    }
+
+    private static void setPreferenceLayout(Preference preference, Context context, String layoutType, boolean useAdaptive) {
+        preference.setLayoutResource(AdaptivePreferenceUtils.getLayoutResourceId(context, layoutType, useAdaptive));
     }
 }

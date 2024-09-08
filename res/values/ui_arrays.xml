@@ -133,4 +133,21 @@
         <item>dashboard_tile_pref_com.harshit.nabuextensions.tap2wake.Tap2WakeSettingsActivity</item>
         <item>dashboard_tile_pref_org.lineageos.settings.display.DisplaySettingsActivity</item>
     </string-array>
+    
+    <!-- System Dashboard -->
+    <string-array name="system_dashboard_top_prefs">
+        <item>language_settings</item>
+    </string-array>
+
+    <string-array name="system_dashboard_middle_prefs">
+    </string-array>
+
+    <string-array name="system_dashboard_bottom_prefs">
+        <item>reset_dashboard</item>
+    </string-array>
+
+    <string-array name="system_dashboard_solo_prefs">
+        <item>developer_options</item>
+        <item>select_webview_provider</item>
+    </string-array>
 </resources>

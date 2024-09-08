@@ -15,6 +15,55 @@
      limitations under the License.
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+
+    <!-- Dashboard Greetings Messages -->
+    <string name="dashboard_morning1">Start your day positively!</string>
+    <string name="dashboard_morning2">The Sun is up!</string>
+    <string name="dashboard_morning3">A nice morning..</string>
+    <string name="dashboard_morning4">Another day to live..</string>
+    <string name="dashboard_morning5">A new day..</string>
+    <string name="dashboard_morning_greeting1">Good morning %s!</string>
+    <string name="dashboard_morning_greeting2">Good day %s!</string>
+    <string name="dashboard_noon1">Live your life.</string>
+    <string name="dashboard_noon2">Enjoy the sun.</string>
+    <string name="dashboard_noon3">Welcome home,\n%s.</string>
+    <string name="dashboard_noon4">Enjoy the day!</string>
+    <string name="dashboard_noon5">Welcome back,\n%s.</string>
+    <string name="dashboard_noon_greeting1">Good afternoon,\n%s</string>
+    <string name="dashboard_early_night1">The night is coming..</string>
+    <string name="dashboard_early_night2">Time for dinner!</string>
+    <string name="dashboard_early_night_greeting1">Good evening,\n%s</string>
+    <string name="dashboard_night3">Sweet dreams!</string>
+    <string name="dashboard_night4">Time to sleep now..</string>
+    <string name="dashboard_night5">Sleep tight!</string>
+    <string name="dashboard_night_greetings1">Good night,\n%s</string>
+    <string name="dashboard_midnight1">Enjoy the silence..</string>
+    <string name="dashboard_midnight2">You need help..</string>
+    <string name="dashboard_midnight3">Get some sleep..</string>
+    <string name="dashboard_midnight4">Take rest..</string>
+    <string name="dashboard_midnight5">Sleeping late?</string>
+    <string name="dashboard_random1">Hey %s!</string>
+    <string name="dashboard_random2">Hello %s!</string>
+    <string name="dashboard_random3">Hi %s!</string>
+    <string name="dashboard_random4">Good day %s!</string>
+    <string name="dashboard_random5">Howdy %s!</string>
+    <string name="dashboard_random6">What\'s up %s?</string>
+    <string name="dashboard_random_greetings1">Try to find some easter eggs!</string>
+    <string name="dashboard_random_greetings2">Rising from the bottom?</string>
+    <string name="dashboard_random_greetings3">Try using the search bar!</string>
+    <string name="dashboard_random_greetings4">Enjoy your day!</string>
+    <string name="settings_random1">Searching for something?</string>
+    <string name="settings_random2">Find and you shall see</string>
+    <string name="settings_random3">Seek and you shall find</string>
+    <string name="settings_random4">Finders keepers</string>
+    <string name="settings_random5">Search settings</string>
+    <string name="settings_random6">You can\'t find something that doesn\'t exists!</string>
+    
+
+    <!-- User Card -->
+    <string name="user_card_title">User</string>
+    <string name="user_card_summary">Manage user settings</string>
+
     <!-- QS fling animation -->
     <string name="fling_animation_duration_title">QS Fling animation duration</string>
 
@@ -143,9 +192,13 @@
     <string name="qs_compact_media_player_mode_title">Compact QS Media player</string>
     <string name="qs_compact_media_player_mode_summary">Enable compact mode for QuickSettings media player</string>
 
-    <!-- Multi user avatar on homepage -->
+    <!-- Settings UI -->
     <string name="show_multi_user_avatar_on_homepage_title">Show Multi-user avatar on homepage</string>
     <string name="show_multi_user_avatar_on_homepage_summary">Wether to show multi-user or google avatar on homepage</string>
+    <string name="show_avatar_card_on_homepage_title">Show User avatar card on homepage</string>
+    <string name="show_avatar_card_on_homepage_summary">Wether to show user card on homepage</string>
+    <string name="dashboard_greetings_title">Dashboard Greetings</string>
+    <string name="dashboard_greetings_summary">Enable/disable dashboard greetings</string>
 
     <!-- Reality Display Engine -->
     <string name="display_engine_category">Display Engine</string>

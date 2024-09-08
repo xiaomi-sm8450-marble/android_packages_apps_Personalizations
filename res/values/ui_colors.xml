@@ -17,10 +17,10 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <color name="user_crd_bg">@*android:color/system_neutral1_0</color>
     <color name="search_bar_bg">@*android:color/system_neutral1_800</color>
-    <color name="search_bar_icon_bg">@*android:color/system_accent1_100</color>
-    <color name="card_surface_color">@*android:color/system_accent1_100</color>
-    <color name="top_level_preference_icon_tint">@*android:color/system_neutral1_1000</color>
-    <color name="top_level_preference_text_color_primary">@color/top_level_preference_icon_tint</color>
+    <color name="search_bar_icon_bg">@*android:color/system_neutral1_0</color>
+    <color name="card_surface_color">@*android:color/system_accent3_600</color>
+    <color name="top_level_preference_icon_tint">@*android:color/system_neutral1_0</color>
+    <color name="top_level_preference_text_color_primary">@color/card_surface_color</color>
     <color name="top_level_preference_text_color_secondary">@color/op_control_text_color_secondary</color>
     <color name="op_control_text_color_primary">@color/op_control_text_color_primary_light</color>
     <color name="op_control_text_color_primary_inverse">#ffffff</color>
