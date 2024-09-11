@@ -49,6 +49,14 @@
             android:dependency="pocket_mode_enabled"
             android:defaultValue="false" />
 
+        <com.crdroid.settings.preferences.SystemSettingSeekBarPreference
+            android:key="max_cached_processes"
+            android:title="@string/max_cached_processes_title"
+            android:defaultValue="32"
+            settings:interval="4"
+            android:max="1024"
+            android:min="4" />
+
         <com.android.settings.preferences.ui.AdaptivePreference
             android:key="smart_power_off"
             android:title="@string/smart_power_off_title"

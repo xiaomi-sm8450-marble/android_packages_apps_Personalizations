@@ -16,6 +16,9 @@
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
 
+    <!-- Max cached processes -->
+    <string name="max_cached_processes_title">Max cached processes</string>
+
     <!-- Dashboard Greetings Messages -->
     <string name="dashboard_morning1">Start your day positively!</string>
     <string name="dashboard_morning2">The Sun is up!</string>
