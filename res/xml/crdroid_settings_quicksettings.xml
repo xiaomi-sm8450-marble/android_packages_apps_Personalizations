@@ -196,7 +196,7 @@
         <com.crdroid.settings.preferences.SystemSettingSeekBarPreference
             android:key="fling_animation_duration"
             android:title="@string/fling_animation_duration_title"
-            android:defaultValue="0"
+            android:defaultValue="350"
             settings:interval="50"
             settings:units="ms"
             android:max="1000"
