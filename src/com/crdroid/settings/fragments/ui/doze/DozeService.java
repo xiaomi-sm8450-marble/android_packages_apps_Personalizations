@@ -41,8 +41,10 @@ public class DozeService extends Service {
         public void onReceive(Context context, Intent intent) {
             if (intent.getAction().equals(Intent.ACTION_SCREEN_ON)) {
                 onDisplayOn();
+                stopSelf();
             } else if (intent.getAction().equals(Intent.ACTION_SCREEN_OFF)) {
                 onDisplayOff();
+                startService(new Intent(context, DozeService.class));
             }
         }
     };
@@ -69,7 +71,7 @@ public class DozeService extends Service {
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
         if (DEBUG) Log.d(TAG, "Starting service");
-        return START_STICKY;
+        return START_NOT_STICKY;
     }
 
     @Override
