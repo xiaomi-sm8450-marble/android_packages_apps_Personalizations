@@ -66,7 +66,7 @@ public class UserInterface extends SettingsPreferenceFragment
         final CharSequence[] entryValues = getResources().getTextArray(R.array.settings_style_values);
         final CharSequence[] entries = getResources().getTextArray(R.array.settings_style_entries);
         final int index = Arrays.asList(entryValues).indexOf(String.valueOf(defaultStyle));
-        if (index != -1) {
+        if (index != -1 && settingsStylePref != null) {
             settingsStylePref.setValue(String.valueOf(defaultStyle));
             settingsStylePref.setSummary(entries[index]);
         }
