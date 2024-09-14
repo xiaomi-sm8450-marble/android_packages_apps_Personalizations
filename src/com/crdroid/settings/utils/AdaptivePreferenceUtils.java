@@ -72,7 +72,7 @@ public class AdaptivePreferenceUtils {
     }
     
     private static String getLayoutIdentifier(int settingsTheme) {
-        String[] layoutId = {"card", "ayan", "card_material"};
+        String[] layoutId = {"card", "ayan", "card_material", "oos", "card_colorful"};
         return layoutId[settingsTheme];
     }
     

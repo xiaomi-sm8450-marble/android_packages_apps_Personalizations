@@ -16,6 +16,15 @@
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
 
+    <array name="colored_pref_image_theme_colors">
+        <item>#007aff</item>
+        <item>#2fb151</item>
+        <item>#fb7c47</item>
+        <item>#fa7d4d</item>
+        <item>#fbb404</item>
+        <item>#e13e39</item>
+    </array>
+
     <!-- Dashboard Greetings -->
      <string-array name="dashboard_morning">
           <item>@string/dashboard_morning1</item>
@@ -1183,12 +1192,16 @@
         <item>@string/settings_style_rising_ui_two</item>
         <item>@string/settings_style_rising_ui_one</item>
         <item>@string/settings_style_material</item>
+        <item>@string/settings_style_oos</item>
+        <item>@string/settings_style_colorful</item>
     </string-array>
     
     <string-array name="settings_style_values" translatable="false">
         <item>0</item>
         <item>1</item>
         <item>2</item>
+        <item>3</item>
+        <item>4</item>
     </string-array>
     
     <string-array name="shake_gestures_action_entries">

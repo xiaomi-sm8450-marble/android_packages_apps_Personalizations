@@ -31,13 +31,13 @@
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="20dp">
 
-                <androidx.preference.internal.PreferenceImageView
+                <com.crdroid.settings.utils.ColoredPreferenceImageView
                     android:id="@android:id/icon"
                     android:padding="@dimen/top_level_icon_padding"
                     android:layout_width="48dp"
                     android:layout_height="48dp"
                     android:background="@drawable/custom_surface_color_rounded"
-                    android:tint="@color/top_level_preference_icon_tint"/>
+                    android:tint="#FFFFFF"/>
 
             </LinearLayout>
         </androidx.cardview.widget.CardView>
@@ -63,7 +63,7 @@
             <TextView
                 android:id="@android:id/summary"
                 style="@style/op_control_text_style_body1"
-                android:layout_width="wrap_content"
+                android:layout_width="@dimen/top_level_preference_summary_max_width"
                 android:layout_height="wrap_content"
                 android:layout_below="@android:id/title"
                 android:layout_alignStart="@android:id/title"
@@ -71,7 +71,44 @@
                 android:layout_marginTop="2.0dip"
                 android:maxLines="4"
                 android:textColor="@color/top_level_preference_text_color_secondary" />
-        </RelativeLayout>
+                
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20.0dip"
+            android:orientation="vertical">
 
+            <SeekBar
+                android:id="@*android:id/seekbar"
+                android:layout_gravity="center_vertical"
+                android:paddingStart="0dp"
+                android:paddingEnd="12dp"
+                android:visibility="gone"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"/>
+
+            <TextView
+                android:id="@+id/suppression_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical|start"
+                android:textAlignment="viewStart"
+                android:singleLine="true"
+                android:ellipsize="end"
+                android:visibility="gone"
+                android:textAppearance="@*android:style/TextAppearance.DeviceDefault.Body1"
+                android:textColor="?android:attr/textColorSecondary"/>
+
+        </LinearLayout>
+        </RelativeLayout>
+        
+        <LinearLayout
+            android:gravity="center_vertical"
+            android:orientation="vertical"
+            android:id="@android:id/widget_frame"
+            android:layout_width="wrap_content"
+            android:layout_height="fill_parent"
+            android:layout_marginStart="0dp"
+            android:layout_marginEnd="12dp"/>
     </LinearLayout>
 </LinearLayout>
