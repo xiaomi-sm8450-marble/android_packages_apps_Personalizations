@@ -76,6 +76,11 @@ public class AdaptivePreferenceUtils {
         return layoutId[settingsTheme];
     }
     
+    private static String getSoloLayoutIdentifier(int settingsTheme) {
+        String[] layoutId = {"card", "card_ayan", "card_material", "oos", "card_colorful"};
+        return layoutId[settingsTheme];
+    }
+    
     private static String getCustomLayoutIdentifier(int settingsTheme) {
         return settingsTheme > 1 ? "_mt" : "";
     }
@@ -100,7 +105,7 @@ public class AdaptivePreferenceUtils {
                 return context.getResources().getIdentifier("top_level_preference_middle_" + layout, "layout", "com.android.settings");
             default:
             case SOLO:
-                return R.layout.top_level_preference_solo_card;
+                return context.getResources().getIdentifier("top_level_preference_solo_" + getSoloLayoutIdentifier(settingsTheme), "layout", "com.android.settings");
             case NONE:
                 return -1;
         }
