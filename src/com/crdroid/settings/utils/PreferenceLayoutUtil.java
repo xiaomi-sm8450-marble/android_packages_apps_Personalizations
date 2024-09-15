@@ -28,7 +28,7 @@ import com.android.settings.R;
 
 public class PreferenceLayoutUtil {
 
-    private static int extraPreferenceOrder = -151;
+    private static int extraPreferenceOrder = -153;
 
     private static final String PACKAGE_WELLBEING = "com.google.android.apps.wellbeing";
     private static final String PACKAGE_GOOGLE_SERVICES = "com.google.android.gms";
@@ -107,18 +107,20 @@ public class PreferenceLayoutUtil {
                     preference.setVisible(false);
                 }
                 break;
-            case "top_level_display":
-                preference.setOrder(-150);
-            case "top_level_wallpaper":
-                preference.setOrder(-140);
             default:
                 // Handle other preferences (e.g., OEM parts)
                 if (topPreferences.contains(key)) {
                     setPreferenceLayout(preference, context, "top", true);
+                    if (key.equals("top_level_display")) {
+                        preference.setOrder(-150);
+                    }
                 } else if (middlePreferences.contains(key)) {
                     setPreferenceLayout(preference, context, "middle", true);
                 } else if (bottomPreferences.contains(key)) {
                     setPreferenceLayout(preference, context, "bottom", true);
+                    if (key.equals("top_level_wallpaper")) {
+                        preference.setOrder(-140);
+                    }
                 } else {
                     int order = extraPreferenceOrder - 1;
                     updateStartOrder(order);
