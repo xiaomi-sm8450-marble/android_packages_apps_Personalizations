@@ -112,7 +112,7 @@ public class LockScreen extends SettingsPreferenceFragment
                 udfpsCategory.removePreference(mUdfpsIcons);
             }
             if (!udfpsAnimationInstalled && !udfpsIconsInstalled) {
-                gestCategory.removePreference(mScreenOffUdfps);
+                udfpsCategory.removePreference(mScreenOffUdfps);
             }
         }
 
