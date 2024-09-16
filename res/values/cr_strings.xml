@@ -123,7 +123,7 @@
     <string name="smart_power_off_time_title">Set Power-Off Time</string>
     <string name="smart_power_off_time_summary">Select the time for automatic power-off.</string>
     <string name="smart_power_off_footer_text">
-        The Smart Power Off feature automatically powers off the device at a scheduled time.\n\nIt includes a smart delay mechanism: if user input is detected, the power-off will be postponed by one minute, continuing this cycle until there is no further interaction.\n\nNote: a silent alarm is required for this feature to operate when the device is idle otherwise, the power-off will be delayed until the next screen-on/device wake-up happens.
+        The Smart Power Off feature automatically powers off the device at a scheduled time.\n\nIt includes a smart delay mechanism: if user input is detected, the power-off will be postponed by one minute, continuing this cycle until there is no further interaction.
     </string>
 
     <!-- Smart 5G -->
