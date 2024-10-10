@@ -32,7 +32,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="20dp">
 
-                <com.crdroid.settings.utils.ColoredPreferenceImageView
+                <com.android.settings.utils.ColoredPreferenceImageView
                     android:id="@android:id/icon"
                     android:padding="@dimen/top_level_icon_padding"
                     android:layout_width="48dp"

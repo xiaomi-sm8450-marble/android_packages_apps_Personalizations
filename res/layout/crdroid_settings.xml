@@ -28,10 +28,10 @@
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:id="@+id/crdroid_content"
+        android:id="@+id/rising_content"
         android:orientation="vertical">
 
-        <com.crdroid.settings.PagerSlidingTabStrip
+        <com.android.settings.PagerSlidingTabStrip
             android:id="@+id/tabs"
             app:pstsShouldExpand="false"
             app:pstsTabTextFontFamily="@*android:string/config_headlineFontFamilyMedium"

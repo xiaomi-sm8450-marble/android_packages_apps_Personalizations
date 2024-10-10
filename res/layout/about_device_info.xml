@@ -24,7 +24,7 @@
             app:strokeColor="?android:attr/textColorPrimary"
             app:strokeWidth="3dp">
 
-            <com.crdroid.settings.utils.WallpaperView
+            <com.android.settings.utils.WallpaperView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:scaleType="centerCrop"

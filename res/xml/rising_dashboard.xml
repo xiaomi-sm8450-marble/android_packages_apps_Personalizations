@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- 
-     Copyright (C) 2023 the risingOS Android Project
+     Copyright (C) 2023-2024 the risingOS Android Project
      Licensed under the Apache License, Version 2.0 (the "License");
      you may not use this file except in compliance with the License.
      You may obtain a copy of the License at
@@ -32,7 +32,7 @@
             app:position="top">
             <intent android:action="android.intent.action.MAIN"
                  android:targetPackage="com.android.settings"
-                 android:targetClass="com.crdroid.settings.fragments.about.ChangelogActivity"/>
+                 android:targetClass="com.rising.settings.fragments.about.ChangelogActivity"/>
         </com.android.settings.preferences.ui.AdaptivePreference>
 
         <!-- Notifications -->
@@ -40,13 +40,13 @@
             android:icon="@drawable/ic_dashboard_notifications"
             android:title="@string/notifications_title"
             android:summary="@string/notif_settings_summary"
-            android:fragment="com.crdroid.settings.fragments.Notifications" />
+            android:fragment="com.rising.settings.fragments.Notifications" />
 
         <!-- Sound -->
         <com.android.settings.preferences.ui.AdaptivePreference
             android:icon="@drawable/ic_cellphone_sound"
             android:title="@string/sound_title"
             android:summary="@string/sound_settings_summary"
-            android:fragment="com.crdroid.settings.fragments.Sound"
+            android:fragment="com.rising.settings.fragments.Sound"
             app:position="bottom" />    
 </PreferenceScreen> 

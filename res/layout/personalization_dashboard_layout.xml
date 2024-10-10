@@ -30,7 +30,7 @@
             app:cardCornerRadius="33dp"
             app:cardElevation="0dp">
 
-            <com.crdroid.settings.utils.WallpaperView
+            <com.android.settings.utils.WallpaperView
                 android:gravity="center"
                 android:orientation="horizontal"
                 android:layout_width="match_parent"
