@@ -195,52 +195,44 @@
         <item>@string/status_bar_clock_position_right</item>
         <item>@string/status_bar_clock_position_center</item>
         <item>@string/status_bar_clock_position_left</item>
-        <item>@string/status_bar_clock_position_hidden</item>
     </string-array>
 
     <string-array name="status_bar_clock_position_entries_rtl" translatable="false">
         <item>@string/status_bar_clock_position_left</item>
         <item>@string/status_bar_clock_position_center</item>
         <item>@string/status_bar_clock_position_right</item>
-        <item>@string/status_bar_clock_position_hidden</item>
     </string-array>
 
     <string-array name="status_bar_clock_position_values" translatable="false">
         <item>0</item>
         <item>1</item>
         <item>2</item>
-        <item>3</item>
     </string-array>
 
     <string-array name="status_bar_clock_position_values_rtl" translatable="false">
         <item>2</item>
         <item>1</item>
         <item>0</item>
-        <item>3</item>
     </string-array>
 
     <string-array name="status_bar_clock_position_entries_notch" translatable="false">
         <item>@string/status_bar_clock_position_right</item>
         <item>@string/status_bar_clock_position_left</item>
-        <item>@string/status_bar_clock_position_hidden</item>
     </string-array>
 
     <string-array name="status_bar_clock_position_entries_notch_rtl" translatable="false">
         <item>@string/status_bar_clock_position_left</item>
         <item>@string/status_bar_clock_position_right</item>
-        <item>@string/status_bar_clock_position_hidden</item>
     </string-array>
 
     <string-array name="status_bar_clock_position_values_notch" translatable="false">
         <item>0</item>
         <item>2</item>
-        <item>3</item>
     </string-array>
 
     <string-array name="status_bar_clock_position_values_notch_rtl" translatable="false">
         <item>2</item>
         <item>0</item>
-        <item>3</item>
     </string-array>
 
     <string-array name="status_bar_am_pm_entries" translatable="false">
@@ -1182,9 +1174,7 @@
     </string-array>
     
    <string-array name="volume_styles_entries" translatable="false">
-        <item>@string/revamped_aosp_style</item>
-        <item>@string/rui_style</item>
-        <item>@string/rising_style</item>
+        <item>@string/default_value</item>
         <item>@string/double_layer_style</item>
         <item>@string/gradient_style</item>
         <item>@string/neumorph_style</item>
@@ -1201,8 +1191,6 @@
         <item>4</item>
         <item>5</item>
         <item>6</item>
-        <item>7</item>
-        <item>8</item>
     </string-array>
     
     <string-array name="pulse_custom_gravity_entries">

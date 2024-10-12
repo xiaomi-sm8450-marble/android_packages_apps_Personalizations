@@ -69,7 +69,7 @@ public class PersonalizationsFragment extends DashboardFragment {
     private static List<AbstractPreferenceController> buildPreferenceControllers(
             Context context, PersonalizationsFragment fragment, Lifecycle lifecycle) {
         final List<AbstractPreferenceController> controllers = new ArrayList<>();
-        controllers.add(new personalizationSettingsController(context));
+        controllers.add(new PersonalizationSettingsController(context));
         return controllers;
     }
     

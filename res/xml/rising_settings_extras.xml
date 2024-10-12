@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+     Copyright (C) 2023-2024 the risingOS Android Project
+
+     Licensed under the Apache License, Version 2.0 (the "License");
+     you may not use this file except in compliance with the License.
+     You may obtain a copy of the License at
+
+          http://www.apache.org/licenses/LICENSE-2.0
+
+     Unless required by applicable law or agreed to in writing, software
+     distributed under the License is distributed on an "AS IS" BASIS,
+     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+     See the License for the specific language governing permissions and
+     limitations under the License.
+-->
+<PreferenceScreen
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:settings="http://schemas.android.com/apk/res/com.android.settings"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:title="@string/extras_toolbox_title">
+
+        <com.android.settings.preferences.ui.AdaptivePreference
+            android:key="ai_assistant"
+            android:title="@string/ai_assistant_title"
+            android:summary="@string/ai_assistant_summary"
+            android:fragment="com.rising.settings.fragments.Assistant"
+            app:position="top" />
+
+        <!-- Gaming mode -->
+        <com.android.settings.preferences.ui.AdaptivePreference
+            android:key="gaming_mode"
+            android:title="@string/gaming_mode_title"
+            android:summary="@string/gaming_mode_summary"
+             >
+            <intent
+                android:action="android.intent.action.MAIN"
+                android:targetPackage="io.chaldeaprjkt.gamespace"
+                android:targetClass="io.chaldeaprjkt.gamespace.settings.SettingsActivity" />
+        </com.android.settings.preferences.ui.AdaptivePreference>
+
+        <!-- Pocket Judge -->
+        <com.android.settings.preferences.SecureSettingSwitchPreference
+            android:key="pocket_mode_enabled"
+            android:title="@string/pocket_judge_title"
+            android:summary="@string/pocket_judge_summary"
+            android:defaultValue="false"
+            />
+            
+        <com.android.settings.preferences.SecureSettingSwitchPreference
+            android:key="always_on_pocket_mode_enabled"
+            android:title="@string/always_on_pocket_mode_enabled_title"
+            android:summary="@string/always_on_pocket_mode_summary"
+            android:dependency="pocket_mode_enabled"
+            android:defaultValue="false" />
+
+        <!-- Smart Pixels -->
+        <com.android.settings.preferences.ui.AdaptivePreference
+            android:key="smart_pixels"
+            android:title="@string/smart_pixels_title" 
+            android:summary="@string/smart_pixels_summary" 
+            android:fragment="com.rising.settings.fragments.ui.SmartPixels"/>
+
+        <com.android.settings.preferences.ui.AdaptivePreference
+            android:key="smart_power_off"
+            android:title="@string/smart_power_off_title"
+            android:summary="@string/smart_power_off_time_summary"
+            android:fragment="com.rising.settings.fragments.SmartPowerOff"
+            app:position="bottom" />
+
+</PreferenceScreen>

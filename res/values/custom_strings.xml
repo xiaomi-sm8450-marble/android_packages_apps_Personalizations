@@ -16,6 +16,32 @@
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
 
+    <!-- Category Title text for back gesture edge lock. [CHAR LIMIT=60] -->
+    <string name="gesture_navigation_settings_category_title">Gesure navigation settings</string>
+    <!-- Title text for immersive ui lock. [CHAR LIMIT=60] -->
+    <string name="lock_immersive_system_ui_title">Immersive UI Lock</string>
+    <!-- Summary text for immersive ui lock. [CHAR LIMIT=NONE] -->
+    <string name="lock_immersive_system_ui_summary">Disable Translucent StatusBar and NavigationBar on Immersive mode.</string>
+    <!-- Title text for back gesture edge lock. [CHAR LIMIT=60] -->
+    <string name="lock_edge_back_gesture_title">Back Gesture Edge Lock</string>
+    <!-- Summary text for sback gesture edge lock. [CHAR LIMIT=NONE] -->
+    <string name="lock_edge_back_gesture_summary">Disable swipe left/right edge on Gesture Navigation mode.</string>
+
+    <!-- Compact Headsup -->
+    <string name="notification_heads_up_compact_title">Compact Heads Up notifications</string>
+    <string name="notification_heads_up_compact_summary">Show brief pop up notifications</string>
+
+    <!-- AI Assistant -->
+    <string name="ai_assistant_title">AI Assistant (Risa™)</string>
+    <string name="ai_assistant_summary">Configure AI assistant settings</string>
+    <string name="ai_assistant_gesture_title">AI Assistant Powered by Gemini™</string>
+    <string name="ai_assistant_gesture_summary">Activate AI Assistant to perform a variety of tasks by swiping down with two fingers. (Internet connection required)</string>
+    <string name="ai_assistant_gemini_key_title">AI Assistant Gemini API Key</string>
+    <string name="ai_assistant_gemini_key_summary">Enter the API key for the AI Assistant to be used when interacting with Gemini</string>
+    <string name="ai_assistant_gemini_key_dialog_title">Set AI Assistant API Key</string>
+    <string name="wiki_link_assistant_title">AI Assistant User Guide</string>
+    <string name="wiki_link_assistant_summary">Learn more about Risa and how to use various commands to accomplish specific tasks.</string>
+
     <!-- Sleep Mode -->
     <string name="sleep_mode_title">Sleep Mode</string>
     <string name="sleep_mode_summary_on">On / <xliff:g name="auto_mode_summary" example="Never turn off automatically">%1$s</xliff:g></string>
@@ -119,7 +145,7 @@
     <!-- Smart Power Off -->
     <string name="smart_power_off_desc">Power Off time set to: </string>
     <string name="smart_power_off_title">Smart Power Off</string>
-    <string name="smart_power_off_summary">Automatically powers off the device at a specified time. (Requires an active silent alarm.)</string>
+    <string name="smart_power_off_summary">Automatically powers off the device at a specified time.</string>
     <string name="smart_power_off_time_title">Set Power-Off Time</string>
     <string name="smart_power_off_time_summary">Select the time for automatic power-off.</string>
     <string name="smart_power_off_footer_text">
@@ -426,6 +452,7 @@
     <string name="custom_color">Custom color</string>
     <string name="reevaluating_theme">Reloading system themes...</string>
     <string name="wellbeing_title">Google Wellbeing</string>
+    <string name="default_value">Default</string>
 
     <!-- About risingOS -->
     <string name="about_rising">About risingOS</string>
@@ -798,6 +825,8 @@
     <string name="clock_date_right">Right of time</string>
     <string name="clock_date_left">Left of time</string>
     <string name="clock_font_size_title">Clock font size</string>
+    <string name="status_bar_clock_show_seconds_title">Show seconds</string>
+    <string name="status_bar_clock_show_seconds_summary">Show hours, minutes, and seconds</string>
 
     <!-- Status bar - Battery -->
     <string name="status_bar_battery_style_title">Battery style</string>
@@ -1020,6 +1049,8 @@
     <string name="qs_brightness_slider_position_title">Position</string>
     <string name="qs_brightness_slider_position_top">Top</string>
     <string name="qs_brightness_slider_position_bottom">Bottom</string>
+    <string name="status_bar_brightness_slider_title">Brightness slider</string>
+    <string name="status_bar_brightness_slider_summary">Adjust brightness from the Quick Settings</string>
 
     <!-- Brightness slider haptic feedback -->
     <string name="qs_brightness_slider_haptic_title">Haptic feedback</string>
@@ -1465,23 +1496,19 @@
     <string name="screenshot_shutter_sound_title">Screenshot sound</string>
     <string name="screenshot_shutter_sound_summary">Play sound when screenshot is taken</string>
 
-    <!-- QS tiles layout  -->
-    <string name="qs_layout_category_title">Tiles layout</string>
-    <string name="qs_tile_label_hide_title">Hide label</string>
-    <string name="qs_tile_label_size_title">Label text size</string>
-    <string name="qs_tile_label_hide_summary">Only show icon in tile</string>
-    <string name="qs_tile_layout_title">Vertical layout</string>
-    <string name="qs_tile_layout_summary">Show label below icon instead next to icon</string>
-    <string name="qs_columns_portrait_title">Columns (portrait)</string>
-    <string name="qs_columns_landscape_title">Columns (landscape)</string>
-    <string name="qqs_rows_portrait_title">Quick QS Rows (portrait)</string>
-    <string name="qqs_rows_landscape_title">Quick QS Rows (landscape)</string>
-    <string name="qs_panel_row_count_title">QS Rows (portrait)</string>
-    <string name="qs_rows_portrait_title">Rows (portrait)</string>
-    <string name="qs_rows_landscape_title">Rows (landscape)</string>
-    <string name="qs_layout_columns_rows_title">Columns &amp; rows</string>
-    <string name="qs_layout_columns_rows_summary">Customize QS columns and rows</string>
-    <string name="qs_layout_columns_rows_footer_text">QS rows should be equal or greater than QQS rows. Use higher number of columns for circle / square (A11) QS tile style.</string>
+    <!-- QS tiles layout -->
+    <string name="qs_tile_layout_title">QS tiles layout</string>
+    <string name="qs_tile_layout_summary">Customize tiles layout in QS panel</string>
+    <string name="qs_tiles_layout_category">Tiles layout</string>
+    <string name="qs_rows_portrait_title">Rows (Portrait)</string>
+    <string name="qqs_rows_portrait_title">Rows (Quick QS portrait)</string>
+    <string name="qs_columns_portrait_title">Columns (Portrait)</string>
+    <string name="qs_apply_change_button_title">Apply change</string>
+    <string name="qs_apply_change_failed">Failed to apply change</string>
+    <string name="qs_tile_hide_label_title">Hide labels</string>
+    <string name="qs_tile_hide_label_summary">Show only icon for QS tiles</string>
+    <string name="qs_tile_vertical_layout_title">Vertical layout</string>
+    <string name="qs_tile_vertical_layout_summary">Enable vertical layout for QS tiles</string>
 
     <!-- Statusbar Clock background chip -->
     <string name="statusbar_clock_chip_title">Background chip</string>
@@ -1796,8 +1823,8 @@
     <string name="theme_customization_ui_style_summary">Set custom style for your interface</string>
     
     <!-- Custom Clock Style -->
-    <string name="lockscreen_clock_category_title">Lockscreen clock and widgets</string>
-    <string name="lockscreen_clock_category_summary">Configure lockscreen clock and widgets</string>
+    <string name="lockscreen_clock_category_title">Lockscreen clock</string>
+    <string name="lockscreen_clock_category_summary">Configure lockscreen clock styles</string>
     <string name="custom_clock_style">Custom Clock Style</string>
     
     <!-- Lockscreen widgets  -->
@@ -1886,6 +1913,8 @@
     <!-- GMS Spoof -->
     <string name="gms_spoof_title">Enable GMS spoof</string>
     <string name="gms_spoof_summary">Spoof your device to pass Google Play Attestation</string>
+    <string name="entryhooks_title">Enable Keybox spoofing</string>
+    <string name="entryhooks_summary">Spoof device keybox to pass Play Integrity</string>
     
      <!-- Shake Gestures -->
     <string name="shake_gestures_enabled_title">Shake Gestures</string>
