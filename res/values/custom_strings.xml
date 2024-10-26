@@ -1974,4 +1974,8 @@
 
     <!-- Boot Animation Style Strings -->
     <string name="boot_animation_styles_summary">Choose a style for your boot animation</string>
+    
+    <!-- Carrier name on lockscreen -->
+    <string name="lockscreen_show_carrier_title">Carrier name</string>
+    <string name="lockscreen_show_carrier_summary">Display carrier name in the status bar</string>
 </resources>

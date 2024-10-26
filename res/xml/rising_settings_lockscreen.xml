@@ -47,6 +47,12 @@
             lineage:position="top"/>
 
         <com.android.settings.preferences.SystemSettingSwitchPreference
+            android:key="lockscreen_show_carrier"
+            android:title="@string/lockscreen_show_carrier_title"
+            android:summary="@string/lockscreen_show_carrier_summary"
+            android:defaultValue="true" />
+
+        <com.android.settings.preferences.SystemSettingSwitchPreference
             android:key="ls_media_art_enabled"
             android:title="@string/media_art_title"
             android:summary="@string/media_art_summary"
