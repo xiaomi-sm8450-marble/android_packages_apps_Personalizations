@@ -54,7 +54,15 @@
             android:icon="@drawable/ic_key"
             android:title="@string/spoofing_title"
             android:summary="@string/spoofing_title_summary"
-            android:fragment="com.rising.settings.fragments.Spoof"
-            lineage:position="bottom" />
+            android:fragment="com.rising.settings.fragments.Spoof" />
+            
+       <!-- QuickSwitch -->
+        <com.android.settings.preferences.ui.AdaptivePreference
+            android:key="quickswitch"
+            android:icon="@drawable/ic_home"
+            android:title="@string/quickswitch_launcher_title" 
+            android:summary="@string/quickswitch_launcher_summary" 
+            android:fragment="com.rising.settings.fragments.QuickSwitch"
+            lineage:position="bottom" /> 
 
 </PreferenceScreen>
