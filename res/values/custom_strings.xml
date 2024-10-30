@@ -16,6 +16,10 @@
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
 
+    <!-- Circle to search -->
+    <string name="search_press_hold_gesture_summary">Press and hold the navigation handle to invoke search over your screen.</string>
+    <string name="search_press_hold_gesture_title">Hold handle to search</string>
+
     <!-- Category Title text for back gesture edge lock. [CHAR LIMIT=60] -->
     <string name="gesture_navigation_settings_category_title">Gesure navigation settings</string>
     <!-- Title text for immersive ui lock. [CHAR LIMIT=60] -->
