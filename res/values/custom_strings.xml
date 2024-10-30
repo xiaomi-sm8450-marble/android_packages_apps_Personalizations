@@ -1901,7 +1901,7 @@
      <!-- Settings Styles -->
     <string name="settings_ui_title">Settings UI</string>
     <string name="settings_ui_summary">Configure settings app user interface</string>
-    <string name="settings_style_title">Settings Styles</string>
+    <string name="settings_style_title">Settings Icon Styles</string>
     <string name="settings_style_rising_ui_one">RisingUI 1.0</string>
     <string name="settings_style_rising_ui_two">RisingUI 2.0</string>
     <string name="settings_style_material">Material</string>

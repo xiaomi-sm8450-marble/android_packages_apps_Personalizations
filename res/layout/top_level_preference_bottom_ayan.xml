@@ -22,17 +22,13 @@
             android:id="@+id/icon_frame"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginEnd="16dp">
+            android:layout_marginStart="0dp"
+            android:layout_marginEnd="12dp">
 
-            <androidx.preference.internal.PreferenceImageView
+            <com.android.settings.utils.DynamicIconPreferenceView
                 android:id="@android:id/icon"
-                android:padding="1.5dip"
-                android:layout_width="24dp"
-                android:layout_height="24dp"
-                android:tint="@color/rising_option_border_color"
-                app:maxHeight="52.5dp"
-                app:maxWidth="52.5dp" />
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
 
         </FrameLayout>
 

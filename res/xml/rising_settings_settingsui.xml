@@ -26,6 +26,14 @@
             android:title="@string/dashboard_greetings_title"
             android:summary="@string/dashboard_greetings_summary"
             android:defaultValue="false"
-            lineage:position="solo"/>
+            lineage:position="top"/>
+
+        <com.android.settings.preferences.SystemSettingListPreference
+            android:key="settings_icon_style"
+            android:title="@string/settings_style_title"
+            android:entries="@array/settings_style_entries"
+            android:entryValues="@array/settings_style_values"
+            android:summary="%s"
+            lineage:position="bottom" />
 
 </PreferenceScreen>
