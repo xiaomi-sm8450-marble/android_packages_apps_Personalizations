@@ -40,4 +40,6 @@
     <color name="homepage_rising_background">@android:color/system_accent1_100</color>
     <color name="option_border_default">#5f6368</color>
     <color name="rising_option_border_color">@android:color/system_accent1_100</color>
+    <color name="device_info_rising_version_bg">#d9d9d9</color>
+    <color name="device_info_rising_version_text">#000000</color>
 </resources>

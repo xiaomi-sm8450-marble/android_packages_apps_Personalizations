@@ -13,33 +13,42 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
 package com.rising.settings
 
-import android.animation.Animator
 import android.animation.AnimatorListenerAdapter
 import android.animation.ObjectAnimator
 import android.content.Context
 import android.os.Build
+import android.os.Handler
 import android.os.SystemProperties
-import android.provider.Settings
+import android.widget.ImageView
 import android.widget.TextView
-import android.view.View
-import androidx.preference.Preference
 import androidx.preference.PreferenceScreen
 import com.android.settings.R
 import com.android.settingslib.core.AbstractPreferenceController
-import com.android.settingslib.DeviceInfoUtils
 import com.android.settingslib.widget.LayoutPreference
-
 import com.android.settings.utils.DeviceInfoUtil
-
-import androidx.fragment.app.FragmentManager
-import androidx.fragment.app.FragmentTransaction
 
 class riseInfoPreferenceController(context: Context) : AbstractPreferenceController(context) {
 
     private val defaultFallback = mContext.getString(R.string.device_info_default)
+    private var firmwareVersionTextView: TextView? = null
+
+    private val handler = Handler()
+    private val updateTextRunnable = object : Runnable {
+        override fun run() {
+            animateTextChange()
+            handler.postDelayed(this, 3000)
+        }
+    }
+    private var currentMessageIndex = 0
+
+    private val versionMessages = listOf(
+        "#${getProp(PROP_RISING_CODE)}",
+        "${getProp(PROP_RISING_CODE)}?",
+        "v ${getRisingVersion()}",
+        "${getRisingVersion() + 1} soon?"
+    )
 
     private fun getProp(propName: String): String {
         return SystemProperties.get(propName, defaultFallback)
@@ -76,80 +85,64 @@ class riseInfoPreferenceController(context: Context) : AbstractPreferenceControl
 
     private fun getRisingMaintainer(releaseType: String): String {
         val risingMaintainer = getProp(PROP_RISING_MAINTAINER)
-        if (risingMaintainer.equals("Unknown", ignoreCase = true)) {
-            return mContext.getString(R.string.unknown_maintainer)
+        return if (risingMaintainer.equals("Unknown", ignoreCase = true)) {
+            mContext.getString(R.string.unknown_maintainer)
+        } else {
+            mContext.getString(R.string.maintainer_summary, risingMaintainer)
         }
-        return mContext.getString(R.string.maintainer_summary, risingMaintainer)
     }
 
     override fun displayPreference(screen: PreferenceScreen) {
         super.displayPreference(screen)
 
         val releaseType = getProp(PROP_RISING_RELEASETYPE).lowercase()
-        val codeName = getProp(PROP_RISING_CODE)
         val risingMaintainer = getRisingMaintainer(releaseType)
         val isOfficial = releaseType == "official"
 
-        val hwInfoPreference = screen.findPreference<LayoutPreference>(KEY_HW_INFO)!!
-        val swInfoPreference = screen.findPreference<LayoutPreference>(KEY_SW_INFO)!!
-        val statusPreference = screen.findPreference<Preference>(KEY_BUILD_STATUS)!!
-        val bannerPreference = screen.findPreference<LayoutPreference>(KEY_BUILD_BANNER)!!
-        val aboutHwInfoView: View = hwInfoPreference.findViewById(R.id.about_device_hardware)
-        val deviceHardwareCard: View = hwInfoPreference.findViewById<TextView>(R.id.device_hardware)
-        val deviceShowcaseCard: View = hwInfoPreference.findViewById<TextView>(R.id.device_showcase_container)
+        val hwInfoPreference = screen.findPreference<LayoutPreference>(KEY_HW_INFO)
+        val swInfoPreference = screen.findPreference<LayoutPreference>(KEY_SW_INFO)
 
-        statusPreference.setTitle(getRisingBuildStatus(releaseType).lowercase())
-        statusPreference.setSummary(risingMaintainer)
-        statusPreference.setIcon(if (isOfficial) R.drawable.verified else R.drawable.unverified)
-        bannerPreference.apply {
-            findViewById<TextView>(R.id.firmware_device).text = "${Build.DEVICE}"
-            findViewById<TextView>(R.id.firmware_version).text = "v" + getRisingVersion()
-            findViewById<TextView>(R.id.firmware_codename).text = codeName
+        swInfoPreference?.let { swPref ->
+            val maintainerTextView: TextView? = swPref.findViewById(R.id.firmware_maintainer)
+            maintainerTextView?.text = risingMaintainer
+            maintainerTextView?.isSelected = true
+
+            firmwareVersionTextView = swPref.findViewById(R.id.firmware_version)
+            firmwareVersionTextView?.text = versionMessages[currentMessageIndex]
+
+            swPref.findViewById<TextView>(R.id.firmware_status)?.text = getRisingBuildStatus(releaseType).lowercase()
+            swPref.findViewById<ImageView>(R.id.firmware_status_icon)?.setImageResource(
+                if (isOfficial) R.drawable.verified else R.drawable.unverified
+            )
         }
 
-        hwInfoPreference.apply {
-            findViewById<TextView>(R.id.device_chipset).text = getRisingChipset()
-            findViewById<TextView>(R.id.device_storage).text =
+        hwInfoPreference?.apply {
+            findViewById<TextView>(R.id.device_chipset)?.text = getRisingChipset()
+            findViewById<TextView>(R.id.device_storage)?.text =
                 "${DeviceInfoUtil.getTotalRam()} | ${DeviceInfoUtil.getStorageTotal(mContext)}"
-            findViewById<TextView>(R.id.device_battery_capacity).text = DeviceInfoUtil.getBatteryCapacity(mContext)
-            findViewById<TextView>(R.id.device_resolution).text = DeviceInfoUtil.getScreenResolution(mContext)
-            findViewById<TextView>(R.id.device_showcase).text = getDeviceName()
+            findViewById<TextView>(R.id.device_battery_capacity)?.text = DeviceInfoUtil.getBatteryCapacity(mContext)
+            findViewById<TextView>(R.id.device_resolution)?.text = DeviceInfoUtil.getScreenResolution(mContext)
+            findViewById<TextView>(R.id.device_showcase)?.text = getDeviceName()
         }
-        
-       swInfoPreference.apply {
-            findViewById<TextView>(R.id.security_patch_summary).text = getRisingSecurity()
-            findViewById<TextView>(R.id.kernel_info_summary).text = DeviceInfoUtils.getFormattedKernelVersion(mContext)
-        }
-                
-        aboutHwInfoView.setOnClickListener {
-            if (deviceShowcaseCard.visibility == View.VISIBLE) {
-                applyCrossfadeAnimation(deviceHardwareCard, deviceShowcaseCard)
-            } else {
-                applyCrossfadeAnimation(deviceShowcaseCard, deviceHardwareCard)
-            }
-        }
+
+        handler.post(updateTextRunnable)
     }
-    
-    private fun applyCrossfadeAnimation(viewToShow: View, viewToHide: View) {
-        viewToShow.alpha = 0f
-        viewToShow.visibility = View.VISIBLE
 
-        viewToShow.animate()
-            .alpha(1f)
-            .setDuration(500)
-            .setListener(null)
-
-        viewToHide.animate()
-            .alpha(0f)
-            .setDuration(500)
-            .setListener(object : Animator.AnimatorListener {
-                override fun onAnimationStart(animation: Animator) {}
-                override fun onAnimationCancel(animation: Animator) {}
-                override fun onAnimationRepeat(animation: Animator) {}
-                override fun onAnimationEnd(animation: Animator) {
-                    viewToHide.visibility = View.GONE
+    private fun animateTextChange() {
+        firmwareVersionTextView?.let { textView ->
+            val fadeOut = ObjectAnimator.ofFloat(textView, "alpha", 1f, 0f)
+            fadeOut.duration = 300
+            fadeOut.addListener(object : AnimatorListenerAdapter() {
+                override fun onAnimationEnd(animation: android.animation.Animator) {
+                    currentMessageIndex = (currentMessageIndex + 1) % versionMessages.size
+                    textView.text = versionMessages[currentMessageIndex]
+                    val fadeIn = ObjectAnimator.ofFloat(textView, "alpha", 0f, 1f)
+                    fadeIn.duration = 300
+                    fadeIn.start()
                 }
             })
+            fadeOut.start()
+        }
     }
 
     override fun isAvailable(): Boolean {
@@ -166,7 +159,6 @@ class riseInfoPreferenceController(context: Context) : AbstractPreferenceControl
         private const val KEY_SW_INFO = "my_device_sw_header"
         private const val KEY_HW_INFO = "my_device_hw_header"
         private const val KEY_DEVICE_INFO = "my_device_info_header"
-        private const val KEY_BUILD_STATUS = "rom_build_status"
         private const val KEY_BUILD_BANNER = "banner_logo"
 
         private const val PROP_RISING_CODE = "ro.rising.code"
