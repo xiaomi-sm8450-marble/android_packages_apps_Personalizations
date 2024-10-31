@@ -64,7 +64,8 @@ class riseInfoPreferenceController(context: Context) : AbstractPreferenceControl
     }
 
     private fun getDeviceName(): String {
-        return "${Build.MANUFACTURER} ${Build.MODEL}"
+        val deviceName = "${Build.DEVICE}"
+        return deviceName.replaceFirstChar { if (it.isLowerCase()) it.titlecase() else it.toString() }
     }
 
     private fun getRisingBuildVersion(): String {
