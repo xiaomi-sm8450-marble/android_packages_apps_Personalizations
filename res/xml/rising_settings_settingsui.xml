@@ -29,11 +29,20 @@
             lineage:position="top"/>
 
         <com.android.settings.preferences.SystemSettingListPreference
+            android:key="search_bar_style"
+            android:title="@string/search_bar_style_title"
+            android:entries="@array/settings_sb_style_entries"
+            android:entryValues="@array/settings_sb_style_values"
+            android:defaultValue="0"
+            android:summary="%s" />
+
+        <com.android.settings.preferences.SystemSettingListPreference
             android:key="settings_icon_style"
             android:title="@string/settings_style_title"
             android:entries="@array/settings_style_entries"
             android:entryValues="@array/settings_style_values"
             android:summary="%s"
+            android:defaultValue="0"
             lineage:position="bottom" />
 
 </PreferenceScreen>

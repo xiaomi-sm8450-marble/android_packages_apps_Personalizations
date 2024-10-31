@@ -1905,7 +1905,7 @@
      <!-- Settings Styles -->
     <string name="settings_ui_title">Settings UI</string>
     <string name="settings_ui_summary">Configure settings app user interface</string>
-    <string name="settings_style_title">Settings Icon Styles</string>
+    <string name="settings_style_title">Settings Icon Style</string>
     <string name="settings_style_rising_ui_one">RisingUI 1.0</string>
     <string name="settings_style_rising_ui_two">RisingUI 2.0</string>
     <string name="settings_style_material">Material</string>
@@ -1913,6 +1913,8 @@
     <string name="settings_style_colorful">Colorful</string>
     <string name="settings_homepage_showcase_title">Device showcase widget</string>
     <string name="settings_homepage_showcase_summary">Show device showcase on homepage</string>
+    <string name="search_bar_style_title">Search Bar Style</string>
+    <string name="settings_sb_style_1">Android 15 (Revamped)</string>
     
     <!-- GMS Spoof -->
     <string name="gms_spoof_title">Enable GMS spoof</string>
