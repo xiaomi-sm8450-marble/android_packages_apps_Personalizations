@@ -21,6 +21,20 @@
     android:title="@string/nav_settings_title">
 
     <PreferenceCategory
+        android:key="navbar_layout_category"
+        android:title="@string/navbar_layout_category_title">
+
+        <com.android.settings.preferences.SecureSettingSwitchPreference
+            android:key="navbar_inverse_layout"
+            android:icon="@drawable/ic_navbar_layout"
+            android:title="@string/navbar_invert_layout_title"
+            android:summary="@string/navbar_invert_layout_summary"
+            android:defaultValue="false"
+            lineage:position="solo" />
+
+    </PreferenceCategory>
+
+    <PreferenceCategory
         android:key="navbar_actions_category"
         android:title="@string/navbar_actions_category_title">
 
