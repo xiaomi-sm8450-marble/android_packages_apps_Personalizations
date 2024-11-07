@@ -36,6 +36,21 @@
     </PreferenceCategory>
 
     <PreferenceCategory
+        android:key="lockscreen_widgets"
+        android:title="@string/lockscreen_widgets_title">
+
+        <!-- Lockscreen Widgets -->
+        <com.android.settings.preferences.ui.AdaptivePreference
+            android:key="lockscreen_widgets"
+            android:icon="@drawable/widgets"
+            android:title="@string/lockscreen_widgets_title"
+            android:summary="@string/lockscreen_widgets_enabled_summary"
+            android:fragment="com.rising.settings.fragments.lockscreen.LockScreenWidgets"
+            lineage:position="solo"/>
+
+    </PreferenceCategory>
+
+    <PreferenceCategory
         android:key="lockscreen_interface_category"
         android:title="@string/lockscreen_interface_category">
 
