@@ -44,8 +44,6 @@ import java.util.Date;
 import lineageos.preference.LineageSystemSettingListPreference;
 import lineageos.providers.LineageSettings;
 
-import com.android.settings.utils.SystemRestartUtils;
-
 public class Clock extends SettingsPreferenceFragment
             implements Preference.OnPreferenceChangeListener  {
 
@@ -67,7 +65,6 @@ public class Clock extends SettingsPreferenceFragment
     private SystemSettingListPreference mClockDatePosition;
     private SystemSettingListPreference mClockDateStyle;
     private ListPreference mClockDateFormat;
-    private Preference mClockSeconds;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -106,9 +103,6 @@ public class Clock extends SettingsPreferenceFragment
         parseClockDateFormats();
         mClockDateFormat.setEnabled(dateDisplay > 0);
         mClockDateFormat.setOnPreferenceChangeListener(this);
-        
-        mClockSeconds = findPreference(CLOCK_SECONDS);
-        mClockSeconds.setOnPreferenceChangeListener(this);
     }
 
     @Override
@@ -132,9 +126,6 @@ public class Clock extends SettingsPreferenceFragment
             return true;
       } else if (preference == mClockDateStyle) {
           parseClockDateFormats();
-          return true;
-      } else if (preference == mClockSeconds) {
-          SystemRestartUtils.showSystemUIRestartDialog(getContext());
           return true;
       } else if (preference == mClockDateFormat) {
           int index = mClockDateFormat.findIndexOfValue((String) newValue);
