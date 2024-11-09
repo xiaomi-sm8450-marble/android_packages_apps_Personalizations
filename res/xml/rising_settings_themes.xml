@@ -125,6 +125,13 @@
         android:key="others_ui"
         android:title="@string/category_name_ui_others">
 
+        <com.android.settings.preferences.SystemPropertySwitchPreference
+            android:key="persist.sys.wallpaper.blur_enabled"
+            android:title="@string/wallpaper_blur_title"
+            android:summary="@string/wallpaper_blur_summary"
+            android:defaultValue="false"
+            lineage:position="top" />
+
         <!-- Screen Off animation -->
         <com.android.settings.preferences.SystemSettingListPreference
             android:key="screen_off_animation"
@@ -134,7 +141,7 @@
             android:entries="@array/screen_off_animation_entries"
             android:entryValues="@array/screen_off_animation_values"
             android:defaultValue="0"
-            lineage:position="solo" />
+            lineage:position="bottom" />
 
     </PreferenceCategory>
 
