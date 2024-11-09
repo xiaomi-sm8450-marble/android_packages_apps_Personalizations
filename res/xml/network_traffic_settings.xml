@@ -19,33 +19,28 @@
     xmlns:lineage="http://schemas.android.com/apk/res-auto"
     xmlns:settings="http://schemas.android.com/apk/res/com.android.settings">
 
-    <com.android.settings.preferences.SecureSettingListPreference
-        android:key="network_traffic_location"
-        android:title="@string/network_traffic_location_title"
-        android:entries="@array/network_traffic_location_entries"
-        android:entryValues="@array/network_traffic_location_values"
-        android:summary="%s"
-        android:defaultValue="0"
-        lineage:isLineageSettings="true"
-        lineage:position="top" />
+    <lineageos.preference.SystemSettingMainSwitchPreference
+        android:key="network_traffic_enabled"
+        android:title="@string/enable" />
 
-    <com.android.settings.preferences.SecureSettingListPreference
+    <com.android.settings.preferences.SystemSettingListPreference
         android:key="network_traffic_mode"
         android:title="@string/network_traffic_mode_title"
         android:entries="@array/network_traffic_mode_entries"
         android:entryValues="@array/network_traffic_mode_values"
         android:summary="%s"
+        android:dependency="network_traffic_enabled"
         android:defaultValue="0"
-        lineage:isLineageSettings="true" />
+        lineage:position="top" />
 
-    <com.android.settings.preferences.SecureSettingSwitchPreference
+    <com.android.settings.preferences.SystemSettingSwitchPreference
         android:key="network_traffic_autohide"
         android:title="@string/network_traffic_autohide"
         android:summary="@string/network_traffic_autohide_summary"
-        lineage:isLineageSettings="true"
+        android:dependency="network_traffic_enabled"
         android:defaultValue="true" />
 
-    <com.android.settings.preferences.LineageSecureSettingSeekBarPreference
+    <com.android.settings.preferences.SystemSettingSeekBarPreference
         android:key="network_traffic_autohide_threshold"
         android:title="@string/network_traffic_autohide_threshold"
         android:defaultValue="0"
@@ -55,28 +50,30 @@
         settings:interval="10"
         android:dependency="network_traffic_autohide" />
 
-    <com.android.settings.preferences.LineageSecureSettingSeekBarPreference
+    <com.android.settings.preferences.SystemSettingSeekBarPreference
         android:key="network_traffic_refresh_interval"
         android:title="@string/network_traffic_refresh_interval_title"
         android:summary="@string/network_traffic_refresh_interval_summary"
+        android:dependency="network_traffic_enabled"
         android:defaultValue="2"
         android:max="10"
         settings:min="1"
         settings:units="@string/unit_seconds" />
 
-    <com.android.settings.preferences.SecureSettingListPreference
+    <com.android.settings.preferences.SystemSettingListPreference
         android:key="network_traffic_units"
         android:title="@string/network_traffic_units_title"
         android:entries="@array/network_traffic_units_entries"
         android:entryValues="@array/network_traffic_units_values"
         android:summary="%s"
-        android:defaultValue="1"
-        lineage:isLineageSettings="true" />
+        android:dependency="network_traffic_enabled"
+        android:defaultValue="1" />
 
-    <com.android.settings.preferences.SecureSettingSwitchPreference
+    <com.android.settings.preferences.SystemSettingSwitchPreference
         android:key="network_traffic_hidearrow"
         android:title="@string/network_traffic_hidearrow"
         android:summary="@string/network_traffic_hidearrow_summary"
-        lineage:isLineageSettings="true"
+        android:dependency="network_traffic_enabled"
+        android:defaultValue="false"
         lineage:position="bottom" />
 </PreferenceScreen>
