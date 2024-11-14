@@ -79,7 +79,7 @@ public class QuickSettings extends SettingsPreferenceFragment implements
         mTileAnimationStyle.setOnPreferenceChangeListener(this);
 
         int tileAnimationStyle = Settings.System.getIntForUser(getActivity().getContentResolver(),
-                Settings.System.QS_TILE_ANIMATION_STYLE, 0, UserHandle.USER_CURRENT);
+                KEY_PREF_TILE_ANIM_STYLE, 0, UserHandle.USER_CURRENT);
         updateAnimTileStyle(tileAnimationStyle);
 
         checkQSOverlays(mContext);
