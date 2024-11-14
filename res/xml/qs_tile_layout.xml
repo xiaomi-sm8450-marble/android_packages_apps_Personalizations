@@ -18,7 +18,17 @@
         android:title="@string/qs_tile_vertical_layout_title"
         android:summary="@string/qs_tile_vertical_layout_summary"
         android:defaultValue="false" 
-        lineage:position="bottom"/>
+        />
+
+    <com.android.settings.preferences.SystemSettingSeekBarPreference
+        android:key="fling_animation_duration"
+        android:title="@string/fling_animation_duration_title"
+        android:defaultValue="350"
+        settings:interval="50"
+        settings:units="ms"
+        android:max="1000"
+        android:min="0"
+        lineage:position="bottom" />
 
     <PreferenceCategory
         android:key="tiles_layout"
