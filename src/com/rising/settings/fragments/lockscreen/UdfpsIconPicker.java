@@ -113,7 +113,7 @@ public class UdfpsIconPicker extends SettingsPreferenceFragment {
     public static void reset(Context mContext) {
         ContentResolver resolver = mContext.getContentResolver();
         Settings.System.putIntForUser(resolver,
-                Settings.System.UDFPS_ICON, 0, UserHandle.USER_CURRENT);
+                "udfps_icon", 0, UserHandle.USER_CURRENT);
     }
 
     @Override
@@ -156,7 +156,7 @@ public class UdfpsIconPicker extends SettingsPreferenceFragment {
             holder.name.setVisibility(View.GONE);
 
             if (position == Settings.System.getInt(context.getContentResolver(),
-                Settings.System.UDFPS_ICON, 0)) {
+                "udfps_icon", 0)) {
                 mAppliedIcon = iconRes;
                 if (mSelectedIcon == null) {
                     mSelectedIcon = iconRes;
@@ -170,7 +170,7 @@ public class UdfpsIconPicker extends SettingsPreferenceFragment {
                     updateActivatedStatus(iconRes, true);
                     mSelectedIcon = iconRes;
                     Settings.System.putInt(getActivity().getContentResolver(),
-                            Settings.System.UDFPS_ICON, position);
+                            "udfps_icon", position);
                 }
             });
         }
