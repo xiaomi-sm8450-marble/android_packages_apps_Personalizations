@@ -44,15 +44,9 @@ public class QuickSettings extends SettingsPreferenceFragment implements
     
     private static final String KEY_QS_UI_STYLE  = "qs_tile_ui_style";
     private static final String KEY_QS_PANEL_STYLE  = "qs_panel_style";
-    private static final String KEY_PREF_TILE_ANIM_STYLE = "qs_tile_animation_style";
-    private static final String KEY_PREF_TILE_ANIM_DURATION = "qs_tile_animation_duration";
-    private static final String KEY_PREF_TILE_ANIM_INTERPOLATOR = "qs_tile_animation_interpolator";
     
     private ListPreference mQsUI;
     private ListPreference mQsPanelStyle;
-    private ListPreference mTileAnimationStyle;
-    private ListPreference mTileAnimationInterpolator;
-    private CustomSeekBarPreference mTileAnimationDuration;
     
     private ThemeUtils mThemeUtils;
 
@@ -71,16 +65,6 @@ public class QuickSettings extends SettingsPreferenceFragment implements
 
         mQsPanelStyle = (ListPreference) findPreference(KEY_QS_PANEL_STYLE);
         mQsPanelStyle.setOnPreferenceChangeListener(this);
-        
-        mTileAnimationStyle = (ListPreference) findPreference(KEY_PREF_TILE_ANIM_STYLE);
-        mTileAnimationDuration = (CustomSeekBarPreference) findPreference(KEY_PREF_TILE_ANIM_DURATION);
-        mTileAnimationInterpolator = (ListPreference) findPreference(KEY_PREF_TILE_ANIM_INTERPOLATOR);
-
-        mTileAnimationStyle.setOnPreferenceChangeListener(this);
-
-        int tileAnimationStyle = Settings.System.getIntForUser(getActivity().getContentResolver(),
-                KEY_PREF_TILE_ANIM_STYLE, 0, UserHandle.USER_CURRENT);
-        updateAnimTileStyle(tileAnimationStyle);
 
         checkQSOverlays(mContext);
     }
@@ -103,17 +87,8 @@ public class QuickSettings extends SettingsPreferenceFragment implements
             updateQsPanelStyle(getActivity());
             checkQSOverlays(getActivity());
             return true;
-        } else if (preference == mTileAnimationStyle) {
-            int value = Integer.parseInt((String) newValue);
-            updateAnimTileStyle(value);
-            return true;
         }
         return false;
-    }
-    
-    private void updateAnimTileStyle(int tileAnimationStyle) {
-        mTileAnimationDuration.setEnabled(tileAnimationStyle != 0);
-        mTileAnimationInterpolator.setEnabled(tileAnimationStyle != 0);
     }
 
     private void updateQsStyle(Context context) {
