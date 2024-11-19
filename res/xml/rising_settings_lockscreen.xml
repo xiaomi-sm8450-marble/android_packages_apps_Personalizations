@@ -61,6 +61,12 @@
             android:fragment="com.rising.settings.fragments.lockscreen.doze.AODSettings"
             lineage:position="top"/>
 
+        <com.android.settings.preferences.ui.AdaptivePreference
+            android:key="depth_wallpaper"
+            android:title="@string/dw_wallpaper_enabled_title"
+            android:summary="@string/dw_wallpaper_enabled_summary"
+            android:fragment="com.rising.settings.fragments.WallpaperDepth"/>
+
         <com.android.settings.preferences.SystemSettingSwitchPreference
             android:key="lockscreen_show_carrier"
             android:title="@string/lockscreen_show_carrier_title"
