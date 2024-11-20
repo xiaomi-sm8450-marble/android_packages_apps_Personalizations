@@ -39,15 +39,8 @@
         android:title="@string/pulse_settings"
         android:summary="@string/pulse_settings_summary"
         android:fragment="com.rising.settings.fragments.sound.PulseSettings"
+        lineage:position="bottom"
          />
-
-    <!-- Sound Engine -->
-    <com.android.settings.preferences.ui.AdaptivePreference
-        android:key="sound_engine"
-        android:title="@string/sound_engine_title"
-        android:summary="@string/sound_engine_summary"
-        android:fragment="com.rising.settings.fragments.sound.SoundEngine"
-        lineage:position="bottom"  />
         
     <!-- Volume panel -->
     <PreferenceCategory
