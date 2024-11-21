@@ -45,8 +45,18 @@
         <com.android.settings.preferences.SystemSettingSwitchPreference
             android:key="secure_lockscreen_qs_disabled"
             android:title="@string/disable_qs_title"
-            android:summary="@string/disable_qs_summary"
-            lineage:position="bottom"/>
+            android:summary="@string/disable_qs_summary"/>
+
+        <com.android.settings.preferences.SystemSettingSeekBarPreference
+            android:key="qs_transparency"
+            android:title="@string/qs_opacity_title"
+            android:summary="@string/qs_opacity_summary"
+            android:defaultValue="100"
+            settings:interval="1"
+            settings:units="%"
+            android:max="100"
+            android:min="1"
+            lineage:position="bottom" />
 
     </PreferenceCategory>
 
