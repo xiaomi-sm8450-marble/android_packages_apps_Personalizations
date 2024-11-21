@@ -29,7 +29,7 @@
             android:icon="@drawable/ic_changelog"
             android:title="@string/changelog_rising_title"
             android:summary="@string/changelog_rising_summary"
-            app:position="top">
+            app:position="solo">
             <intent android:action="android.intent.action.MAIN"
                  android:targetPackage="com.android.settings"
                  android:targetClass="com.rising.settings.fragments.about.ChangelogActivity"/>
@@ -40,7 +40,8 @@
             android:icon="@drawable/ic_dashboard_notifications"
             android:title="@string/notifications_title"
             android:summary="@string/notif_settings_summary"
-            android:fragment="com.rising.settings.fragments.Notifications" />
+            android:fragment="com.rising.settings.fragments.Notifications"
+            app:position="solo" />
 
         <!-- Sound -->
         <com.android.settings.preferences.ui.AdaptivePreference
@@ -48,5 +49,5 @@
             android:title="@string/sound_title"
             android:summary="@string/sound_settings_summary"
             android:fragment="com.rising.settings.fragments.Sound"
-            app:position="bottom" />    
+            app:position="solo" />    
 </PreferenceScreen> 

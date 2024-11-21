@@ -16,6 +16,11 @@
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
 
+    <!-- Dashboard Revamped -->
+    <string name="colors_title">Colours</string>
+    <string name="fonts_title">Fonts</string>
+    <string name="fonts_summary">RISING123\nABCDEFGHIJKL\n0123456789</string>
+
     <!-- Wallpaper blur -->
     <string name="wallpaper_blur_title">Wallpaper Blur</string>
     <string name="wallpaper_blur_summary">Enable or disable wallpaper blur effect</string>

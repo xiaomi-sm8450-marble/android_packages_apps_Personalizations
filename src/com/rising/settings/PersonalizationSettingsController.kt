@@ -39,7 +39,9 @@ class PersonalizationSettingsController(context: Context) : AbstractPreferenceCo
         val personalizationsClickMap = mapOf(
             R.id.themes_card to "com.android.settings.Settings\$PersonalizationsLockscreenActivity",
             R.id.system_themes to "com.android.settings.Settings\$PersonalizationsThemesActivity",
-            R.id.toolbox to "com.android.settings.Settings\$PersonalizationsToolboxActivity"
+            R.id.toolbox to "com.android.settings.Settings\$PersonalizationsToolboxActivity",
+            R.id.colors to "com.android.settings.Settings\$PersonalizationsColorsActivity",
+            R.id.fonts to "com.android.settings.Settings\$PersonalizationsFontsActivity"
         )
         personalizationsClickMap.forEach { (viewId, activityName) ->
             preference.findViewById<View>(viewId)?.setOnClickListener {

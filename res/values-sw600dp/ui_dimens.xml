@@ -16,4 +16,5 @@
 
 <resources>
     <dimen name="device_showcase_margin_end">-180dp</dimen>
+    <dimen name="top_level_preference_summary_max_width">250dp</dimen>
 </resources>
