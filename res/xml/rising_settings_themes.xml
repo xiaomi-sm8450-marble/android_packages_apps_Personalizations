@@ -62,6 +62,14 @@
             android:summary="@string/theme_customization_icon_shape_summary"
             android:fragment="com.rising.settings.fragments.ui.IconShapes"/>
 
+        <!-- Monet Theme Engine -->
+        <com.android.settings.preferences.ui.AdaptivePreference
+            android:key="monet_engine"
+            android:icon="@drawable/ic_themes"
+            android:title="@string/monet_title"
+            android:summary="@string/monet_summary"
+            android:fragment="com.rising.settings.fragments.MonetSettings" />
+
         <!-- Navbar Style -->
         <com.android.settings.preferences.ui.AdaptivePreference
             android:key="android.theme.customization.navbar"
