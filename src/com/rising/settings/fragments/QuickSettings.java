@@ -34,6 +34,8 @@ import com.android.internal.util.android.ThemeUtils;
 
 import com.android.settings.preferences.CustomSeekBarPreference;
 
+import com.android.settings.utils.SystemRestartUtils;
+
 import java.util.List;
 
 @SearchIndexable
@@ -44,7 +46,9 @@ public class QuickSettings extends SettingsPreferenceFragment implements
     
     private static final String KEY_QS_UI_STYLE  = "qs_tile_ui_style";
     private static final String KEY_QS_PANEL_STYLE  = "qs_panel_style";
+    private static final String KEY_QS_WIDGETS_PLAYER = "qs_widgets_player_enabled";
     
+    private Preference mQSWidgetPref;
     private ListPreference mQsUI;
     private ListPreference mQsPanelStyle;
     
@@ -67,6 +71,9 @@ public class QuickSettings extends SettingsPreferenceFragment implements
         mQsPanelStyle.setOnPreferenceChangeListener(this);
 
         checkQSOverlays(mContext);
+
+        mQSWidgetPref = findPreference(KEY_QS_WIDGETS_PLAYER);
+        mQSWidgetPref.setOnPreferenceChangeListener(this);
     }
 
     @Override
@@ -86,6 +93,9 @@ public class QuickSettings extends SettingsPreferenceFragment implements
                     Settings.System.QS_PANEL_STYLE, value, UserHandle.USER_CURRENT);
             updateQsPanelStyle(getActivity());
             checkQSOverlays(getActivity());
+            return true;
+        } else if (preference == mQSWidgetPref) {
+            SystemRestartUtils.showSystemUIRestartDialog(getContext());
             return true;
         }
         return false;

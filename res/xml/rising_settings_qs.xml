@@ -84,6 +84,13 @@
             android:title="@string/qs_widgets_enabled_title"
             android:summary="@string/qs_widgets_enabled_summary"
             android:defaultValue="false" />
+            
+        <com.android.settings.preferences.SystemSettingSwitchPreference
+            android:key="qs_widgets_player_enabled"
+            android:title="@string/qs_widgets_player_enabled_title"
+            android:summary="@string/qs_widgets_player_enabled_summary"
+            android:dependency="qs_widgets_enabled"
+            android:defaultValue="false" />
 
         <!-- QS Tile layout -->
         <com.android.settings.preferences.ui.AdaptivePreference

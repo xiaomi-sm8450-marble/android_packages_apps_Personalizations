@@ -246,6 +246,8 @@
     <string name="qs_widgets_photo_showcase_enabled_summary">Show photo widget in QuickSettings </string>
     <string name="qs_widgets_photo_showcase_image_title">QuickSettings photo widget image</string>
     <string name="qs_widgets_photo_showcase_image_summary">Select image for QuickSettings photo widget</string>
+    <string name="qs_widgets_player_enabled_title">Quick Settings Music Widget</string>
+    <string name="qs_widgets_player_enabled_summary">Display a mini music player widget accessible by swiping the sliders. Disables the default QS media player.</string>
 
     <!-- Desktop Mode Settings -->
     <string name="desktop_mode_pc_title">Desktop Mode</string>
