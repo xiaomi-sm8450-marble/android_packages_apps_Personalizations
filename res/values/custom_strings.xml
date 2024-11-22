@@ -367,9 +367,10 @@
     <string name="display_title">Display</string>
     <string name="ui_title">User Interface</string>
     <string name="toolbox_title">Toolbox</string>
-    <string name="toolbox_summary">System features</string>
+    <string name="toolbox_summary">Tools to suit every need</string>
     <string name="themes_title">Themes</string>
-    <string name="themes_summary">Show your true colours</string>
+    <string name="themes_summary">Your device, your style</string>
+    <string name="colors_summary">Show your true colours</string>
     <string name="spoofing_title">Spoofing</string>
     <string name="spoofing_title_summary">Spoof as different device to unlock application features</string>
     <string name="security_title">Security</string>

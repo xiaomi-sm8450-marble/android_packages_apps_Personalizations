@@ -15,7 +15,7 @@
 -->
 
 <resources>
-    <dimen name="card_radius_oos">18dp</dimen>
+    <dimen name="card_radius_oos">22dp</dimen>
     <dimen name="top_level_icon_padding">12dp</dimen>
     <dimen name="device_showcase_margin_end">-120dp</dimen>
     <dimen name="page_margin">16dp</dimen>

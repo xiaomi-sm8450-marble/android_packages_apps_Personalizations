@@ -45,14 +45,6 @@
             android:summary="@string/theme_customization_icon_pack_summary"
             android:fragment="com.rising.settings.fragments.ui.StatusbarIcons"/>
 
-        <!-- Adaptive icon pack -->
-        <com.android.settings.preferences.ui.AdaptivePreference
-            android:key="android.theme.customization.adaptive_icon_shape"
-            android:icon="@drawable/ic_shapes"
-            android:title="@string/theme_customization_icon_shape_title"
-            android:summary="@string/theme_customization_icon_shape_summary"
-            android:fragment="com.rising.settings.fragments.ui.IconShapes"/>
-
         <!-- Navbar Style -->
         <com.android.settings.preferences.ui.AdaptivePreference
             android:key="android.theme.customization.navbar"

@@ -41,7 +41,11 @@ class PersonalizationSettingsController(context: Context) : AbstractPreferenceCo
             R.id.system_themes to "com.android.settings.Settings\$PersonalizationsThemesActivity",
             R.id.toolbox to "com.android.settings.Settings\$PersonalizationsToolboxActivity",
             R.id.colors to "com.android.settings.Settings\$PersonalizationsColorsActivity",
-            R.id.fonts to "com.android.settings.Settings\$PersonalizationsFontsActivity"
+            R.id.fonts to "com.android.settings.Settings\$PersonalizationsFontsActivity",
+            R.id.sounds to "com.android.settings.Settings\$PersonalizationsSoundsActivity",
+            R.id.icon_shapes to "com.android.settings.Settings\$PersonalizationsIconsActivity",
+            R.id.notifications to "com.android.settings.Settings\$PersonalizationsNotificationsActivity",
+            R.id.whats_new to "com.rising.settings.fragments.about.ChangelogActivity"
         )
         personalizationsClickMap.forEach { (viewId, activityName) ->
             preference.findViewById<View>(viewId)?.setOnClickListener {
