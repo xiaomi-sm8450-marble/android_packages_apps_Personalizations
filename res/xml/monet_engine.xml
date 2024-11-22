@@ -80,9 +80,9 @@
         android:key="monet_engine_chroma_factor"
         android:title="@string/monet_engine_chroma_factor_title"
         android:summary="@string/monet_engine_chroma_factor_summary"
-        android:defaultValue="0"
-        android:max="100"
-        settings:min="-95"
+        android:defaultValue="100"
+        android:max="200"
+        settings:min="0"
         settings:interval="5"
         settings:units="%"
         settings:showSign="true" />
