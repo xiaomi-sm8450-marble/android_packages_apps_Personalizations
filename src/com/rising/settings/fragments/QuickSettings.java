@@ -15,6 +15,7 @@
  */
 package com.rising.settings.fragments;
 
+import android.app.ActivityManager;
 import android.content.ContentResolver;
 import android.content.Context;
 import android.os.Bundle;
@@ -95,6 +96,16 @@ public class QuickSettings extends SettingsPreferenceFragment implements
             checkQSOverlays(getActivity());
             return true;
         } else if (preference == mQSWidgetPref) {
+            String lastPackageName = Settings.System.getString(resolver,
+                    "media_session_last_package_name");
+            if (lastPackageName != null && !lastPackageName.isEmpty()) {
+                try {
+                    ActivityManager am = (ActivityManager) getActivity().getSystemService(Context.ACTIVITY_SERVICE);
+                    if (am != null) {
+                        am.forceStopPackage(lastPackageName);
+                    }
+                } catch (Exception e) {}
+            }
             SystemRestartUtils.showSystemUIRestartDialog(getContext());
             return true;
         }
