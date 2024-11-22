@@ -26,7 +26,7 @@ import com.android.settings.SettingsPreferenceFragment;
 import com.android.settings.search.BaseSearchIndexProvider;
 import com.android.settingslib.search.SearchIndexable;
 
-import com.android.internal.util.android.SystemRestartUtils;
+import com.android.settings.utils.SystemRestartUtils;
 
 import java.util.List;
 
