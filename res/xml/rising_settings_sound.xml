@@ -54,10 +54,23 @@
             lineage:isLineageSettings="true" />
 
         <com.android.settings.preferences.SystemSettingSwitchPreference
+            android:key="volume_panel_expandable"
+            android:title="@string/volume_panel_expandable_title"
+            android:summary="@string/volume_panel_expandable_summary"
+            android:defaultValue="true"/>
+
+        <com.android.settings.preferences.SystemSettingSwitchPreference
+            android:key="volume_panel_media_output"
+            android:title="@string/volume_panel_media_output_title"
+            android:summary="@string/volume_panel_media_output_summary"
+            android:defaultValue="true"/>
+
+        <com.android.settings.preferences.SystemSettingSwitchPreference
             android:key="volume_sound_haptics"
             android:title="@string/volume_sound_haptics_title"
             android:summary="@string/volume_sound_haptics_summary"
             android:defaultValue="false"
+            android:dependency="volume_panel_expandable"
             lineage:position="bottom"/>
     </PreferenceCategory>
 
