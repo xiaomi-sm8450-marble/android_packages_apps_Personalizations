@@ -32,16 +32,25 @@
         android:fragment="com.rising.settings.fragments.sound.AdaptivePlayback"
         lineage:position="top"
         />
-        
+
     <!-- Pulse music visualizer -->
     <com.android.settings.preferences.ui.AdaptivePreference
         android:key="pulse_settings"
         android:title="@string/pulse_settings"
         android:summary="@string/pulse_settings_summary"
         android:fragment="com.rising.settings.fragments.sound.PulseSettings"
+         />
+
+    <!-- Screenshot Sound  -->
+    <com.android.settings.preferences.SystemSettingSwitchPreference
+        android:key="screenshot_shutter_sound"
+        android:icon="@drawable/ic_cellphone_sound"
+        android:title="@string/screenshot_shutter_sound_title"
+        android:summary="@string/screenshot_shutter_sound_summary"
+        android:defaultValue="true"
         lineage:position="bottom"
          />
-        
+
     <!-- Volume panel -->
     <PreferenceCategory
         android:key="volume_panel"
