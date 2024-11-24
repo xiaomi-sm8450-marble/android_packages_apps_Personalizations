@@ -52,14 +52,6 @@
             android:title="@string/theme_customization_navbar_title"
             android:summary="@string/theme_customization_navbar_summary"
             android:fragment="com.rising.settings.fragments.ui.NavbarStyles"/>
-
-        <!-- QuickSettings -->
-        <com.android.settings.preferences.ui.AdaptivePreference
-            android:icon="@drawable/ic_settings_quicksettings"
-            android:title="@string/quicksettings_title"
-            android:summary="@string/qs_settings_summary"
-            android:fragment="com.rising.settings.fragments.QuickSettings" />
-
         <!-- Settings UI -->
         <com.android.settings.preferences.ui.AdaptivePreference
             android:key="settings_ui"
@@ -75,13 +67,6 @@
             android:title="@string/theme_customization_signal_icon_title"
             android:summary="@string/theme_customization_signal_icon_summary"
             android:fragment="com.rising.settings.fragments.ui.SignalIcons"/>
-
-        <!-- Status bar settings -->
-        <com.android.settings.preferences.ui.AdaptivePreference
-            android:icon="@drawable/ic_settings_statusbar"
-            android:title="@string/sb_settings_title"
-            android:summary="@string/sb_settings_summary"
-            android:fragment="com.rising.settings.fragments.StatusBar" />
 
         <!-- Volume Styles -->      
         <com.android.settings.preferences.SystemSettingListPreference

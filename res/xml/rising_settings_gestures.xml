@@ -20,10 +20,6 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:title="@string/gestures_title">
 
-    <com.android.settingslib.widget.IllustrationPreference
-        android:key="gesture_illustration"
-        app:lottie_rawRes="@raw/gesture_illustration" />
-
     <PreferenceCategory
         android:key="shake_gestures"
         android:title="@string/gestures_title">

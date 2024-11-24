@@ -45,6 +45,10 @@ class PersonalizationSettingsController(context: Context) : AbstractPreferenceCo
             R.id.sounds to "com.android.settings.Settings\$PersonalizationsSoundsActivity",
             R.id.icon_shapes to "com.android.settings.Settings\$PersonalizationsIconsActivity",
             R.id.notifications to "com.android.settings.Settings\$PersonalizationsNotificationsActivity",
+            R.id.quicksettings to "com.android.settings.Settings\$PersonalizationsQuickSettingsActivity",
+            R.id.status_bar to "com.android.settings.Settings\$PersonalizationsStatusBarActivity",
+            R.id.gestures to "com.android.settings.Settings\$PersonalizationsGesturesActivity",
+            R.id.clock_face to "com.android.settings.Settings\$PersonalizationsClockFacesActivity",
             R.id.whats_new to "com.rising.settings.fragments.about.ChangelogActivity"
         )
         personalizationsClickMap.forEach { (viewId, activityName) ->
