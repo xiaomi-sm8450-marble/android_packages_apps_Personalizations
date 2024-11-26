@@ -101,12 +101,14 @@
         android:key="others_ui"
         android:title="@string/category_name_ui_others">
 
-        <com.android.settings.preferences.SystemPropertySwitchPreference
-            android:key="persist.sys.wallpaper.blur_enabled"
-            android:title="@string/wallpaper_blur_title"
-            android:summary="@string/wallpaper_blur_summary"
-            android:defaultValue="false"
-            lineage:position="top" />
+        <!-- Wallpaper Settings -->
+        <com.android.settings.preferences.ui.AdaptivePreference
+            android:key="wallpaper_settings"
+            android:icon="@drawable/ic_settings_ui"
+            android:title="@string/wallpaper_settings_title"
+            android:summary="@string/wallpaper_settings_summary"
+            android:fragment="com.rising.settings.fragments.Wallpaper"
+            lineage:position="top"/>
 
         <!-- Screen Off animation -->
         <com.android.settings.preferences.SystemSettingListPreference
