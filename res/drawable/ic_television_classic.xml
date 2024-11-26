@@ -1,9 +1,15 @@
-<!-- drawable/television_classic.xml -->
 <vector xmlns:android="http://schemas.android.com/apk/res/android"
-        android:height="24dp"
-        android:width="24dp"
-        android:viewportWidth="24"
-        android:viewportHeight="24"
-        android:tint="?android:attr/colorControlNormal">
-    <path android:fillColor="#000" android:pathData="M8.16,3L6.75,4.41L9.34,7H4C2.89,7 2,7.89 2,9V19C2,20.11 2.89,21 4,21H20C21.11,21 22,20.11 22,19V9C22,7.89 21.11,7 20,7H14.66L17.25,4.41L15.84,3L12,6.84L8.16,3M4,9H17V19H4V9M19.5,9A1,1 0 0,1 20.5,10A1,1 0 0,1 19.5,11A1,1 0 0,1 18.5,10A1,1 0 0,1 19.5,9M19.5,12A1,1 0 0,1 20.5,13A1,1 0 0,1 19.5,14A1,1 0 0,1 18.5,13A1,1 0 0,1 19.5,12Z" />
+    android:width="24dp"
+    android:height="24dp"
+    android:viewportWidth="24"
+    android:viewportHeight="24"
+    android:tint="?android:attr/colorControlNormal">
+  <path
+      android:fillColor="@android:color/white"
+      android:pathData="M10,5h4v14h-4z"
+      android:strokeAlpha="0.3"
+      android:fillAlpha="0.3"/>
+  <path
+      android:fillColor="@android:color/white"
+      android:pathData="M20,21L20,3h-2v2h-2L16,3L8,3v2L6,5L6,3L4,3v18h2v-2h2v2h8v-2h2v2h2zM8,17L6,17v-2h2v2zM8,13L6,13v-2h2v2zM8,9L6,9L6,7h2v2zM14,19h-4L10,5h4v14zM16,7h2v2h-2L16,7zM16,11h2v2h-2v-2zM16,17v-2h2v2h-2z"/>
 </vector>

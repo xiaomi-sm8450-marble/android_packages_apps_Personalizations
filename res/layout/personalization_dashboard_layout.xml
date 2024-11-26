@@ -617,7 +617,7 @@
                 android:layout_marginTop="20dp"
                 android:ellipsize="end"
                 android:maxLines="1"
-                android:src="@drawable/ic_dashboard_notifications" />
+                android:src="@drawable/ic_custom_notifications" />
             <TextView
                 android:id="@+id/notifications_title"
                 android:layout_width="wrap_content"
@@ -649,7 +649,7 @@
                 android:layout_alignParentTop="true"
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="20dp"
-                android:src="@drawable/ic_cellphone_sound" />
+                android:src="@drawable/ic_custom_sound" />
             <TextView
                 android:id="@+id/sound_title"
                 android:layout_width="wrap_content"
