@@ -16,6 +16,10 @@
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
 
+    <!-- Peek Display -->
+    <string name="peek_display_notifications_title">Peek display</string>
+    <string name="peek_display_notifications_summary">Enable minimal bubble-like lockscreen notification style</string>
+
     <!-- Dashboard Revamped -->
     <string name="colors_title">Colours</string>
     <string name="fonts_title">Fonts</string>

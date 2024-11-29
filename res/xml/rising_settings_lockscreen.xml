@@ -88,6 +88,13 @@
             android:title="@string/lockscreen_battery_info_title"
             android:summary="@string/lockscreen_battery_info_summary"
             android:defaultValue="true"
+             />
+            
+        <com.android.settings.preferences.SecureSettingSwitchPreference
+            android:key="peek_display_notifications"
+            android:title="@string/peek_display_notifications_title"
+            android:summary="@string/peek_display_notifications_summary"
+            android:defaultValue="false"
             lineage:position="bottom" />
 
     </PreferenceCategory>
