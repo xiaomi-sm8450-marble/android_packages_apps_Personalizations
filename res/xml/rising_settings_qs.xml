@@ -90,15 +90,25 @@
     </PreferenceCategory>
 
     <PreferenceCategory
-        android:title="@string/qs_brightness_slider_category">
+         android:title="@string/qs_brightness_slider_category">
 
-        <com.android.settings.preferences.SecureSettingSwitchPreference
+        <!-- Brightness slider -->
+        <com.android.settings.preferences.SecureSettingListPreference
             android:key="qs_show_brightness_slider"
-            android:title="@string/status_bar_brightness_slider_title"
-            android:summary="@string/status_bar_brightness_slider_summary"
-            android:defaultValue="true"
+            android:title="@string/qs_show_brightness_slider_title"
+            android:entries="@array/qs_show_brightness_slider_entries"
+            android:entryValues="@array/qs_show_brightness_slider_values"
+            android:defaultValue="1"
             lineage:isLineageSettings="true"
             lineage:position="top" />
+
+        <com.android.settings.preferences.SecureSettingListPreference
+            android:key="qs_brightness_slider_position"
+            android:title="@string/qs_brightness_slider_position_title"
+            android:entries="@array/qs_brightness_slider_position_entries"
+            android:entryValues="@array/qs_brightness_slider_position_values"
+            lineage:isLineageSettings="true"
+            android:defaultValue="0" />
 
         <com.android.settings.preferences.SecureSettingSwitchPreference
             android:key="qs_show_auto_brightness"
@@ -107,6 +117,7 @@
             android:defaultValue="true"
             lineage:isLineageSettings="true"
             lineage:position="bottom" />
+
     </PreferenceCategory>
 
     <PreferenceCategory
