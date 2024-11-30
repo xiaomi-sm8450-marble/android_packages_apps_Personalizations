@@ -16,6 +16,10 @@
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
 
+    <!-- Sidebar -->
+    <string name="sidebar_title">Sidebar</string>
+    <string name="sidebar_summary">Quickly open apps in a floating window</string>
+
     <!-- Peek Display -->
     <string name="peek_display_notifications_title">Peek display</string>
     <string name="peek_display_notifications_summary">Enable minimal bubble-like lockscreen notification style</string>
