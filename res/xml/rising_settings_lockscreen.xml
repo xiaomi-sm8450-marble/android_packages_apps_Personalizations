@@ -177,20 +177,18 @@
         android:key="lockscreen_udfps_category"
         android:title="@string/udfps_settings_title">
         
-        <!--
         <com.android.settings.preferences.ui.AdaptivePreference
             android:key="udfps_icon_picker"
             android:title="@string/udfps_icon_picker_title"
             android:summary="@string/udfps_icon_picker_summary"
             android:fragment="com.rising.settings.fragments.lockscreen.UdfpsIconPicker"
-            lineage:position="top" />-->
+            lineage:position="top" />
 
         <com.android.settings.preferences.ui.AdaptivePreference
             android:key="udfps_recognizing_animation_preview"
             android:title="@string/udfps_recog_animation_effect_title"
             android:summary="@string/udfps_recog_animation_effect_summary"
-            android:fragment="com.rising.settings.fragments.lockscreen.UdfpsAnimation"
-            lineage:position="top"  />
+            android:fragment="com.rising.settings.fragments.lockscreen.UdfpsAnimation"  />
 
         <com.android.settings.preferences.SecureSettingSwitchPreference
             android:key="screen_off_udfps_enabled"
