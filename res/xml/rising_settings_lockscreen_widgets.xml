@@ -28,7 +28,18 @@
         lineage:position="solo" />
 
     <com.android.settings.preferences.SystemSettingListPreference
+        android:key="lockscreen_widgets_style"
+        android:dependency="lockscreen_widgets_enabled"
+        android:icon="@drawable/ic_color_bucket"
+        android:title="@string/lockscreen_widgets_style_title"
+        android:entries="@array/lockscreen_widgets_style_entries"
+        android:entryValues="@array/lockscreen_widgets_style_values" 
+        android:summary="%s"
+        lineage:position="solo" />
+
+    <com.android.settings.preferences.SystemSettingListPreference
         android:entries="@array/widget_entries"
+        android:dependency="lockscreen_widgets_enabled"
         android:icon="@drawable/widgets"
         android:title="@string/main_custom_widgets1"
         android:key="main_custom_widgets1"
@@ -38,6 +49,7 @@
 
     <com.android.settings.preferences.SystemSettingListPreference
         android:entries="@array/widget_entries"
+        android:dependency="lockscreen_widgets_enabled"
         android:icon="@drawable/widgets"
         android:title="@string/main_custom_widgets2"
         android:key="main_custom_widgets2"
@@ -47,6 +59,7 @@
 
     <com.android.settings.preferences.SystemSettingListPreference
         android:entries="@array/widget_entries"
+        android:dependency="lockscreen_widgets_enabled"
         android:icon="@drawable/action_key"
         android:title="@string/custom_widgets1"
         android:key="custom_widgets1"
@@ -56,6 +69,7 @@
 
     <com.android.settings.preferences.SystemSettingListPreference
         android:entries="@array/widget_entries"
+        android:dependency="lockscreen_widgets_enabled"
         android:icon="@drawable/action_key"
         android:title="@string/custom_widgets2"
         android:key="custom_widgets2"
@@ -65,6 +79,7 @@
 
     <com.android.settings.preferences.SystemSettingListPreference
         android:entries="@array/widget_entries"
+        android:dependency="lockscreen_widgets_enabled"
         android:icon="@drawable/action_key"
         android:title="@string/custom_widgets3"
         android:key="custom_widgets3"
@@ -74,6 +89,7 @@
 
     <com.android.settings.preferences.SystemSettingListPreference
         android:entries="@array/widget_entries"
+        android:dependency="lockscreen_widgets_enabled"
         android:icon="@drawable/action_key"
         android:title="@string/custom_widgets4"
         android:key="custom_widgets4"
