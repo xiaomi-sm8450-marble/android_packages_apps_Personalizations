@@ -16,6 +16,12 @@
 package com.rising.settings.fragments.lockscreen;
 
 import android.content.Context;
+import android.content.res.Configuration;
+import android.content.res.ColorStateList;
+import android.graphics.Color;
+import android.graphics.PorterDuff;
+import android.graphics.drawable.Drawable;
+import android.graphics.drawable.ColorDrawable;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.os.Handler;
@@ -26,6 +32,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
+import android.widget.ListView;
+import android.widget.PopupWindow;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.TextClock;
@@ -33,6 +41,7 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.core.content.ContextCompat;
 import androidx.viewpager.widget.PagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 
@@ -54,7 +63,6 @@ public class LockClockFontsPickerPreview extends SettingsPreferenceFragment {
 
     private ViewPager viewPager;
     private ClockPagerAdapter pagerAdapter;
-    private Spinner fontSpinner;
     private FontManager fontManager;
     private ExtendedFloatingActionButton applyFab;
     private View highlightGuide;
@@ -101,46 +109,63 @@ public class LockClockFontsPickerPreview extends SettingsPreferenceFragment {
         viewPager.setCurrentItem(mClockPosition);
 
         TextView fontMessage = rootView.findViewById(R.id.font_message);
-        fontSpinner = rootView.findViewById(R.id.font_spinner);
         List<String> fontPackageNames = fontManager.getAllFontPackages();
-        FontArrayAdapter fontAdapter = new FontArrayAdapter(
-                getActivity(),
-                android.R.layout.simple_spinner_dropdown_item,
-                fontPackageNames,
-                fontManager
-        );
-        fontSpinner.setAdapter(fontAdapter);
+        TextView fontSelector = rootView.findViewById(R.id.font_selector);
+        int backgroundColor = ContextCompat.getColor(getContext(), 
+                isNightMode() ? R.color.font_drop_down_bg_dark : R.color.font_drop_down_bg_light);
+        fontSelector.setTextColor(ContextCompat.getColor(getContext(), isNightMode() 
+                ? R.color.font_drop_down_bg_light 
+                : R.color.font_drop_down_bg_dark));
+        fontSelector.setBackgroundTintList(ColorStateList.valueOf(backgroundColor));
+
+        fontSelector.setOnClickListener(v -> {
+            View popupView = LayoutInflater.from(getActivity()).inflate(R.layout.popup_font_selector, null);
+            PopupWindow popupWindow = new PopupWindow(popupView, ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT, true);
+
+            ListView fontListView = popupView.findViewById(R.id.font_list_view);
+            FontArrayAdapter fontAdapter = new FontArrayAdapter(
+                    getActivity(),
+                    android.R.layout.simple_list_item_1,
+                    fontPackageNames,
+                    fontManager,
+                    isNightMode()
+            );
+            fontListView.setAdapter(fontAdapter);
+
+            fontListView.setOnItemClickListener((parent, view, position, id) -> {
+                mCurrentFontPosition = position;
+                String fontPackage = fontPackageNames.get(mCurrentFontPosition);
+                applyFontToAllPreviews(fontPackage);
+                fontSelector.setText(fontManager.getLabel(getContext(), fontPackage));
+                popupWindow.dismiss();
+            });
+
+            popupView.setBackgroundResource(R.drawable.custom_background);
+            Drawable backgroundDrawable = popupView.getBackground();
+            if (backgroundDrawable != null) {
+                backgroundDrawable.setColorFilter(backgroundColor, PorterDuff.Mode.SRC_ATOP);
+            }
+            popupWindow.setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+            popupWindow.setOutsideTouchable(true);
+            popupWindow.setFocusable(true);
+            popupWindow.showAsDropDown(v, 0, 10);
+        });
+
         if (isStaticClockStyle(mClockPosition)) {
-            fontSpinner.setVisibility(View.GONE);
             fontMessage.setVisibility(View.VISIBLE);
         } else {
-            fontSpinner.setVisibility(View.VISIBLE);
             fontMessage.setVisibility(View.GONE);
         }
 
         String currentFontPackage = fontManager.getCurrentFontPackage();
         mCurrentFontPosition = fontPackageNames.indexOf(currentFontPackage);
         if (mCurrentFontPosition != -1) {
-            fontSpinner.setSelection(mCurrentFontPosition);
             if (!isStaticClockStyle(mClockPosition)) {
                 String fontPackage = fontPackageNames.get(mCurrentFontPosition);
+                fontSelector.setText(fontManager.getLabel(getContext(), fontPackage));
                 applyFontToAllPreviews(fontPackage);
             }
         }
-
-        fontSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                mCurrentFontPosition = position;
-                if (!isStaticClockStyle(mClockPosition)) {
-                    String fontPackage = fontPackageNames.get(mCurrentFontPosition);
-                    applyFontToAllPreviews(fontPackage);
-                }
-            }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> parent) {}
-        });
 
         applyFab = rootView.findViewById(R.id.apply_extended_fab);
         applyFab.setOnClickListener(new View.OnClickListener() {
@@ -187,10 +212,8 @@ public class LockClockFontsPickerPreview extends SettingsPreferenceFragment {
             public void onPageSelected(int position) {
                 mClockPosition = position;
                 if (isStaticClockStyle(mClockPosition)) {
-                    fontSpinner.setVisibility(View.GONE);
                     fontMessage.setVisibility(View.VISIBLE);
                 } else {
-                    fontSpinner.setVisibility(View.VISIBLE);
                     fontMessage.setVisibility(View.GONE);
                     String fontPackage = fontPackageNames.get(mCurrentFontPosition);
                     applyFontToAllPreviews(fontPackage);
@@ -199,6 +222,11 @@ public class LockClockFontsPickerPreview extends SettingsPreferenceFragment {
         });
 
         return rootView;
+    }
+    
+    private boolean isNightMode() {
+        int nightModeFlags = getContext().getResources().getConfiguration().uiMode & Configuration.UI_MODE_NIGHT_MASK;
+        return nightModeFlags == Configuration.UI_MODE_NIGHT_YES;
     }
     
     private void updateClockOverlays(int clockStyle) {
