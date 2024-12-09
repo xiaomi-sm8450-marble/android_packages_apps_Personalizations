@@ -76,7 +76,7 @@
              android:entries="@array/volume_styles_entries"
              android:entryValues="@array/volume_styles_values"
              android:summary="%s"
-             android:defaultValue="2" />
+             android:defaultValue="0" />
 
         <!-- Wifi icon style -->
         <com.android.settings.preferences.ui.AdaptivePreference
