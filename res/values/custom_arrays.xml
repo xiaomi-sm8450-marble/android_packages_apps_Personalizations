@@ -1230,6 +1230,7 @@
         <item>@string/data</item>
         <item>@string/ringer</item>
         <item>@string/bt</item>
+        <item>@string/hotspot</item>
     </string-array>
     
     <string-array name="widget_values">
@@ -1243,6 +1244,7 @@
         <item>data</item>
         <item>ringer</item>
         <item>bt</item>
+        <item>hotspot</item>
     </string-array>
     
    <string-array name="volume_styles_entries" translatable="false">

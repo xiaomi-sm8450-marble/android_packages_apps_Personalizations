@@ -1912,6 +1912,7 @@
     <string name="data">Data</string>
     <string name="ringer">Ringer</string>
     <string name="bt">Bluetooth</string>
+    <string name="hotspot">Hotspot</string>
     
     <!-- Volume Styles -->
     <string name="revamped_aosp_style">Revamped AOSP UI style</string>
