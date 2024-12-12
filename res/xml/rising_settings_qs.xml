@@ -85,6 +85,14 @@
             android:summary="@string/qs_widgets_enabled_summary"
             android:defaultValue="false" />
 
+        <com.android.settings.preferences.SystemSettingListPreference
+             android:key="qs_header_clock_style"
+             android:title="@string/qs_header_clock_style_title"
+             android:entries="@array/qs_header_clock_style_entries"
+             android:entryValues="@array/qs_header_clock_style_values"
+             android:summary="%s"
+             android:defaultValue="0" />
+
         <!-- QS Tile layout -->
         <com.android.settings.preferences.ui.AdaptivePreference
             android:key="qs_tile_layout"
