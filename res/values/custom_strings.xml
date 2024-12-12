@@ -16,6 +16,19 @@
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
 
+    <!-- Notification Styles -->
+    <string name="notif_style_title">Notification Style</string>
+    <string name="notif_style1">Cyberpunk</string>
+    <string name="notif_style2">Duoline</string>
+    <string name="notif_style3">IOS</string>
+    <string name="notif_style4">Layers</string>
+
+    <!-- Progress Bar Styles -->
+    <string name="progress_bar_style_title">Progress Bar Style</string>
+    <string name="progress_bar_style1">Blocky Thumb</string>
+    <string name="progress_bar_style2">Minimal Thumb</string>
+    <string name="progress_bar_style3">Outline Thumb</string>
+
     <!-- Lockscreen Widgets Styles -->
     <string name="lockscreen_widgets_style_title">Lockscreen widgets style</string>
     <string name="lockscreen_widgets_style1">Material Rounded</string>
