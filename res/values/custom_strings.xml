@@ -16,6 +16,10 @@
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
 
+    <!-- Peek Display Styles -->
+    <string name="peek_display_minimalist">Minimalist</string>
+    <string name="peek_display_style_title">Peek display style</string>
+
     <!-- Notification Styles -->
     <string name="notif_style_title">Notification Style</string>
     <string name="notif_style1">Cyberpunk</string>
