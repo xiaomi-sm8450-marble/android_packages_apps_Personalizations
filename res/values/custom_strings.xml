@@ -16,6 +16,13 @@
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
 
+    <!-- Power Menu Styles -->
+    <string name="powermenu_style_title">Power Menu Style</string>
+    <string name="powermenu_style1">Cyberpunk</string>
+    <string name="powermenu_style2">Duoline</string>
+    <string name="powermenu_style3">IOS</string>
+    <string name="powermenu_style4">Layers</string>
+
     <!-- QS Header Clock Styles -->
     <string name="qs_header_clock_style_title">QS Header clock style</string>
     <string name="qs_header_style1">Chip</string>
