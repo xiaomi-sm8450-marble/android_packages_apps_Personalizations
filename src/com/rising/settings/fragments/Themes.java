@@ -59,7 +59,8 @@ public class Themes extends SettingsPreferenceFragment implements
     private static final String[] PROGRESS_BAR_OVERLAYS = {
             "com.android.theme.progressbar.blocky_thumb",
             "com.android.theme.progressbar.minimal_thumb",
-            "com.android.theme.progressbar.outline_thumb"
+            "com.android.theme.progressbar.outline_thumb",
+            "com.android.theme.progressbar.shishu"
     };
 
     private ThemeUtils mThemeUtils;
