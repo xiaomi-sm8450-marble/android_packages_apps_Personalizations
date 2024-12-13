@@ -26,6 +26,7 @@ import com.android.internal.logging.nano.MetricsProto;
 import com.android.settings.R;
 import com.android.settings.SettingsPreferenceFragment;
 import com.android.settings.search.BaseSearchIndexProvider;
+import com.android.settings.utils.SystemRestartUtils;
 import com.android.settingslib.search.SearchIndexable;
 
 import com.android.internal.util.android.ThemeUtils;
@@ -69,7 +70,10 @@ public class Themes extends SettingsPreferenceFragment implements
             mThemeUtils = ThemeUtils.getInstance(getContext());
         }
         mThemeUtils.setOverlayEnabled(notifStyleCategory, overlayThemeTarget, overlayThemeTarget);
-        if (notifStyle == 0) return;
+        if (notifStyle == 0) {
+            SystemRestartUtils.restartSystemUI(getContext());
+            return;
+        }
         switch (notifStyle) {
             case 1:
                 overlayPackage = "com.android.theme.notification.cyberpunk";
