@@ -82,6 +82,16 @@ public class Themes extends SettingsPreferenceFragment implements
 
         mPowerMenuStylePref = findPreference(KEY_POWERMENU_STYLE);
         mPowerMenuStylePref.setOnPreferenceChangeListener(this);
+        
+        com.android.settingslib.widget.LayoutPreference highlightPref = getPreferenceScreen().findPreference("themes_highlight_dashboard");
+        if (highlightPref != null) {
+            java.util.Map<Integer, String> highlightClickMap = new java.util.HashMap<>();
+            highlightClickMap.put(R.id.boot_styles_tile, "PersonalizationsBSActivity");
+            highlightClickMap.put(R.id.icon_pack_tile, "PersonalizationsIconPackActivity");
+            highlightClickMap.put(R.id.settings_tile, "PersonalizationsSettingsUIActivity");
+            highlightClickMap.put(R.id.wallpaper_styles_tile, "PersonalizationsWSActivity");
+            com.android.settings.utils.HighlightPrefUtils.Companion.setupHighlightPref(getContext(), highlightPref, highlightClickMap);
+        }
     }
 
     private void updateStyle(String key, String category, String target, 

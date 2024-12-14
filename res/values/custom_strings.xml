@@ -60,7 +60,7 @@
 
     <!-- Peek Display -->
     <string name="peek_display_notifications_title">Peek display</string>
-    <string name="peek_display_notifications_summary">Enable minimal lockscreen notification style</string>
+    <string name="peek_display_notifications_summary">Minimal lockscreen notification style</string>
     <string name="peek_display_location_title">Peek display location</string>
     <string name="peek_display_bottom_margin_title">Peek display (bottom) top margin</string>
 
@@ -229,7 +229,7 @@
     <string name="smart_5g_summary">Automatically switch between 5G and 4G to reduce battery consumption</string>
 
     <!-- BootAnimation Styles -->
-    <string name="boot_animation_styles_title">Bootanimation Styles</string>
+    <string name="boot_animation_styles_title">Bootanimation</string>
     <string name="boot_animation_applied">Bootanimation applied</string>
 
     <!-- Play Integrit Fix JSON Update -->
@@ -382,6 +382,7 @@
     <string name="dw_file_header_select_title">Select Depth Wallpaper Subject</string>
     <string name="dw_file_header_select_summary">Select depth wallpaper subject image from storage.</string>
     <string name="dw_wallpaper_enabled_title">Depth Wallpaper</string>
+    <string name="dw_wallpaper_enabled_summary_tile">Apply depth effect\nto wallpaper</string>
     <string name="dw_wallpaper_enabled_summary">Enable iOS-inspired depth wallpaper. Requires a subject image.</string>
     <string name="dw_wallpaper_opacity_title">Depth Wallpaper Opacity</string>
     <string name="depth_wallpaper_offset_x_title">Depth Wallpaper Horizontal Offset</string>
@@ -534,6 +535,7 @@
     <string name="default_value">Default</string>
     <string name="top">Top</string>
     <string name="bottom">Bottom</string>
+    <string name="highlights_title">Discover features</string>
 
     <!-- About risingOS -->
     <string name="about_rising">About risingOS</string>
@@ -1923,7 +1925,7 @@
     <string name="custom_clock_style">Custom Clock Style</string>
     
     <!-- Lockscreen widgets  -->
-    <string name="lockscreen_widgets_title">Lockscreen Widgets</string>
+    <string name="lockscreen_widgets_title">Widgets</string>
     <string name="lockscreen_widgets_enabled_title">Enable Lockscreen Widgets</string>
     <string name="lockscreen_widgets_enabled_summary">Add widgets to lockscreen</string>
     <string name="lockscreen_display_widgets_title">Device info Widget</string>

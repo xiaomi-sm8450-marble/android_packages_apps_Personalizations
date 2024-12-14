@@ -21,17 +21,13 @@
     android:title="@string/lockscreen_title">
 
     <PreferenceCategory
-        android:key="lockscreen_widgets"
-        android:title="@string/lockscreen_widgets_title">
+        android:key="highlights"
+        android:title="@string/highlights_title">
 
-        <!-- Lockscreen Widgets -->
-        <com.android.settings.preferences.ui.AdaptivePreference
-            android:key="lockscreen_widgets"
-            android:icon="@drawable/widgets"
-            android:title="@string/lockscreen_widgets_title"
-            android:summary="@string/lockscreen_widgets_enabled_summary"
-            android:fragment="com.rising.settings.fragments.lockscreen.LockScreenWidgets"
-            lineage:position="solo"/>
+        <com.android.settingslib.widget.LayoutPreference
+            android:key="lockscreen_highlight_dashboard"
+            android:layout="@layout/lockscreen_highlight_dashboard"
+            android:selectable="false"/>
 
     </PreferenceCategory>
 
@@ -39,24 +35,12 @@
         android:key="lockscreen_interface_category"
         android:title="@string/lockscreen_interface_category">
 
-        <com.android.settings.preferences.ui.AdaptivePreference
-            android:key="lockscreen_aod"
-            android:title="@string/doze_display_title"
-            android:summary="@string/doze_display_summary"
-            android:fragment="com.rising.settings.fragments.lockscreen.doze.AODSettings"
-            lineage:position="top"/>
-
-        <com.android.settings.preferences.ui.AdaptivePreference
-            android:key="depth_wallpaper"
-            android:title="@string/dw_wallpaper_enabled_title"
-            android:summary="@string/dw_wallpaper_enabled_summary"
-            android:fragment="com.rising.settings.fragments.WallpaperDepth"/>
-
         <com.android.settings.preferences.SystemSettingSwitchPreference
             android:key="lockscreen_show_carrier"
             android:title="@string/lockscreen_show_carrier_title"
             android:summary="@string/lockscreen_show_carrier_summary"
-            android:defaultValue="true" />
+            android:defaultValue="true"
+            lineage:position="top" />
 
         <com.android.settings.preferences.SystemSettingSwitchPreference
             android:key="ls_media_art_enabled"
@@ -88,14 +72,8 @@
             android:title="@string/lockscreen_battery_info_title"
             android:summary="@string/lockscreen_battery_info_summary"
             android:defaultValue="true"
+            lineage:position="bottom"
              />
-
-        <com.android.settings.preferences.ui.AdaptivePreference
-            android:key="peek_display"
-            android:title="@string/peek_display_notifications_title"
-            android:summary="@string/peek_display_notifications_summary"
-            android:fragment="com.rising.settings.fragments.lockscreen.PeekDisplay"
-            lineage:position="bottom"/>
 
     </PreferenceCategory>
 

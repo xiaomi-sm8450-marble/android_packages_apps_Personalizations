@@ -126,6 +126,15 @@ public class LockScreen extends SettingsPreferenceFragment
         PreferenceScreen screen = getPreferenceScreen();
         PreferenceUtils.hideEmptyCategory(udfpsCategory, screen);
         PreferenceUtils.hideEmptyCategory(fpCategory, screen);
+        com.android.settingslib.widget.LayoutPreference lockHighlightPref = screen.findPreference("lockscreen_highlight_dashboard");
+        if (lockHighlightPref != null) {
+            java.util.Map<Integer, String> lockHighlightClickMap = new java.util.HashMap<>();
+            lockHighlightClickMap.put(R.id.lockscreen_widgets_tile, "PersonalizationsWidgetsActivity");
+            lockHighlightClickMap.put(R.id.peek_display_tile, "PersonalizationsPDActivity");
+            lockHighlightClickMap.put(R.id.aod_tile, "PersonalizationsAODActivity");
+            lockHighlightClickMap.put(R.id.dw_tile, "PersonalizationsDWActivity");
+            com.android.settings.utils.HighlightPrefUtils.Companion.setupHighlightPref(getContext(), lockHighlightPref, lockHighlightClickMap);
+        }
     }
 
     @Override

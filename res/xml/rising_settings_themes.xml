@@ -20,30 +20,20 @@
     xmlns:settings="http://schemas.android.com/apk/res/com.android.settings"
     android:title="@string/themes_title">
 
-    <com.android.settingslib.widget.IllustrationPreference
-        android:key="themes_illustration"
-        lineage:lottie_rawRes="@raw/themes_illustration" />
+    <PreferenceCategory
+        android:key="highlights"
+        android:title="@string/highlights_title">
+
+        <com.android.settingslib.widget.LayoutPreference
+            android:key="themes_highlight_dashboard"
+            android:layout="@layout/themes_highlight_dashboard"
+            android:selectable="false"/>
+
+    </PreferenceCategory>
 
     <PreferenceCategory
         android:key="gen_ui"
         android:title="@string/gen_ui_settings_title">
-
-        <!-- Bootanimation style -->
-        <com.android.settings.preferences.ui.AdaptivePreference
-            android:key="bootanimation_fragment"
-            android:icon="@drawable/ic_movie"
-            android:title="@string/boot_animation_styles_title"
-            android:summary="@string/boot_animation_styles_summary"
-            android:fragment="com.rising.settings.fragments.BootAnimationSettings"
-            lineage:position="top" />
-
-        <!-- Icon pack -->
-        <com.android.settings.preferences.ui.AdaptivePreference
-            android:key="android.theme.customization.icon_pack"
-            android:icon="@drawable/ic_drawing"
-            android:title="@string/theme_customization_icon_pack_title"
-            android:summary="@string/theme_customization_icon_pack_summary"
-            android:fragment="com.rising.settings.fragments.ui.StatusbarIcons"/>
 
         <!-- Navbar Style -->
         <com.android.settings.preferences.ui.AdaptivePreference
@@ -51,7 +41,8 @@
             android:icon="@drawable/ic_navbar"
             android:title="@string/theme_customization_navbar_title"
             android:summary="@string/theme_customization_navbar_summary"
-            android:fragment="com.rising.settings.fragments.ui.NavbarStyles"/>
+            android:fragment="com.rising.settings.fragments.ui.NavbarStyles"
+            lineage:position="top"/>
             
         <!-- Notification Styles -->      
         <com.android.settings.preferences.SystemSettingListPreference
@@ -72,14 +63,6 @@
              android:entryValues="@array/powermenu_style_values"
              android:summary="%s"
              android:defaultValue="0" />
-
-        <!-- Settings UI -->
-        <com.android.settings.preferences.ui.AdaptivePreference
-            android:key="settings_ui"
-            android:icon="@drawable/ic_settings_ui"
-            android:title="@string/settings_ui_title"
-            android:summary="@string/settings_ui_summary"
-            android:fragment="com.rising.settings.fragments.ui.Settings"/>
 
         <!-- Signal icon style -->
         <com.android.settings.preferences.ui.AdaptivePreference
@@ -124,15 +107,6 @@
         android:key="others_ui"
         android:title="@string/category_name_ui_others">
 
-        <!-- Wallpaper Settings -->
-        <com.android.settings.preferences.ui.AdaptivePreference
-            android:key="wallpaper_settings"
-            android:icon="@drawable/ic_settings_ui"
-            android:title="@string/wallpaper_settings_title"
-            android:summary="@string/wallpaper_settings_summary"
-            android:fragment="com.rising.settings.fragments.Wallpaper"
-            lineage:position="top"/>
-
         <!-- Screen Off animation -->
         <com.android.settings.preferences.SystemSettingListPreference
             android:key="screen_off_animation"
@@ -142,6 +116,7 @@
             android:entries="@array/screen_off_animation_entries"
             android:entryValues="@array/screen_off_animation_values"
             android:defaultValue="0"
+            lineage:position="top"
              />
 
         <com.android.settings.preferences.SystemSettingSwitchPreference
