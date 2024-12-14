@@ -60,7 +60,9 @@
 
     <!-- Peek Display -->
     <string name="peek_display_notifications_title">Peek display</string>
-    <string name="peek_display_notifications_summary">Enable minimal bubble-like lockscreen notification style</string>
+    <string name="peek_display_notifications_summary">Enable minimal lockscreen notification style</string>
+    <string name="peek_display_location_title">Peek display location</string>
+    <string name="peek_display_bottom_margin_title">Peek display (bottom) top margin</string>
 
     <!-- Dashboard Revamped -->
     <string name="colors_title">Colours</string>
@@ -530,6 +532,8 @@
     <string name="reevaluating_theme">Reloading system themes...</string>
     <string name="wellbeing_title">Google Wellbeing</string>
     <string name="default_value">Default</string>
+    <string name="top">Top</string>
+    <string name="bottom">Bottom</string>
 
     <!-- About risingOS -->
     <string name="about_rising">About risingOS</string>
