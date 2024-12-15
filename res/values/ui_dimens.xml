@@ -89,4 +89,5 @@
     <dimen name="lockscreen_preview_height_with_no_widgets">380dp</dimen>
     <dimen name="highlight_summary_width">132dp</dimen>
     <dimen name="highlight_card_height">150dp</dimen>
+    <dimen name="highlight_title_size">16sp</dimen>
 </resources>

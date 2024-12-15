@@ -35,7 +35,7 @@
                     android:layout_alignParentTop="true"
                     android:scaleType="centerCrop"/>
                 <TextView
-                    android:textSize="18sp"
+                    android:textSize="@dimen/highlight_title_size"
                     android:textColor="@color/top_level_preference_text_color_primary"
                     android:id="@+id/lockscreen_widgets_title"
                     android:layout_width="match_parent"
@@ -82,7 +82,7 @@
                         android:layout_alignParentTop="true"
                         android:scaleType="centerCrop"/>
                     <TextView
-                        android:textSize="18sp"
+                        android:textSize="@dimen/highlight_title_size"
                         android:textColor="@color/top_level_preference_text_color_primary"
                         android:id="@+id/peek_display_notifications_title"
                         android:layout_width="match_parent"
@@ -135,7 +135,7 @@
                     android:layout_alignParentTop="true"
                     android:scaleType="centerCrop"/>
                 <TextView
-                    android:textSize="18sp"
+                    android:textSize="@dimen/highlight_title_size"
                     android:textColor="@color/top_level_preference_text_color_primary"
                     android:id="@+id/doze_display_title"
                     android:layout_width="match_parent"
@@ -182,7 +182,7 @@
                         android:layout_alignParentTop="true"
                         android:scaleType="centerCrop"/>
                     <TextView
-                        android:textSize="18sp"
+                        android:textSize="@dimen/highlight_title_size"
                         android:textColor="@color/top_level_preference_text_color_primary"
                         android:id="@+id/dw_title"
                         android:layout_width="match_parent"
