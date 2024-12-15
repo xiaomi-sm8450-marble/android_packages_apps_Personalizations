@@ -16,6 +16,10 @@
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
 
+    <!-- Now Bar -->
+    <string name="keyguard_now_bar_enabled_title">Now Bar</string>
+    <string name="keyguard_now_bar_enabled_summary">Enable now bar lockscreen widgets</string>
+
     <!-- Power Menu Styles -->
     <string name="powermenu_style_title">Power Menu Style</string>
     <string name="powermenu_style1">Cyberpunk</string>

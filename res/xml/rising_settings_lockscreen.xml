@@ -72,8 +72,14 @@
             android:title="@string/lockscreen_battery_info_title"
             android:summary="@string/lockscreen_battery_info_summary"
             android:defaultValue="true"
-            lineage:position="bottom"
-             />
+            />
+             
+        <com.android.settings.preferences.SystemSettingSwitchPreference
+            android:key="keyguard_now_bar_enabled"
+            android:title="@string/keyguard_now_bar_enabled_title"
+            android:summary="@string/keyguard_now_bar_enabled_summary"
+            android:defaultValue="false"
+            lineage:position="bottom" />
 
     </PreferenceCategory>
 
