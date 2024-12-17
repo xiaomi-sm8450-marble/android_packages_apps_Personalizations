@@ -21,6 +21,20 @@
         />
 
     <com.android.settings.preferences.SystemSettingSeekBarPreference
+        android:key="qs_tile_label_size"
+        android:title="@string/qs_tile_label_size_title"
+        android:defaultValue="14"
+        android:max="15"
+        settings:min="0" />
+
+    <com.android.settings.preferences.SystemSettingSeekBarPreference
+        android:key="qs_tile_summary_size"
+        android:title="@string/qs_tile_summary_size_title"
+        android:defaultValue="12"
+        android:max="15"
+        settings:min="0"/>
+
+    <com.android.settings.preferences.SystemSettingSeekBarPreference
         android:key="fling_animation_duration"
         android:title="@string/fling_animation_duration_title"
         android:defaultValue="350"
