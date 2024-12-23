@@ -52,12 +52,6 @@
             android:summary="@string/gms_spoof_summary"
             android:defaultValue="true"/>
 
-        <com.android.settings.preferences.SystemPropertySwitchPreference
-            android:key="persist.sys.entryhooks_enabled"
-            android:title="@string/entryhooks_title"
-            android:summary="@string/entryhooks_summary"
-            android:defaultValue="false" />
-
         <com.android.settings.preferences.ui.AdaptivePreference
             android:key="show_pif_properties"
             android:title="@string/show_pif_properties_title"
