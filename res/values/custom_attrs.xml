@@ -50,6 +50,12 @@
         <attr name="dividerBelow" format="boolean" />
     </declare-styleable>
 
+    <declare-styleable name="CircularProgressView">
+        <attr name="progressColor" format="color"/>
+        <attr name="backgroundColor" format="color"/>
+        <attr name="strokeWidth" format="dimension"/>
+    </declare-styleable>
+
     <!-- Base attributes available to CustomSeekBarPreference. -->
     <declare-styleable name="CustomSeekBarPreference">
         <attr name="defaultValueText" format="string" />
