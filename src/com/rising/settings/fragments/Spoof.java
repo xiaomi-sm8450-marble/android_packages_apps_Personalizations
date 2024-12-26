@@ -16,7 +16,7 @@
 package com.rising.settings.fragments;
 
 import android.app.Activity;
-import android.app.AlertDialog; 
+import android.app.AlertDialog;
 import android.content.Context;
 import android.content.ContentResolver;
 import android.content.Intent;
@@ -53,7 +53,6 @@ public class Spoof extends SettingsPreferenceFragment implements Preference.OnPr
 
     public static final String TAG = "Spoof";
     private static final String SYS_GMS_SPOOF = "persist.sys.pixelprops.gms";
-    private static final String SYS_KEYBOX_SPOOF = "persist.sys.entryhooks_enabled";
     private static final String SYS_GOOGLE_SPOOF = "persist.sys.pixelprops.google";
     private static final String SYS_PROP_OPTIONS = "persist.sys.pixelprops.all";
     private static final String SYS_GAMEPROP_ENABLED = "persist.sys.gameprops.enabled";
@@ -65,7 +64,6 @@ public class Spoof extends SettingsPreferenceFragment implements Preference.OnPr
     private boolean isPixelDevice;
 
     private Preference mGmsSpoof;
-    private Preference mKeyBoxSpoof;
     private Preference mGoogleSpoof;
     private Preference mGphotosSpoof;
     private Preference mPropOptions;
@@ -86,7 +84,6 @@ public class Spoof extends SettingsPreferenceFragment implements Preference.OnPr
         mGamePropsSpoof = findPreference(SYS_GAMEPROP_ENABLED);
         mGphotosSpoof = findPreference(SYS_GPHOTOS_SPOOF);
         mGmsSpoof = findPreference(SYS_GMS_SPOOF);
-        mKeyBoxSpoof = findPreference(SYS_KEYBOX_SPOOF);
         mGoogleSpoof = findPreference(SYS_GOOGLE_SPOOF);
         mPropOptions = findPreference(SYS_PROP_OPTIONS);
         mPifJsonFilePreference = findPreference(KEY_PIF_JSON_FILE_PREFERENCE);
@@ -98,7 +95,7 @@ public class Spoof extends SettingsPreferenceFragment implements Preference.OnPr
 
         mGmsSpoof.setDependency(SYS_PROP_OPTIONS);
         mGphotosSpoof.setDependency(SYS_PROP_OPTIONS);
-        
+
         if (isPixelDevice) {
             mGoogleSpoof.setDefaultValue(false);
             if (isMainlineTensorModel(model)) {
@@ -108,7 +105,6 @@ public class Spoof extends SettingsPreferenceFragment implements Preference.OnPr
         }
 
         mGmsSpoof.setOnPreferenceChangeListener(this);
-        mKeyBoxSpoof.setOnPreferenceChangeListener(this);
         mPropOptions.setOnPreferenceChangeListener(this);
         mGoogleSpoof.setOnPreferenceChangeListener(this);
         mGphotosSpoof.setOnPreferenceChangeListener(this);
@@ -123,7 +119,7 @@ public class Spoof extends SettingsPreferenceFragment implements Preference.OnPr
             openFileSelector(10002);
             return true;
         });
-        
+
         mWikiLink = findPreference("wiki_link");
         if (mWikiLink != null) {
             mWikiLink.setOnPreferenceClickListener(preference -> {
@@ -133,12 +129,12 @@ public class Spoof extends SettingsPreferenceFragment implements Preference.OnPr
                 return true;
             });
         }
-        
+
         mUpdateJsonButton.setOnPreferenceClickListener(preference -> {
             updatePropertiesFromUrl("https://raw.githubusercontent.com/RisingOS-staging/risingOS_wiki/refs/heads/fifteen/spoofing/PlayIntergrity/pif.json");
             return true;
         });
-        
+
         Preference showPropertiesPref = findPreference("show_pif_properties");
         if (showPropertiesPref != null) {
             showPropertiesPref.setOnPreferenceClickListener(preference -> {
@@ -147,7 +143,7 @@ public class Spoof extends SettingsPreferenceFragment implements Preference.OnPr
             });
         }
     }
-    
+
     private boolean isMainlineTensorModel(String model) {
         return model.matches("Pixel [8-9][a-zA-Z ]*");
     }
@@ -172,7 +168,7 @@ public class Spoof extends SettingsPreferenceFragment implements Preference.OnPr
             }
         }
     }
-    
+
     private void showPropertiesDialog() {
         StringBuilder properties = new StringBuilder();
         try {
@@ -312,8 +308,7 @@ public class Spoof extends SettingsPreferenceFragment implements Preference.OnPr
 
     @Override
     public boolean onPreferenceChange(Preference preference, Object newValue) {
-        if (preference == mGmsSpoof 
-            || preference == mKeyBoxSpoof
+        if (preference == mGmsSpoof
             || preference == mPropOptions
             || preference == mGoogleSpoof
             || preference == mGphotosSpoof
