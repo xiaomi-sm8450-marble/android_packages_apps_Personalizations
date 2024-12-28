@@ -2085,7 +2085,8 @@
     <string name="lockscreen_show_carrier_title">Carrier name</string>
     <string name="lockscreen_show_carrier_summary">Display carrier name in the status bar</string>
     
-    <!-- Android P animation style -->
-    <string name="pie_animation_style_title">Android P animation style</string>
-    <string name="pie_animation_style_summary">Enable Android P \"Default\" animations</string>
+    <!-- System Animation styles -->
+    <string name="system_animation_style_title">System animation style</string>
+    <string name="pie_system_animation_style">Android P</string>
+    <string name="scale_system_animation_style">Scale</string>
 </resources>
