@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!--
-     Copyright (C) 2017-2022 crDroid Android Project
+     Copyright (C) 2017-2024 crDroid Android Project
 
      Licensed under the Apache License, Version 2.0 (the "License");
      you may not use this file except in compliance with the License.
@@ -14,36 +14,50 @@
      See the License for the specific language governing permissions and
      limitations under the License.
 -->
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:minHeight="?android:attr/listPreferredItemHeightSmall"
+    android:minHeight="72dp"
     android:gravity="center_vertical"
-    android:layout_marginStart="@dimen/card_margin_start_aqua"
-    android:layout_marginEnd="@dimen/card_margin_end_aqua"
-    android:layout_marginBottom="@dimen/pref_bot_card_bottom_margin"
-    android:layout_marginTop="2dp"
-    android:background="@drawable/rising_preference_bottom_background_card"
-    android:paddingEnd="20dp"
-    android:paddingStart="20dp"
+    android:paddingStart="?android:attr/listPreferredItemPaddingStart"
+    android:paddingEnd="?android:attr/listPreferredItemPaddingEnd"
+    android:background="@drawable/settingslib_round_background_bottom"
     android:clipToPadding="false">
+
+    <LinearLayout
+        android:id="@+id/icon_frame"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:minWidth="40dp"
+        android:minHeight="40dp"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:paddingStart="16dp"
+        android:layout_marginEnd="-8dp">
+
+        <androidx.preference.internal.PreferenceImageView
+            android:id="@android:id/icon"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:scaleType="centerInside"/>
+
+    </LinearLayout>
 
     <RelativeLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_weight="1"
         android:paddingTop="16dp"
-        android:paddingBottom="16dp">
+        android:paddingBottom="16dp"
+        android:paddingStart="@dimen/homepage_preference_text_padding_start"
+        android:paddingEnd="16dp">
 
         <TextView
             android:id="@android:id/title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:singleLine="true"
-            android:textColor="@color/top_level_preference_text_color_primary"
-            style="@style/op_control_text_style_h6" 
+            android:textAppearance="?android:attr/textAppearanceListItem"
             android:ellipsize="marquee" />
 
         <TextView
@@ -52,8 +66,8 @@
             android:layout_height="wrap_content"
             android:layout_below="@android:id/title"
             android:layout_alignStart="@android:id/title"
-            style="@style/op_control_text_style_body1"
-            android:textColor="@color/top_level_preference_text_color_secondary"
+            android:textAppearance="?android:attr/textAppearanceListItemSecondary"
+            android:textColor="?android:attr/textColorSecondary"
             android:maxLines="10"
             android:ellipsize="end" />
 
@@ -70,8 +84,8 @@
                 android:layout_height="wrap_content"
                 android:layout_alignParentStart="true"
                 android:layout_centerVertical="true"
-                style="@style/op_control_text_style_body1"
-                android:textColor="@color/op_control_text_color_secondary"
+                android:textAppearance="?android:attr/textAppearanceListItemSecondary"
+                android:textColor="?android:attr/textColorSecondary"
                 android:maxLines="1"
                 android:ellipsize="end" />
 
@@ -119,24 +133,6 @@
                 android:layout_centerVertical="true" />
         </RelativeLayout>
     </RelativeLayout>
-
-        <FrameLayout
-            android:id="@+id/icon_frame"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginEnd="16dp">
-
-            <androidx.preference.internal.PreferenceImageView
-                android:id="@android:id/icon"
-                android:padding="1.5dip"
-                android:layout_width="24dp"
-                android:layout_height="24dp"
-                android:tint="?android:attr/colorAccent"
-                app:maxHeight="52.5dp"
-                app:maxWidth="52.5dp" />
-
-        </FrameLayout>
 
     <!-- Preference should place its actual preference widget here. -->
     <LinearLayout android:id="@android:id/widget_frame"
