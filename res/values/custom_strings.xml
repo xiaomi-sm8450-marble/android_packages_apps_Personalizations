@@ -814,6 +814,7 @@
     <string name="edge_light_repeat_animation_summary_on">Repeat until timeout</string>
     <string name="edge_light_repeat_animation_summary_off">Show only once</string>
     <string name="edge_light_color_mode_title">Edge light color mode</string>
+    <string name="edge_light_enabled_title">Enable Edge light</string>
 
     <!-- Ambient Ticker -->
     <string name="pulse_on_new_tracks_title">Music ticker</string>

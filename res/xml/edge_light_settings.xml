@@ -25,7 +25,8 @@
 
     <com.android.settings.preferences.SystemSettingSwitchPreference
         android:key="edge_light_enabled"
-        android:title="@string/enable"
+        android:title="@string/edge_light_enabled_title"
+        android:summary="@string/edge_light_summary"
         android:defaultValue="false"
         lineage:position="top" />
 
