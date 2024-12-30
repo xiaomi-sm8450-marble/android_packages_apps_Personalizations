@@ -18,6 +18,7 @@
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:androidprv="http://schemas.android.com/apk/prv/res/android"
+    android:theme="@style/op_control_text_style_base"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:paddingStart="?android:attr/listPreferredItemPaddingStart"
@@ -64,6 +65,7 @@
             android:textAlignment="viewStart"
             android:singleLine="true"
             android:textAppearance="?android:attr/textAppearanceListItem"
+            android:textSize="18sp"
             android:hyphenationFrequency="normalFast"
             android:lineBreakWordStyle="phrase"
             android:ellipsize="marquee" />
@@ -79,6 +81,7 @@
             android:textAlignment="viewStart"
             android:textAppearance="?android:attr/textAppearanceListItemSecondary"
             android:textColor="?android:attr/textColorSecondary"
+            android:textSize="13sp"
             android:maxLines="4"
             android:hyphenationFrequency="normalFast"
             android:lineBreakWordStyle="phrase"
