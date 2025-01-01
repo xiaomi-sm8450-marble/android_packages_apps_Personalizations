@@ -9,8 +9,10 @@
         android:layout_width="match_parent"
         android:layout_marginHorizontal="60dp"
         android:layout_height="300dp"
-        android:scaleType="centerInside"
-        android:contentDescription="@string/boot_animation_preview_desc" />
+        android:scaleType="centerCrop"
+        android:contentDescription="@string/boot_animation_preview_desc"
+        android:background="@drawable/preview_bg"
+        android:clipToOutline="true" />
 
     <ProgressBar
         android:id="@+id/bootanimation_loading_spinner"
