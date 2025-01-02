@@ -19,6 +19,7 @@
     <!-- Tensor spoof -->
     <string name="tensor_spoof_title">Spoof tensor features</string>
     <string name="tensor_spoof_summary">Unlock tensor/pixel features</string>
+    <string name="tensor_spoof_option_disabled">Tensor features are always enabled on this device</string>
 
     <!-- AOD Settings -->
     <string name="aod_display_category_title">Always-On-Display</string>
@@ -213,7 +214,7 @@
     <string name="settings_random4">Finders keepers</string>
     <string name="settings_random5">Search settings</string>
     <string name="settings_random6">You can\'t find something that doesn\'t exists!</string>
-    
+
 
     <!-- User Card -->
     <string name="user_card_title">User</string>
@@ -328,17 +329,17 @@
     <string name="desktop_mode_pc_title">Desktop Mode</string>
     <string name="desktop_mode_pc_summary">Emulate device to PC or external display</string>
 
-    <!-- Lockscreen Clock Highlight Guide --> 
+    <!-- Lockscreen Clock Highlight Guide -->
     <string name="ls_clock_face_highlight_text">Swipe left or right to preview clock styles</string>
 
-    <!-- Lockscreen Clock Revamp --> 
+    <!-- Lockscreen Clock Revamp -->
     <string name="ls_clock_custom_font_not_supported">Selected clock does not support custom fonts</string>
 
-    <!-- Media Art --> 
+    <!-- Media Art -->
     <string name="ls_media_art_fade_level_title">Media cover art fade level</string>
     <string name="ls_media_art_fade_level_summary">Set media cover art fade level</string>
 
-    <!-- Apply Button --> 
+    <!-- Apply Button -->
     <string name="apply_change_button_title">Apply</string>
 
     <!-- Volume Panel -->
@@ -619,8 +620,8 @@
     <!-- Notification log -->
     <string name="notification_log_summary">Show notifications history log</string>
 
-    <!-- Default getTimeSpentInApp string for Wellbeing to display. [CHAR LIMIT=NONE] --> 
-    <string name="duration_less_than_one_minute">Less than 1 Minute</string> 
+    <!-- Default getTimeSpentInApp string for Wellbeing to display. [CHAR LIMIT=NONE] -->
+    <string name="duration_less_than_one_minute">Less than 1 Minute</string>
 
     <!-- Summary for Wellbeing screen time usage. [CHAR LIMIT=NONE] -->
     <string name="screen_time_summary_usage_today">%1$s today</string>
@@ -948,8 +949,8 @@
     <string name="status_bar_battery_percent_title">Battery percent</string>
     <string name="status_bar_battery_percent_hidden">Hidden</string>
     <string name="status_bar_battery_percent_text_inside">Inside the icon</string>
-    <string name="status_bar_battery_percent_text_next_right">Next to the icon (right)</string> 
-    <string name="status_bar_battery_percent_text_next_left">Next to the icon (left)</string> 
+    <string name="status_bar_battery_percent_text_next_right">Next to the icon (right)</string>
+    <string name="status_bar_battery_percent_text_next_left">Next to the icon (left)</string>
     <string name="status_bar_battery_text_charging_title">Battery percentage when charging</string>
     <string name="status_bar_battery_text_charging_summary">Always display battery percentage when charging</string>
     <string name="status_bar_battery_style_icon_rlandscape_style_a">Landscape R Style A</string>
@@ -1367,7 +1368,7 @@
     <!-- Unlock FPS for specific games -->
     <string name="use_games_spoof_title">Unlock higher FPS in games</string>
     <string name="use_games_spoof_summary">Spoof your device as different model for specific games to unlock higher FPS</string>
-    
+
     <string name="spoof_option_disabled">Disabling PixelProps spoofing is not supported by current device</string>
 
     <!-- Volume panel -->
@@ -1635,13 +1636,13 @@
     <string name="statusbar_clock_chip_summary">Display accented chip behind clock</string>
     <string name="solid_accent">Solid color accent</string>
     <string name="outline">Outline</string>
-    <string name="solid_accent_gradient">Solid color accent gradient</string>   
+    <string name="solid_accent_gradient">Solid color accent gradient</string>
     <string name="solid_gradient">Solid Gradient side</string>
     <string name="solid_gradient_corner">Solid accent gradient sharp</string>
     <string name="solid_gradient_void">Gradient Void</string>
     <string name="solid_gradient_neumorph">Neumorph gradient</string>
     <string name="solid_gradient_stroke">Sharp gradient stroke</string>
-    <string name="solid_accent_transperent">Accent transperent</string>    
+    <string name="solid_accent_transperent">Accent transperent</string>
     <string name="solid_gradient_light">Gradient light</string>
     <string name="solid_gradient_shape">Sharp gradient corner</string>
     <string name="solid_gradient_void_light">Gradient Void light</string>
@@ -1902,21 +1903,21 @@
     <string name="volume_slider_haptics_intensity_title">Volume slider haptics intensity</string>
     <string name="qs_panel_tile_haptic_intensity_title">QS tile haptics intensity</string>
     <string name="qs_haptics_intensity_title">Qs fling haptics intensity</string>
-    
+
     <!-- QuickSwitch -->
     <string name="quickswitch_launcher_title">QuickSwitch</string>
     <string name="quickswitch_launcher_summary">Customize default homescreen app</string>
     <string name="nothing_launcher_customizations_title">Nothing launcher customizations</string>
     <string name="nothing_launcher_customizations_summary">Customize nothing launcher homescreen app</string>
     <string name="quickswitch_not_supported">QuickSwitch is not supported; the system only has one launcher.</string>
-    
+
    <!-- Font styles -->
     <string name="font_styles_title">Font Styles</string>
     <string name="font_styles_summary">Change system font style</string>
     <string name="font_preview_text">The quick brown\nfox jumps over the\nlazy dog\n\nABCDEFGHIJKLM\nNOPQRSTUVWXYZ\nabcdefghijkl\nmnopqrstuvwxyz\n1234567890</string>
     <string name="apply_button_text">Apply</string>
     <string name="font_picker_select_font">Select font</string>
-    
+
     <!-- Sound Engine -->
     <string name="ad_sound_engine_title">Sound Engine&#8482;</string>
     <string name="ad_sound_engine_summary">Tune and optimize audio quality.</string>
@@ -1938,16 +1939,16 @@
     <string name="sound_engine_profile_smart_activated">Adaptive Sound Engine: Smart mode activated</string>
     <string name="sound_engine_profile_game_activated">Adaptive Sound Engine: Game mode activated</string>
     <string name="sound_engine_profile_theater_activated">Adaptive Sound Engine: Theater mode activated</string>
-    
+
     <!-- UI styles -->
     <string name="theme_customization_ui_style_title">UI Style</string>
     <string name="theme_customization_ui_style_summary">Set custom style for your interface</string>
-    
+
     <!-- Custom Clock Style -->
     <string name="lockscreen_clock_category_title">Lockscreen clock</string>
     <string name="lockscreen_clock_category_summary">Configure lockscreen clock styles</string>
     <string name="custom_clock_style">Custom Clock Style</string>
-    
+
     <!-- Lockscreen widgets  -->
     <string name="lockscreen_widgets_title">Widgets</string>
     <string name="lockscreen_widgets_enabled_title">Enable Lockscreen Widgets</string>
@@ -1975,7 +1976,7 @@
     <string name="ringer">Ringer</string>
     <string name="bt">Bluetooth</string>
     <string name="hotspot">Hotspot</string>
-    
+
     <!-- Volume Styles -->
     <string name="revamped_aosp_style">Revamped AOSP UI style</string>
     <string name="rui_style">Realme UI style</string>
@@ -1987,11 +1988,11 @@
     <string name="outline_style">Outline style</string>
     <string name="shaded_layer_style">Shaded Layer style</string>
     <string name="volume_style_title">Volume panel styles</string>
-    
+
     <!-- IME button space -->
     <string name="navigation_bar_hide_ime_space_title">Hide IME button space</string>
     <string name="navigation_bar_hide_ime_space_summary">Hide IME button space below keyboard</string>
-    
+
     <!-- Status bar padding -->
     <string name="statusbar_padding">Status bar padding</string>
     <string name="statusbar_top_padding">Top padding</string>
@@ -2000,11 +2001,11 @@
 
     <!-- Status bar max notification -->
     <string name="statusbar_max_notifications_title">Status bar max notification icons</string>
-    
-    <!-- Colored QS notification icons -->  
+
+    <!-- Colored QS notification icons -->
     <string name="qs_colored_icons_title">Colored QS notification icons</string>
     <string name="qs_colored_icons_summary">Show colored app icon instead of monochrome icons</string>
-    
+
     <!-- Vertical Mirror -->
     <string name="pulse_vertical_mirror_title">Vertical Mirror</string>
     <string name="pulse_vertical_mirror_summary">Create other pulse and flip vertically</string>
@@ -2016,10 +2017,10 @@
     <string name="pulse_custom_gravity_center">Center</string>
     <string name="visualizer_center_mirrored_title">Center mirrored</string>
     <string name="visualizer_center_mirrored_summary">Set the visualizer in center mirrored mode</string>
-    
+
      <!-- Fingerprint customizations -->
     <string name="lockscreen_fp_category_title">Fingerprint customizations</string>
-    
+
      <!-- Settings Styles -->
     <string name="settings_ui_title">Settings UI</string>
     <string name="settings_ui_summary">Configure settings app user interface</string>
@@ -2033,13 +2034,13 @@
     <string name="settings_homepage_showcase_summary">Show device showcase on homepage</string>
     <string name="search_bar_style_title">Search Bar Style</string>
     <string name="settings_sb_style_1">Android 15 (Revamped)</string>
-    
+
     <!-- GMS Spoof -->
     <string name="gms_spoof_title">Enable GMS spoof</string>
     <string name="gms_spoof_summary">Spoof your device to pass Google Play Attestation</string>
     <string name="entryhooks_title">Enable Keybox spoofing</string>
     <string name="entryhooks_summary">Spoof device keybox to pass Play Integrity</string>
-    
+
      <!-- Shake Gestures -->
     <string name="shake_gestures_enabled_title">Shake Gestures</string>
     <string name="shake_gestures_enabled_summary">Shake your device to perform actions</string>
@@ -2053,7 +2054,7 @@
     <string name="shake_gestures_screenshot">Take Screenshot</string>
     <string name="shake_gestures_intensity_title">Shake Gestures Intensity</string>
     <string name="shake_gestures_intensity_summary">Adjust the sensitivity of shake gestures</string>
-    
+
     <!-- Adaptive Charging -->
     <string name="adaptive_charging_enabled_title">Optimized Charging</string>
     <string name="adaptive_charging_enabled_summary">Enable adaptive power strategy while device is charging</string>
@@ -2098,11 +2099,11 @@
 
     <!-- Boot Animation Style Strings -->
     <string name="boot_animation_styles_summary">Choose a style for your boot animation</string>
-    
+
     <!-- Carrier name on lockscreen -->
     <string name="lockscreen_show_carrier_title">Carrier name</string>
     <string name="lockscreen_show_carrier_summary">Display carrier name in the status bar</string>
-    
+
     <!-- System Animation styles -->
     <string name="system_animation_style_title">System animation style</string>
     <string name="pie_system_animation_style">Android P</string>

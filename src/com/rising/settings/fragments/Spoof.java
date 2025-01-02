@@ -60,6 +60,7 @@ public class Spoof extends SettingsPreferenceFragment implements Preference.OnPr
     private static final String KEY_PIF_JSON_FILE_PREFERENCE = "pif_json_file_preference";
     private static final String KEY_GAME_PROPS_JSON_FILE_PREFERENCE = "game_props_json_file_preference";
     private static final String KEY_UPDATE_JSON_BUTTON = "update_pif_json";
+    private static final String SYS_ENABLE_TENSOR_FEATURES = "persist.sys.features.tensor";
 
     private boolean isPixelDevice;
 
@@ -72,6 +73,7 @@ public class Spoof extends SettingsPreferenceFragment implements Preference.OnPr
     private Preference mGamePropsSpoof;
     private Preference mWikiLink;
     private Preference mUpdateJsonButton;
+    private Preference mTensorFeaturesToggle;
 
     private Handler mHandler;
 
@@ -89,9 +91,11 @@ public class Spoof extends SettingsPreferenceFragment implements Preference.OnPr
         mPifJsonFilePreference = findPreference(KEY_PIF_JSON_FILE_PREFERENCE);
         mGamePropsJsonFilePreference = findPreference(KEY_GAME_PROPS_JSON_FILE_PREFERENCE);
         mUpdateJsonButton = findPreference(KEY_UPDATE_JSON_BUTTON);
+        mTensorFeaturesToggle = findPreference(SYS_ENABLE_TENSOR_FEATURES);
 
         String model = SystemProperties.get("ro.product.model");
         isPixelDevice = SystemProperties.get("ro.soc.manufacturer").equals("Google");
+        boolean isTensorDevice = model.matches("Pixel [6-9][a-zA-Z ]*");
 
         mGmsSpoof.setDependency(SYS_PROP_OPTIONS);
         mGphotosSpoof.setDependency(SYS_PROP_OPTIONS);
@@ -104,11 +108,17 @@ public class Spoof extends SettingsPreferenceFragment implements Preference.OnPr
             }
         }
 
+        if (isTensorDevice) {
+            mTensorFeaturesToggle.setEnabled(false);
+            mTensorFeaturesToggle.setSummary(R.string.tensor_spoof_option_disabled);
+        }
+
         mGmsSpoof.setOnPreferenceChangeListener(this);
         mPropOptions.setOnPreferenceChangeListener(this);
         mGoogleSpoof.setOnPreferenceChangeListener(this);
         mGphotosSpoof.setOnPreferenceChangeListener(this);
         mGamePropsSpoof.setOnPreferenceChangeListener(this);
+        mTensorFeaturesToggle.setOnPreferenceChangeListener(this);
 
         mPifJsonFilePreference.setOnPreferenceClickListener(preference -> {
             openFileSelector(10001);
@@ -313,6 +323,12 @@ public class Spoof extends SettingsPreferenceFragment implements Preference.OnPr
             || preference == mGoogleSpoof
             || preference == mGphotosSpoof
             || preference == mGamePropsSpoof) {
+            SystemRestartUtils.showSystemRestartDialog(getContext());
+            return true;
+        }
+        if (preference == mTensorFeaturesToggle) {
+            boolean enabled = (Boolean) newValue;
+            SystemProperties.set(SYS_ENABLE_TENSOR_FEATURES, enabled ? "true" : "false");
             SystemRestartUtils.showSystemRestartDialog(getContext());
             return true;
         }
