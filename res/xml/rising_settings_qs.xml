@@ -96,8 +96,8 @@
         <!-- QS Tile layout -->
         <com.android.settings.preferences.ui.AdaptivePreference
             android:key="qs_tile_layout"
-            android:title="@string/qs_tile_layout_title"
-            android:summary="@string/qs_tile_layout_summary"
+            android:title="@string/qs_layout_category_title"
+            android:summary="@string/qs_layout_category_summary"
             android:fragment="com.rising.settings.fragments.quicksettings.QsTileLayoutSettings"
             lineage:position="bottom" />
 

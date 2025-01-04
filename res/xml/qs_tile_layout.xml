@@ -4,35 +4,29 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:settings="http://schemas.android.com/apk/res/com.android.settings"
     xmlns:lineage="http://schemas.android.com/apk/res-auto"
-    android:title="@string/qs_tile_layout_title">
+    android:title="@string/qs_layout_category_title">
 
     <com.android.settings.preferences.SystemSettingSwitchPreference
         android:key="qs_tile_label_hide"
-        android:title="@string/qs_tile_hide_label_title"
-        android:summary="@string/qs_tile_hide_label_summary"
+        android:title="@string/qs_tile_label_hide_title"
+        android:summary="@string/qs_tile_label_hide_summary"
         android:defaultValue="false"
         lineage:position="top" />
-
-    <com.android.settings.preferences.SystemSettingSwitchPreference
-        android:key="qs_tile_vertical_layout"
-        android:title="@string/qs_tile_vertical_layout_title"
-        android:summary="@string/qs_tile_vertical_layout_summary"
-        android:defaultValue="false" 
-        />
 
     <com.android.settings.preferences.SystemSettingSeekBarPreference
         android:key="qs_tile_label_size"
         android:title="@string/qs_tile_label_size_title"
-        android:defaultValue="14"
         android:max="15"
-        settings:min="0" />
+        settings:min="10"
+        settings:interval="1"
+        settings:units="sp"
+        android:defaultValue="14" />
 
-    <com.android.settings.preferences.SystemSettingSeekBarPreference
-        android:key="qs_tile_summary_size"
-        android:title="@string/qs_tile_summary_size_title"
-        android:defaultValue="12"
-        android:max="15"
-        settings:min="0"/>
+    <com.android.settings.preferences.SystemSettingSwitchPreference
+        android:key="qs_tile_vertical_layout"
+        android:title="@string/qs_tile_layout_title"
+        android:summary="@string/qs_tile_layout_summary"
+        android:defaultValue="false" />
 
     <com.android.settings.preferences.SystemSettingSeekBarPreference
         android:key="fling_animation_duration"
@@ -46,33 +40,62 @@
 
     <PreferenceCategory
         android:key="tiles_layout"
-        android:title="@string/qs_tiles_layout_category">
+        android:title="@string/qs_layout_category_title">
 
-        <com.android.settings.preferences.CustomSeekBarPreference
+        <com.android.settings.preferences.SystemSettingSeekBarPreference
             android:key="qs_layout_columns"
             android:title="@string/qs_columns_portrait_title"
-            android:defaultValue="2"
-            android:max="6"
+            android:max="5"
             settings:min="2"
+            settings:interval="1"
+            android:defaultValue="2"
             lineage:position="top" />
 
-        <com.android.settings.preferences.CustomSeekBarPreference
+        <com.android.settings.preferences.SystemSettingSeekBarPreference
+            android:key="qs_layout_columns_landscape"
+            android:title="@string/qs_columns_landscape_title"
+            android:max="6"
+            settings:min="2"
+            settings:interval="1"
+            android:defaultValue="4" />
+
+        <com.android.settings.preferences.SystemSettingSeekBarPreference
             android:key="qs_layout_rows"
             android:title="@string/qs_rows_portrait_title"
-            android:defaultValue="4"
-            android:max="6"
-            settings:min="2" />
+            android:max="5"
+            settings:min="2"
+            settings:interval="1"
+            android:defaultValue="4" />
 
-        <com.android.settings.preferences.CustomSeekBarPreference
+        <com.android.settings.preferences.SystemSettingSeekBarPreference
+            android:key="qs_layout_rows_landscape"
+            android:title="@string/qs_rows_landscape_title"
+            android:max="3"
+            settings:min="1"
+            settings:interval="1"
+            android:defaultValue="2" />
+
+        <com.android.settings.preferences.SystemSettingSeekBarPreference
             android:key="qqs_layout_rows"
             android:title="@string/qqs_rows_portrait_title"
-            android:defaultValue="2"
-            android:max="5"
+            android:max="3"
             settings:min="1"
+            settings:interval="1"
+            android:defaultValue="2" />
+
+        <com.android.settings.preferences.SystemSettingSeekBarPreference
+            android:key="qqs_layout_rows_landscape"
+            android:title="@string/qqs_rows_landscape_title"
+            android:max="3"
+            settings:min="1"
+            settings:interval="1"
+            android:defaultValue="1"
             lineage:position="bottom" />
 
-        <com.android.settingslib.widget.LayoutPreference
-            android:key="apply_change_button"
-            android:layout="@layout/qs_tile_apply_change_button" />
+        <com.android.settingslib.widget.FooterPreference
+            android:key="qs_layout_columns_rows_footer"
+            android:title="@string/qs_layout_columns_rows_footer_text"
+            android:selectable="false"
+            settings:searchable="false" />
     </PreferenceCategory>
 </PreferenceScreen>
