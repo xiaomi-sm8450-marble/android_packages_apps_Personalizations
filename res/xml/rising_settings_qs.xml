@@ -80,6 +80,12 @@
             android:defaultValue="0" />
 
         <com.android.settings.preferences.SystemSettingSwitchPreference
+            android:key="qs_split_shade_enabled"
+            android:title="@string/qs_split_shade_enabled_title"
+            android:summary="@string/qs_split_shade_enabled_summary"
+            android:defaultValue="false" />
+
+        <com.android.settings.preferences.SystemSettingSwitchPreference
             android:key="qs_widgets_enabled"
             android:title="@string/qs_widgets_enabled_title"
             android:summary="@string/qs_widgets_enabled_summary"
