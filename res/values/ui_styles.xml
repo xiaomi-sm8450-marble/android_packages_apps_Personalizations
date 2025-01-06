@@ -45,4 +45,9 @@
 		<item name="cornerFamily">rounded</item>
 		<item name="cornerSize">100dp</item>
 	</style>
+    <style name="PlatLogo" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="android:windowLayoutInDisplayCutoutMode">shortEdges</item>
+        <item name="android:windowTranslucentStatus">true</item>
+        <item name="android:windowTranslucentNavigation">true</item>
+    </style>
 </resources>
