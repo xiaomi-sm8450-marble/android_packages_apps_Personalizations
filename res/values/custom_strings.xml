@@ -16,6 +16,10 @@
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
 
+    <!-- AOD Settings -->
+    <string name="aod_display_category_title">Always-On-Display</string>
+    <string name="aod_pulse_category_title">Pulse/Doze</string>
+
     <!-- Split Shade -->
     <string name="qs_split_shade_enabled_title">Better Landscape QS (EXPERIMENTAL)</string>
     <string name="qs_split_shade_enabled_summary">Enable new experimental split shade quicksettings,\nbreaks landscape headsup notifications</string>

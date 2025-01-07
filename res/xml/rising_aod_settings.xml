@@ -19,68 +19,80 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:title="@string/doze_display_title">
 
-    <com.android.settings.preferences.SystemSettingSwitchPreference
-        android:key="custom_aod_image_enabled"
-        android:title="@string/lockscreen_custom_image_enabled_title"
-        android:summary="@string/lockscreen_custom_image_summary"
-        android:defaultValue="false"
-        app:position="top" />
+    <PreferenceCategory
+        android:key="aod_display"
+        android:title="@string/aod_display_category_title">
 
-    <com.android.settings.preferences.ui.AdaptivePreference
-        android:key="lockscreen_custom_image"
-        android:title="@string/lockscreen_custom_image_title"
-        android:summary="@string/lockscreen_custom_image_pick_summary"
-        android:dependency="custom_aod_image_enabled" />
-            
-    <com.android.settings.preferences.SecureSettingSwitchPreference
-        android:key="doze_enabled"
-        android:title="@string/doze_title"
-        android:summary="@string/doze_summary" />
+        <com.android.settings.preferences.SystemSettingSwitchPreference
+            android:key="custom_aod_image_enabled"
+            android:title="@string/lockscreen_custom_image_enabled_title"
+            android:summary="@string/lockscreen_custom_image_summary"
+            android:defaultValue="false"
+            app:position="top" />
 
-    <com.android.settings.preferences.SecureSettingSwitchPreference
-        android:key="doze_always_on"
-        android:title="@string/doze_always_on_title"
-        android:summary="@string/doze_always_on_summary" />
+        <com.android.settings.preferences.ui.AdaptivePreference
+            android:key="lockscreen_custom_image"
+            android:title="@string/lockscreen_custom_image_title"
+            android:summary="@string/lockscreen_custom_image_pick_summary"
+            android:dependency="custom_aod_image_enabled" />
+                
+        <com.android.settings.preferences.SecureSettingSwitchPreference
+            android:key="doze_enabled"
+            android:title="@string/doze_title"
+            android:summary="@string/doze_summary" />
 
-    <com.android.settings.preferences.SystemSettingSwitchPreference
-        android:key="doze_always_on_charge_mode"
-        android:title="@string/doze_on_charge_title"
-        android:summary="@string/doze_on_charge_summary" />
+        <com.android.settings.preferences.SecureSettingSwitchPreference
+            android:key="doze_always_on"
+            android:title="@string/doze_always_on_title"
+            android:summary="@string/doze_always_on_summary" />
 
-    <com.android.settings.preferences.ui.AdaptivePreference
-        android:key="always_on_display_schedule"
-        android:title="@string/always_on_display_schedule_title"
-        android:summary="@string/always_on_display_schedule_summary"
-        android:fragment="com.rising.settings.fragments.lockscreen.doze.AODSchedule" />
-        
-    <com.android.settings.preferences.SystemSettingSwitchPreference
-        android:key="doze_pulse_on_pickup"
-        android:defaultValue="false"
-        android:title="@string/doze_pulse_on_pickup_title"
-        android:summary="@string/doze_pulse_on_pickup_summary" />
+        <com.android.settings.preferences.SystemSettingSwitchPreference
+            android:key="doze_always_on_charge_mode"
+            android:title="@string/doze_on_charge_title"
+            android:summary="@string/doze_on_charge_summary" />
 
-    <com.android.settings.preferences.SystemSettingSwitchPreference
-        android:key="doze_pulse_on_double_tap"
-        android:defaultValue="false"
-        android:title="@string/doze_pulse_on_double_tap_title"
-        android:summary="@string/doze_pulse_on_double_tap_summary" />
+        <com.android.settings.preferences.ui.AdaptivePreference
+            android:key="always_on_display_schedule"
+            android:title="@string/always_on_display_schedule_title"
+            android:summary="@string/always_on_display_schedule_summary"
+            android:fragment="com.rising.settings.fragments.lockscreen.doze.AODSchedule"
+            app:position="bottom" />
 
-    <com.android.settings.preferences.SystemSettingSwitchPreference
-        android:key="doze_pulse_on_single_tap"
-        android:defaultValue="false"
-        android:title="@string/doze_pulse_on_single_tap_title"
-        android:summary="@string/doze_pulse_on_single_tap_summary" />
+    </PreferenceCategory>
 
-    <com.android.settings.preferences.SecureSettingSwitchPreference
-        android:key="pulse_on_new_tracks"
-        android:title="@string/pulse_on_new_tracks_title"
-        android:summary="@string/pulse_on_new_tracks_summary" />
+    <PreferenceCategory
+        android:key="aod_pulse"
+        android:title="@string/aod_pulse_category_title">
 
-    <com.android.settings.preferences.ui.AdaptivePreference
-        android:key="edge_light_settings"
-        android:title="@string/edge_light_title"
-        android:summary="@string/edge_light_summary"
-        android:fragment="com.rising.settings.fragments.lockscreen.doze.EdgeLightSettings"
-        app:position="bottom" />
+        <com.android.settings.preferences.SystemSettingSwitchPreference
+            android:key="doze_pulse_on_pickup"
+            android:defaultValue="false"
+            android:title="@string/doze_pulse_on_pickup_title"
+            android:summary="@string/doze_pulse_on_pickup_summary"
+            app:position="top" />
 
+        <com.android.settings.preferences.SystemSettingSwitchPreference
+            android:key="doze_pulse_on_double_tap"
+            android:defaultValue="false"
+            android:title="@string/doze_pulse_on_double_tap_title"
+            android:summary="@string/doze_pulse_on_double_tap_summary" />
+
+        <com.android.settings.preferences.SystemSettingSwitchPreference
+            android:key="doze_pulse_on_single_tap"
+            android:defaultValue="false"
+            android:title="@string/doze_pulse_on_single_tap_title"
+            android:summary="@string/doze_pulse_on_single_tap_summary" />
+
+        <com.android.settings.preferences.SecureSettingSwitchPreference
+            android:key="pulse_on_new_tracks"
+            android:title="@string/pulse_on_new_tracks_title"
+            android:summary="@string/pulse_on_new_tracks_summary" />
+
+        <com.android.settings.preferences.ui.AdaptivePreference
+            android:key="edge_light_settings"
+            android:title="@string/edge_light_title"
+            android:summary="@string/edge_light_summary"
+            android:fragment="com.rising.settings.fragments.lockscreen.doze.EdgeLightSettings"
+            app:position="bottom" />
+    </PreferenceCategory>
 </PreferenceScreen>
