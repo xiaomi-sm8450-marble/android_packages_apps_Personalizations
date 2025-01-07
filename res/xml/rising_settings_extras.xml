@@ -54,6 +54,13 @@
             android:dependency="pocket_mode_enabled"
             android:defaultValue="false" />
 
+        
+        <com.android.settings.preferences.SystemPropertySwitchPreference
+            android:key="persist.sys.ramboost_enabled"
+            android:title="@string/ramboost_title"
+            android:summary="@string/ramboost_summary"
+            android:defaultValue="false" />
+
         <!-- Sidebar -->
         <com.android.settings.preferences.ui.AdaptivePreference
             android:key="sidebar"
