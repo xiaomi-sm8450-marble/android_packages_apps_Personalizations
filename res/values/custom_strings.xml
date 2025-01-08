@@ -16,6 +16,10 @@
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
 
+    <!-- Tensor spoof -->
+    <string name="tensor_spoof_title">Spoof tensor features</string>
+    <string name="tensor_spoof_summary">Unlock tensor/pixel features</string>
+
     <!-- AOD Settings -->
     <string name="aod_display_category_title">Always-On-Display</string>
     <string name="aod_pulse_category_title">Pulse/Doze</string>
