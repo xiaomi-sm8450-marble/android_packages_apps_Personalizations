@@ -2108,4 +2108,13 @@
     <string name="system_animation_style_title">System animation style</string>
     <string name="pie_system_animation_style">Android P</string>
     <string name="scale_system_animation_style">Scale</string>
+
+    <!-- Selected app spoofing -->
+    <string name="select_apps_to_spoof">Select Apps to Spoof</string>
+    <string name="app_spoof_selector_title">App Spoof Selector</string>
+    <string name="app_spoof_selector_summary">Select apps to spoof their properties</string>
+    <string name="toggle_system_apps">Toggle System Apps</string>
+    <string name="toast_app_spoofing_success_add">Added %1$s to spoof list.</string>
+    <string name="toast_app_spoofing_success_remove">Removed %1$s from spoof list.</string>
+    <string name="toast_app_spoofing_default_package">Default package cannot be deselected.</string>
 </resources>

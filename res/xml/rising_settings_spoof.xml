@@ -75,14 +75,19 @@
             android:title="@string/pif_spoofing_title"
             android:summary="@string/pif_spoofing_summary"
             android:dependency="persist.sys.pixelprops.gms"/>
-            
+
         <!-- Unlimited google photos storage -->
         <com.android.settings.preferences.SystemPropertySwitchPreference
             android:key="persist.sys.pixelprops.gphotos"
             android:title="@string/use_photos_spoof_title"
             android:summary="@string/use_photos_spoof_summary"
-            android:defaultValue="true"
-            app:position="bottom" />
+            android:defaultValue="true" />
+
+    <com.android.settings.preferences.ui.AdaptivePreference
+        android:key="app_spoof_selector"
+        android:title="@string/app_spoof_selector_title"
+        android:summary="@string/app_spoof_selector_summary"
+        app:position="bottom" />
 
     <PreferenceCategory
         android:title="@string/help_section_title"

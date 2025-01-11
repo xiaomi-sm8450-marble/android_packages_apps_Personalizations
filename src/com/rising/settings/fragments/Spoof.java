@@ -19,12 +19,20 @@ import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.ContentResolver;
+import android.content.pm.ApplicationInfo;
+import android.content.pm.PackageManager;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.SystemProperties;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Log;
+import android.widget.ArrayAdapter;
+import android.widget.EditText;
+import android.widget.LinearLayout;
+import android.widget.ListView;
 import android.widget.Toast;
 import android.provider.Settings;
 
@@ -32,6 +40,7 @@ import androidx.preference.Preference;
 
 import com.android.internal.logging.nano.MetricsProto;
 import com.android.internal.util.android.SystemRestartUtils;
+import com.android.internal.util.android.PropsHooksUtils;
 import com.android.settings.R;
 import com.android.settings.SettingsPreferenceFragment;
 import com.android.settings.search.BaseSearchIndexProvider;
@@ -45,8 +54,15 @@ import java.io.InputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.nio.charset.StandardCharsets;
+import java.util.Arrays;
+import java.util.Comparator;
+import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
+import java.util.Set;
+import java.util.stream.Collectors;
 
 @SearchIndexable
 public class Spoof extends SettingsPreferenceFragment implements Preference.OnPreferenceChangeListener {
@@ -61,8 +77,10 @@ public class Spoof extends SettingsPreferenceFragment implements Preference.OnPr
     private static final String KEY_GAME_PROPS_JSON_FILE_PREFERENCE = "game_props_json_file_preference";
     private static final String KEY_UPDATE_JSON_BUTTON = "update_pif_json";
     private static final String SYS_ENABLE_TENSOR_FEATURES = "persist.sys.features.tensor";
+    private static final String SYS_APP_SPOOF_SELECTOR = "app_spoof_selector";
 
     private boolean isPixelDevice;
+    private boolean includeSystemApps = false;
 
     private Preference mGmsSpoof;
     private Preference mGoogleSpoof;
@@ -74,6 +92,7 @@ public class Spoof extends SettingsPreferenceFragment implements Preference.OnPr
     private Preference mWikiLink;
     private Preference mUpdateJsonButton;
     private Preference mTensorFeaturesToggle;
+    private Preference mAppSpoofSelector;
 
     private Handler mHandler;
 
@@ -92,6 +111,7 @@ public class Spoof extends SettingsPreferenceFragment implements Preference.OnPr
         mGamePropsJsonFilePreference = findPreference(KEY_GAME_PROPS_JSON_FILE_PREFERENCE);
         mUpdateJsonButton = findPreference(KEY_UPDATE_JSON_BUTTON);
         mTensorFeaturesToggle = findPreference(SYS_ENABLE_TENSOR_FEATURES);
+        mAppSpoofSelector = findPreference(SYS_APP_SPOOF_SELECTOR);
 
         String model = SystemProperties.get("ro.product.model");
         isPixelDevice = SystemProperties.get("ro.soc.manufacturer").equals("Google");
@@ -111,6 +131,13 @@ public class Spoof extends SettingsPreferenceFragment implements Preference.OnPr
         if (isTensorDevice) {
             mTensorFeaturesToggle.setEnabled(false);
             mTensorFeaturesToggle.setSummary(R.string.tensor_spoof_option_disabled);
+        }
+
+        if (mAppSpoofSelector != null) {
+            mAppSpoofSelector.setOnPreferenceClickListener(preference -> {
+                showAppSelectionDialog();
+                return true;
+            });
         }
 
         mGmsSpoof.setOnPreferenceChangeListener(this);
@@ -314,6 +341,98 @@ public class Spoof extends SettingsPreferenceFragment implements Preference.OnPr
         } catch (JSONException e) {
             Log.e(TAG, "Error parsing device properties", e);
         }
+    }
+
+    private void showAppSelectionDialog() {
+        new Thread(() -> {
+            PackageManager pm = getContext().getPackageManager();
+            List<ApplicationInfo> allApps = pm.getInstalledApplications(0);
+            List<ApplicationInfo> filteredApps = allApps.stream()
+                    .filter(app -> includeSystemApps || (app.flags & ApplicationInfo.FLAG_SYSTEM) == 0)
+                    .sorted(Comparator.comparing(app -> app.loadLabel(pm).toString()))
+                    .collect(Collectors.toList());
+            Set<String> selectedPackages = new HashSet<>(Arrays.asList(SystemProperties.get("persist.sys.spoof.extra", "").split(",")));
+            Set<String> defaultPackages = new HashSet<>(Arrays.asList(PropsHooksUtils.DEFAULT_PACKAGES_TO_SPOOF));
+            selectedPackages.addAll(defaultPackages);
+            mHandler.post(() -> {
+                AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
+                builder.setTitle(R.string.select_apps_to_spoof);
+                LinearLayout layout = new LinearLayout(getContext());
+                layout.setOrientation(LinearLayout.VERTICAL);
+                layout.setPadding(32, 32, 32, 32);
+                EditText searchBar = new EditText(getContext());
+                searchBar.setHint(R.string.search_apps);
+                layout.addView(searchBar);
+                ListView listView = new ListView(getContext());
+                layout.addView(listView);
+                ArrayAdapter<String> adapter = new ArrayAdapter<>(getContext(), android.R.layout.simple_list_item_multiple_choice);
+                listView.setAdapter(adapter);
+                listView.setChoiceMode(ListView.CHOICE_MODE_MULTIPLE);
+                Map<String, ApplicationInfo> appMap = new HashMap<>();
+                for (ApplicationInfo app : filteredApps) {
+                    String label = app.loadLabel(pm).toString();
+                    adapter.add(label);
+                    appMap.put(label, app);
+                }
+                for (int i = 0; i < adapter.getCount(); i++) {
+                    String label = adapter.getItem(i);
+                    ApplicationInfo app = appMap.get(label);
+                    if (app != null && selectedPackages.contains(app.packageName)) {
+                        listView.setItemChecked(i, true);
+                    }
+                }
+                searchBar.addTextChangedListener(new TextWatcher() {
+                    @Override
+                    public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
+                    @Override
+                    public void onTextChanged(CharSequence s, int start, int before, int count) {
+                        String query = s.toString().toLowerCase();
+                        adapter.clear();
+                        for (ApplicationInfo app : filteredApps) {
+                            if (app.loadLabel(pm).toString().toLowerCase().contains(query)) {
+                                adapter.add(app.loadLabel(pm).toString());
+                            }
+                        }
+                    }
+                    @Override
+                    public void afterTextChanged(Editable s) {}
+                });
+                listView.setOnItemClickListener((parent, view, position, id) -> {
+                    String label = adapter.getItem(position);
+                    ApplicationInfo app = appMap.get(label);
+                    if (app != null) {
+                        String packageName = app.packageName;
+                        if (defaultPackages.contains(packageName)) {
+                            Toast.makeText(getContext(), R.string.toast_app_spoofing_default_package, Toast.LENGTH_SHORT).show();
+                            listView.setItemChecked(position, true);
+                        } else {
+                            if (listView.isItemChecked(position)) {
+                                PropsHooksUtils.addExtraPackage(packageName);
+                                selectedPackages.add(packageName);
+                                Toast.makeText(getContext(), getString(R.string.toast_app_spoofing_success_add, label), Toast.LENGTH_SHORT).show();
+                            } else {
+                                PropsHooksUtils.removeExtraPackage(packageName);
+                                selectedPackages.remove(packageName);
+                                Toast.makeText(getContext(), getString(R.string.toast_app_spoofing_success_remove, label), Toast.LENGTH_SHORT).show();
+                            }
+                        }
+                    }
+                });
+                builder.setView(layout);
+                builder.setPositiveButton(R.string.save, (dialog, which) -> SystemRestartUtils.showSystemRestartDialog(getContext()));
+                builder.setNegativeButton(android.R.string.cancel, null);
+                builder.setNeutralButton(R.string.toggle_system_apps, (dialog, which) -> {
+                    includeSystemApps = !includeSystemApps;
+                    showAppSelectionDialog();
+                });
+                builder.show();
+            });
+        }).start();
+    }
+
+    private void showAppSelectionDialogWithSystemApps(boolean showSystemApps) {
+        includeSystemApps = showSystemApps;
+        showAppSelectionDialog();
     }
 
     @Override
