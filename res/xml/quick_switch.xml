@@ -30,4 +30,10 @@
         app:position="solo"
         />
 
+    <com.android.settingslib.widget.FooterPreference
+        android:key="quickswitch_footer"
+        android:title="@string/quickswitch_footer_text"
+        android:selectable="false"
+        settings:searchable="false" />
+
 </PreferenceScreen>

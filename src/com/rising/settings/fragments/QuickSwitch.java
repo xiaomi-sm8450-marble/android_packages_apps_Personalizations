@@ -53,26 +53,34 @@ public class QuickSwitch extends SettingsPreferenceFragment
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         addPreferencesFromResource(R.xml.quick_switch);
-        
+
         int defaultLauncher = SystemProperties.getInt(QUICKSWITCH_KEY, 0);
-        PreferenceScreen preferenceScreen = getPreferenceScreen();
         quickSwitchPref = findPreference(QUICKSWITCH_KEY);
         quickSwitchPref.setOnPreferenceChangeListener(this);
         Context context = getContext();
-        List<String> launcherEntries = new ArrayList<>();
-        List<String> launcherValues = new ArrayList<>();
-        launcherEntries.add("QuickStep");
-        launcherValues.add("0");
+        Resources res = context.getResources();
+
+        String[] launcherEntries = res.getStringArray(R.array.quickswitch_launcher_entries);
+        String[] launcherValues = res.getStringArray(R.array.quickswitch_launcher_values);
+
+        List<String> quickSwitchEntries = new ArrayList<>();
+        List<String> quickSwitchValues = new ArrayList<>();
+
+        quickSwitchEntries.add(launcherEntries[0]);
+        quickSwitchValues.add(launcherValues[0]);
+
         if (SystemProperties.getInt("persist.sys.quickswitch_pixel_shipped", 0) != 0) {
-            launcherEntries.add("Pixel Launcher");
-            launcherValues.add("1");
+            quickSwitchEntries.add(launcherEntries[1]);
+            quickSwitchValues.add(launcherValues[1]);
         }
+
         if (SystemProperties.getInt("persist.sys.quickswitch_lawnchair_shipped", 0) != 0) {
-            launcherEntries.add("Lawnchair");
-            launcherValues.add("2");
+            quickSwitchEntries.add(launcherEntries[2]);
+            quickSwitchValues.add(launcherValues[2]);
         }
-        quickSwitchPref.setEntries(launcherEntries.toArray(new CharSequence[launcherEntries.size()]));
-        quickSwitchPref.setEntryValues(launcherValues.toArray(new CharSequence[launcherValues.size()]));
+
+        quickSwitchPref.setEntries(quickSwitchEntries.toArray(new CharSequence[0]));
+        quickSwitchPref.setEntryValues(quickSwitchValues.toArray(new CharSequence[0]));
         quickSwitchPref.setValue(String.valueOf(defaultLauncher));
     }
 
