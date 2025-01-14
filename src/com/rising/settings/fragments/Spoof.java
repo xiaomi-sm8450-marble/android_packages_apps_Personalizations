@@ -349,6 +349,8 @@ public class Spoof extends SettingsPreferenceFragment implements Preference.OnPr
             List<ApplicationInfo> allApps = pm.getInstalledApplications(0);
             List<ApplicationInfo> filteredApps = allApps.stream()
                     .filter(app -> includeSystemApps || (app.flags & ApplicationInfo.FLAG_SYSTEM) == 0)
+                    .filter(app -> (app.flags & ApplicationInfo.FLAG_HAS_CODE) != 0)
+                    .filter(app -> !app.packageName.equals(app.loadLabel(pm).toString())) // auto generated overlays usually use the package name as app label
                     .sorted(Comparator.comparing(app -> app.loadLabel(pm).toString()))
                     .collect(Collectors.toList());
             Set<String> selectedPackages = new HashSet<>(Arrays.asList(SystemProperties.get("persist.sys.spoof.extra", "").split(",")));
