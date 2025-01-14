@@ -27,6 +27,14 @@
             android:fragment="com.rising.settings.fragments.Assistant"
             app:position="top" />
 
+        <!-- Floating rotation button -->
+        <com.android.settings.preferences.SecureSettingSwitchPreference
+            android:key="show_rotation_suggestions"
+            android:title="@string/floating_rotation_button_title"
+            android:summary="@string/floating_rotation_button_summary"
+            android:defaultValue="true"
+            />
+
         <!-- Gaming mode -->
         <com.android.settings.preferences.ui.AdaptivePreference
             android:key="gaming_mode"
