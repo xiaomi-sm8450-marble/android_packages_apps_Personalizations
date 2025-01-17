@@ -16,6 +16,10 @@
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
 
+    <!-- Cycle through ringer modes gesture -->
+    <string name="prevent_ringing_option_cycle">Cycle through modes</string>
+    <string name="prevent_ringing_option_cycle_summary">On (cycle through modes)</string>
+
     <!-- Tensor spoof -->
     <string name="tensor_spoof_title">Spoof tensor features</string>
     <string name="tensor_spoof_summary">Unlock tensor/pixel features</string>
