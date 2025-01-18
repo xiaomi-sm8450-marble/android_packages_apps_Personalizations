@@ -25,15 +25,14 @@
         android:title="@string/lockscreen_widgets_enabled_title"
         android:summary="@string/lockscreen_widgets_enabled_summary"
         android:defaultValue="false"
-        lineage:position="solo" />
+        lineage:position="top" />
 
     <com.android.settings.preferences.SystemSettingSwitchPreference
         android:key="lockscreen_info_widgets_enabled"
         android:dependency="lockscreen_widgets_enabled"
         android:title="@string/lockscreen_display_widgets_title"
         android:summary="@string/lockscreen_display_widgets_summary"
-        android:defaultValue="false"
-        lineage:position="solo" />
+        android:defaultValue="false" />
 
     <com.android.settings.preferences.SystemSettingListPreference
         android:key="lockscreen_widgets_style"
@@ -42,8 +41,18 @@
         android:title="@string/lockscreen_widgets_style_title"
         android:entries="@array/lockscreen_widgets_style_entries"
         android:entryValues="@array/lockscreen_widgets_style_values" 
-        android:summary="%s"
-        lineage:position="solo" />
+        android:summary="%s" />
+
+    <com.android.settings.preferences.SystemSettingSeekBarPreference
+        android:key="lockscreen_widgets_transparency"
+        android:title="@string/lockscreen_widgets_transparency_title"
+        android:summary="@string/lockscreen_widgets_transparency_summary"
+        android:defaultValue="100"
+        settings:interval="1"
+        settings:units="%"
+        android:max="100"
+        android:min="0"
+        lineage:position="bottom" />
 
     <com.android.settings.preferences.SystemSettingListPreference
         android:entries="@array/widget_entries"

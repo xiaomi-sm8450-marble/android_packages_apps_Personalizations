@@ -80,7 +80,10 @@
     <string name="lockscreen_widgets_style_title">Lockscreen widgets style</string>
     <string name="lockscreen_widgets_style1">Material Rounded</string>
     <string name="lockscreen_widgets_style2">Material Square</string>
-    <string name="lockscreen_widgets_style3">Translucent</string>
+    <string name="lockscreen_widgets_style3">Translucent (Square)</string>
+    <string name="lockscreen_widgets_style4">Translucent (Rounded)</string>
+    <string name="lockscreen_widgets_transparency_title">Translucent style widget transparency</string>
+    <string name="lockscreen_widgets_transparency_summary">Configure translucent style widget opacity level</string>
 
     <!-- Sidebar -->
     <string name="sidebar_title">Sidebar</string>
