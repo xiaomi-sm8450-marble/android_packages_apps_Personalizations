@@ -19,6 +19,7 @@
         android:key="max_music_volume"
         android:title="@string/max_music_volume_title"
         android:max="100"
+        android:defaultValue="15"
         settings:min="15"
         settings:interval="5"
         settings:units="@string/steps_unit"
