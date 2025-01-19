@@ -41,6 +41,7 @@ public class Themes extends SettingsPreferenceFragment implements
     private static final String KEY_PGB_STYLE = "progress_bar_style";
     private static final String KEY_NOTIF_STYLE = "notification_style";
     private static final String KEY_POWERMENU_STYLE = "powermenu_style";
+    private static final String KEY_PBB_STYLE = "brightness_bar_style";
 
     private static final String[] POWER_MENU_OVERLAYS = {
             "com.android.theme.powermenu.cyberpunk",
@@ -63,10 +64,25 @@ public class Themes extends SettingsPreferenceFragment implements
             "com.android.theme.progressbar.shishu"
     };
 
+    private static final String[] BRIGHTNESS_BAR_OVERLAYS = {
+            "com.android.systemui.brightness_slider.acun",
+            "com.android.systemui.brightness_slider.bang",
+            "com.android.systemui.brightness_slider.cyberpunk",
+            "com.android.systemui.brightness_slider.gradientroundedbar",
+            "com.android.systemui.brightness_slider.leafyoutline",
+            "com.android.systemui.brightness_slider.minimalthumb",
+            "com.android.systemui.brightness_slider.outline",
+            "com.android.systemui.brightness_slider.roundedclip",
+            "com.android.systemui.brightness_slider.shaded",
+            "com.android.systemui.brightness_slider.thin",
+            "com.android.systemui.brightness_slider.translucent"
+    };
+
     private ThemeUtils mThemeUtils;
     private Preference mProgressBarPref;
     private Preference mNotificationStylePref;
     private Preference mPowerMenuStylePref;
+    private Preference mBrightnessBarPref;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -82,7 +98,10 @@ public class Themes extends SettingsPreferenceFragment implements
 
         mPowerMenuStylePref = findPreference(KEY_POWERMENU_STYLE);
         mPowerMenuStylePref.setOnPreferenceChangeListener(this);
-        
+
+        mBrightnessBarPref = findPreference(KEY_PBB_STYLE);
+        mBrightnessBarPref.setOnPreferenceChangeListener(this);
+
         com.android.settingslib.widget.LayoutPreference highlightPref = getPreferenceScreen().findPreference("themes_highlight_dashboard");
         if (highlightPref != null) {
             java.util.Map<Integer, String> highlightClickMap = new java.util.HashMap<>();
@@ -125,6 +144,10 @@ public class Themes extends SettingsPreferenceFragment implements
     private void updateProgressBarStyle() {
         updateStyle(KEY_PGB_STYLE, "android.theme.customization.progress_bar", "android", 0, PROGRESS_BAR_OVERLAYS, false);
     }
+    
+    private void updateBrightnessBarStyle() {
+        updateStyle(KEY_PBB_STYLE, "android.theme.customization.brightness", "android", 0, BRIGHTNESS_BAR_OVERLAYS, false);
+    }
 
     @Override
     public boolean onPreferenceChange(Preference preference, Object newValue) {
@@ -144,6 +167,11 @@ public class Themes extends SettingsPreferenceFragment implements
             Settings.System.putIntForUser(getActivity().getContentResolver(),
                     KEY_POWERMENU_STYLE, value, UserHandle.USER_CURRENT);
             updatePowerMenuStyle();
+            return true;
+        } else if (preference == mBrightnessBarPref) {
+            Settings.System.putIntForUser(getActivity().getContentResolver(),
+                    KEY_PBB_STYLE, value, UserHandle.USER_CURRENT);
+            updateBrightnessBarStyle();
             return true;
         }
         return false;
