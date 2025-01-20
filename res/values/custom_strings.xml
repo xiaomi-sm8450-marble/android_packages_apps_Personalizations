@@ -16,6 +16,11 @@
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
 
+    <!-- Freeform launch mode -->
+    <string name="freeform_launch_mode_title">Freeform launch mode</string>
+    <string name="freeform_launch_mode_1">Native AOSP</string>
+    <string name="freeform_launch_mode_2">LMOFreeForm</string>
+
     <!-- Brightness bar styles -->
     <string name="brightness_bar_style_title">Brightness bar style</string>
     <string name="brightness_bar_style1">Acun</string>

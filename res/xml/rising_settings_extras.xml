@@ -61,13 +61,23 @@
             android:summary="@string/always_on_pocket_mode_summary"
             android:dependency="pocket_mode_enabled"
             android:defaultValue="false" />
-
         
         <com.android.settings.preferences.SystemPropertySwitchPreference
             android:key="persist.sys.ramboost_enabled"
             android:title="@string/ramboost_title"
             android:summary="@string/ramboost_summary"
             android:defaultValue="false" />
+
+        <!-- Freeform launch mode -->
+        <com.android.settings.preferences.SystemSettingListPreference
+            android:key="freeform_launch_mode"
+            android:title="@string/freeform_launch_mode_title"
+            android:dialogTitle="@string/freeform_launch_mode_title"
+            android:entries="@array/freeform_launch_mode_entries"
+            android:entryValues="@array/freeform_launch_mode_values"
+            android:defaultValue="0"
+            android:summary="%s"
+         />
 
         <!-- Sidebar -->
         <com.android.settings.preferences.ui.AdaptivePreference
