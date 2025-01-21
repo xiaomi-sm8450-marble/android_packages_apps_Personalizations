@@ -48,7 +48,7 @@
         android:order="-997"
         android:max="5"
         settings:min="0"
-        android:defaultValue="1"
+        android:defaultValue="0"
         settings:interval="1"/>
 
     <!-- QS tile haptics intensity -->
