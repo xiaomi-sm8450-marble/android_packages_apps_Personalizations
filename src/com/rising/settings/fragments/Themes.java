@@ -42,6 +42,7 @@ public class Themes extends SettingsPreferenceFragment implements
     private static final String KEY_NOTIF_STYLE = "notification_style";
     private static final String KEY_POWERMENU_STYLE = "powermenu_style";
     private static final String KEY_PBB_STYLE = "brightness_bar_style";
+    private static final String KEY_HIDE_IME_STYLE = "hide_ime_space_style";
 
     private static final String[] POWER_MENU_OVERLAYS = {
             "com.android.theme.powermenu.cyberpunk",
@@ -78,11 +79,17 @@ public class Themes extends SettingsPreferenceFragment implements
             "com.android.systemui.brightness_slider.translucent"
     };
 
+    private static final String[] HIDE_IME_OVERLAYS = {
+            "com.android.system.theme.hide_ime_space_narrow",
+            "com.android.system.theme.hide_ime_space_no_space",
+    };
+
     private ThemeUtils mThemeUtils;
     private Preference mProgressBarPref;
     private Preference mNotificationStylePref;
     private Preference mPowerMenuStylePref;
     private Preference mBrightnessBarPref;
+    private Preference mHideImePref;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -101,6 +108,9 @@ public class Themes extends SettingsPreferenceFragment implements
 
         mBrightnessBarPref = findPreference(KEY_PBB_STYLE);
         mBrightnessBarPref.setOnPreferenceChangeListener(this);
+        
+        mHideImePref = findPreference(KEY_HIDE_IME_STYLE);
+        mHideImePref.setOnPreferenceChangeListener(this);
 
         com.android.settingslib.widget.LayoutPreference highlightPref = getPreferenceScreen().findPreference("themes_highlight_dashboard");
         if (highlightPref != null) {
@@ -148,6 +158,10 @@ public class Themes extends SettingsPreferenceFragment implements
     private void updateBrightnessBarStyle() {
         updateStyle(KEY_PBB_STYLE, "android.theme.customization.brightness", "android", 0, BRIGHTNESS_BAR_OVERLAYS, false);
     }
+    
+    private void updateHideImeSpaceStyle() {
+        updateStyle(KEY_HIDE_IME_STYLE, "android.theme.customization.hide_ime_space", "android", 0, HIDE_IME_OVERLAYS, false);
+    }
 
     @Override
     public boolean onPreferenceChange(Preference preference, Object newValue) {
@@ -172,6 +186,11 @@ public class Themes extends SettingsPreferenceFragment implements
             Settings.System.putIntForUser(getActivity().getContentResolver(),
                     KEY_PBB_STYLE, value, UserHandle.USER_CURRENT);
             updateBrightnessBarStyle();
+            return true;
+        } else if (preference == mHideImePref) {
+            Settings.System.putIntForUser(getActivity().getContentResolver(),
+                    KEY_HIDE_IME_STYLE, value, UserHandle.USER_CURRENT);
+            updateHideImeSpaceStyle();
             return true;
         }
         return false;

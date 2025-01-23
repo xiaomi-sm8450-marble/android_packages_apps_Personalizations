@@ -46,6 +46,16 @@
              android:defaultValue="0"
              lineage:position="top" />
 
+        <!-- Hide NavBar -->      
+        <com.android.settings.preferences.SystemSettingListPreference
+             android:key="hide_ime_space_style"
+             android:title="@string/hide_ime_space_style_title"
+             android:icon="@drawable/ic_navbar_mode"
+             android:entries="@array/hide_ime_space_style_entries"
+             android:entryValues="@array/hide_ime_space_style_values"
+             android:summary="%s"
+             android:defaultValue="0" />
+
         <!-- Navbar Style -->
         <com.android.settings.preferences.ui.AdaptivePreference
             android:key="android.theme.customization.navbar"
@@ -54,7 +64,7 @@
             android:summary="@string/theme_customization_navbar_summary"
             android:fragment="com.rising.settings.fragments.ui.NavbarStyles"
             />
-            
+
         <!-- Notification Styles -->      
         <com.android.settings.preferences.SystemSettingListPreference
              android:key="notification_style"

@@ -16,6 +16,19 @@
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
 
+    <!-- Hide NavBar space  -->
+    <string-array name="hide_ime_space_style_entries">
+        <item>@string/color_default</item>
+        <item>@string/hide_ime_space_style_1</item>
+        <item>@string/hide_ime_space_style_2</item>
+    </string-array>
+
+    <string-array name="hide_ime_space_style_values" translatable="false">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+    </string-array>
+
     <!-- Freeform mode  -->
     <string-array name="freeform_launch_mode_entries">
         <item>@string/freeform_launch_mode_1</item>

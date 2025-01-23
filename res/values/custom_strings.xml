@@ -16,6 +16,11 @@
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
 
+    <!-- Hide NavBar space -->
+    <string name="hide_ime_space_style_title">Hide NavBar space style</string>
+    <string name="hide_ime_space_style_1">Narrow space</string>
+    <string name="hide_ime_space_style_2">No Space (Hide keyboard buttons)</string>
+
     <!-- Freeform launch mode -->
     <string name="freeform_launch_mode_title">Freeform launch mode</string>
     <string name="freeform_launch_mode_1">Native AOSP</string>
