@@ -37,7 +37,6 @@
     <com.android.settings.preferences.SystemSettingListPreference
         android:key="lockscreen_widgets_style"
         android:dependency="lockscreen_widgets_enabled"
-        android:icon="@drawable/ic_color_bucket"
         android:title="@string/lockscreen_widgets_style_title"
         android:entries="@array/lockscreen_widgets_style_entries"
         android:entryValues="@array/lockscreen_widgets_style_values" 
