@@ -1444,6 +1444,7 @@
         <item>@string/ringer</item>
         <item>@string/bt</item>
         <item>@string/hotspot</item>
+        <item>@string/wallet</item>
     </string-array>
     
     <string-array name="widget_values">
@@ -1458,6 +1459,7 @@
         <item>ringer</item>
         <item>bt</item>
         <item>hotspot</item>
+        <item>wallet</item>
     </string-array>
     
    <string-array name="volume_styles_entries" translatable="false">

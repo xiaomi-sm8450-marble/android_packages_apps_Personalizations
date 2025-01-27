@@ -2032,6 +2032,7 @@
     <string name="ringer">Ringer</string>
     <string name="bt">Bluetooth</string>
     <string name="hotspot">Hotspot</string>
+    <string name="wallet">Wallet</string>
 
     <!-- Volume Styles -->
     <string name="revamped_aosp_style">Revamped AOSP UI style</string>
