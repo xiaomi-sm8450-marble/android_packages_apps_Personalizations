@@ -36,11 +36,25 @@
         android:title="@string/lockscreen_interface_category">
 
         <com.android.settings.preferences.SystemSettingSwitchPreference
+            android:key="lockscreen_battery_info"
+            android:title="@string/lockscreen_battery_info_title"
+            android:summary="@string/lockscreen_battery_info_summary"
+            android:defaultValue="true"
+            lineage:position="top"
+            />
+
+        <com.android.settings.preferences.ui.AdaptivePreference
+            android:key="lockscreen_shortcuts"
+            android:title="@string/lockscreen_shortcut_category"
+            android:summary="@string/lockscreen_shortcuts_summary"
+            android:fragment="com.rising.settings.fragments.lockscreen.LockscreenShortcuts" />
+
+        <com.android.settings.preferences.SystemSettingSwitchPreference
             android:key="lockscreen_show_carrier"
             android:title="@string/lockscreen_show_carrier_title"
             android:summary="@string/lockscreen_show_carrier_summary"
             android:defaultValue="true"
-            lineage:position="top" />
+            />
 
         <com.android.settings.preferences.SystemSettingSwitchPreference
             android:key="ls_media_art_enabled"
@@ -67,13 +81,6 @@
             android:min="0"
             android:dependency="ls_media_art_enabled" />
 
-        <com.android.settings.preferences.SystemSettingSwitchPreference
-            android:key="lockscreen_battery_info"
-            android:title="@string/lockscreen_battery_info_title"
-            android:summary="@string/lockscreen_battery_info_summary"
-            android:defaultValue="true"
-            />
-             
         <com.android.settings.preferences.SystemSettingSwitchPreference
             android:key="keyguard_now_bar_enabled"
             android:title="@string/keyguard_now_bar_enabled_title"
