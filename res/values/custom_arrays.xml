@@ -1445,6 +1445,7 @@
         <item>@string/bt</item>
         <item>@string/hotspot</item>
         <item>@string/wallet</item>
+        <item>@string/lockscreen_shortcut_qr</item>
     </string-array>
     
     <string-array name="widget_values">
@@ -1460,6 +1461,7 @@
         <item>bt</item>
         <item>hotspot</item>
         <item>wallet</item>
+        <item>qrscanner</item>
     </string-array>
     
    <string-array name="volume_styles_entries" translatable="false">
