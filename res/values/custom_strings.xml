@@ -19,15 +19,6 @@
     <string name="now_bar_height_title">Nowbar height</string>
     <string name="now_bar_height_summary">Adjust the height of the Nowbar</string>
 
-    <!-- Double power button press -->
-    <string name="power_button_category_title">Power button</string>
-    <string name="power_double_press_custom_app_select">Select application to launch during double press power button</string>
-    <string name="pick_package_power_double_press">Select an app for double press power button</string>
-    <string name="power_double_press_title">Double press power button</string>
-    <string name="power_double_press_summary">Configure double press power button gesture actions</string>
-    <string name="pick_package_power_double_press_custom_app">Double Press Power Button Custom App</string>
-    <string name="power_button_brightness_boost">Brightness Boost</string>
-
     <!-- Hide NavBar space -->
     <string name="hide_ime_space_style_title">Hide NavBar space style</string>
     <string name="hide_ime_space_style_1">Narrow space</string>

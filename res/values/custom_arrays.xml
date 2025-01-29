@@ -16,29 +16,6 @@
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
 
-    <!-- Double power button press -->
-    <string-array name="power_button_entries">
-        <item>@string/lockscreen_shortcut_none</item>
-        <item>@string/power_button_brightness_boost</item>
-        <item>@string/lockscreen_shortcut_camera</item>
-        <item>@string/lockscreen_shortcut_dnd</item>
-        <item>@string/lockscreen_shortcut_flashlight</item>
-        <item>@string/lockscreen_shortcut_qr</item>
-        <item>@string/lockscreen_shortcut_wallet</item>
-        <item>@string/lockscreen_shortcut_app</item>
-    </string-array>
-
-    <string-array name="power_button_values" translatable="false">
-        <item>none</item>
-        <item>brightness_boost</item>
-        <item>camera</item>
-        <item>mute</item>
-        <item>flashlight</item>
-        <item>qr_scanner</item>
-        <item>wallet</item>
-        <item>custom_app</item>
-    </string-array>
-
     <!-- Hide NavBar space  -->
     <string-array name="hide_ime_space_style_entries">
         <item>@string/color_default</item>

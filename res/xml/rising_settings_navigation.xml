@@ -21,20 +21,6 @@
     android:title="@string/nav_settings_title">
 
     <PreferenceCategory
-        android:key="power_button"
-        android:title="@string/power_button_category_title">
-
-        <com.android.settings.preferences.ui.AdaptivePreference
-            android:key="power_button_double_press"
-            android:icon="@drawable/ic_settings_powermenu"
-            android:title="@string/power_double_press_title"
-            android:summary="@string/power_double_press_summary"
-            android:fragment="com.rising.settings.fragments.buttons.DoubleTapPowerFragment"
-            lineage:position="solo" />
-
-    </PreferenceCategory>
-
-    <PreferenceCategory
         android:key="navbar_layout_category"
         android:title="@string/navbar_layout_category_title">
 
