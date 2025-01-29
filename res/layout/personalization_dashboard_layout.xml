@@ -485,6 +485,8 @@
                 android:layout_marginTop="6dp"
                 android:text="@string/quicksettings_title"
                 android:textSize="13sp"
+                android:ellipsize="end"
+                android:maxLines="1"
                 android:textColor="@color/top_level_preference_text_color_primary"
                 style="@style/op_control_text_style_h6" />
         </RelativeLayout>
@@ -591,6 +593,8 @@
                 android:layout_below="@+id/icons_shape_icon"
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="6dp"
+                android:ellipsize="end"
+                android:maxLines="1"
                 android:text="@string/theme_customization_icon_shape_title"
                 android:textSize="13sp"
                 android:textColor="@color/top_level_preference_text_color_primary"
