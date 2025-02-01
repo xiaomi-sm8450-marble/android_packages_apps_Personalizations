@@ -66,7 +66,7 @@ public class Assistant extends SettingsPreferenceFragment {
         Preference mWikiLink = findPreference("wiki_link_assistant");
         if (mWikiLink != null) {
             mWikiLink.setOnPreferenceClickListener(preference -> {
-                Uri uri = Uri.parse("https://github.com/RisingTechOSS/risingOS_wiki/blob/fifteen/assistant/Risa/README.md");
+                Uri uri = Uri.parse("https://github.com/RisingOS-Revived/risingOS_wiki/blob/fifteen/assistant/Risa/README.md");
                 Intent intent = new Intent(Intent.ACTION_VIEW, uri);
                 startActivity(intent);
                 return true;
