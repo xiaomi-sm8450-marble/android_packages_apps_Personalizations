@@ -15,6 +15,9 @@
      limitations under the License.
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <!-- Nowbar height -->
+    <string name="now_bar_height_title">Nowbar height</string>
+    <string name="now_bar_height_summary">Adjust the height of the Nowbar</string>
 
     <!-- Double power button press -->
     <string name="power_button_category_title">Power button</string>
