@@ -2185,4 +2185,8 @@
     <string name="toast_app_spoofing_success_add">Added %1$s to spoof list.</string>
     <string name="toast_app_spoofing_success_remove">Removed %1$s from spoof list.</string>
     <string name="toast_app_spoofing_default_package">Default package cannot be deselected.</string>
+
+    <!-- Idle manager -->
+    <string name="idle_manager_title">Idle manager</string>
+    <string name="idle_manager_summary">Stop all non-essential background processes when the device is idle</string>
 </resources>

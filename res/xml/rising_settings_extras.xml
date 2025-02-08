@@ -35,6 +35,13 @@
             android:defaultValue="true"
             />
 
+        <!-- Idle manager -->
+        <com.android.settings.preferences.SystemSettingSwitchPreference
+            android:key="arcane_idle_manager"
+            android:title="@string/idle_manager_title"
+            android:summary="@string/idle_manager_summary"
+            android:defaultValue="false" />
+
         <!-- Gaming mode -->
         <com.android.settings.preferences.ui.AdaptivePreference
             android:key="gaming_mode"
