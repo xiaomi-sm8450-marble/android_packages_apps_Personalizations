@@ -33,20 +33,6 @@
     <string name="freeform_launch_mode_1">Native AOSP</string>
     <string name="freeform_launch_mode_2">LMOFreeForm</string>
 
-    <!-- Brightness bar styles -->
-    <string name="brightness_bar_style_title">Brightness bar style</string>
-    <string name="brightness_bar_style1">Acun</string>
-    <string name="brightness_bar_style2">Bang</string>
-    <string name="brightness_bar_style3">Cyberpunk</string>
-    <string name="brightness_bar_style4">Gradient rounded bar</string>
-    <string name="brightness_bar_style5">Leafy outline</string>
-    <string name="brightness_bar_style6">Minimal thumb</string>
-    <string name="brightness_bar_style7">Outline</string>
-    <string name="brightness_bar_style8">Rounded clip</string>
-    <string name="brightness_bar_style9">Shaded</string>
-    <string name="brightness_bar_style10">Thin</string>
-    <string name="brightness_bar_style11">Translucent</string>
-
     <!-- Clipboard auto clear -->
     <string name="clipboard_auto_clear_timeout_title">Clipboard auto clear timeout</string>
     <string name="clipboard_auto_clear_title">Clipboard auto clear</string>

@@ -41,7 +41,6 @@ public class Themes extends SettingsPreferenceFragment implements
     private static final String KEY_PGB_STYLE = "progress_bar_style";
     private static final String KEY_NOTIF_STYLE = "notification_style";
     private static final String KEY_POWERMENU_STYLE = "powermenu_style";
-    private static final String KEY_PBB_STYLE = "brightness_bar_style";
     private static final String KEY_HIDE_IME_STYLE = "hide_ime_space_style";
 
     private static final String[] POWER_MENU_OVERLAYS = {
@@ -65,20 +64,6 @@ public class Themes extends SettingsPreferenceFragment implements
             "com.android.theme.progressbar.shishu"
     };
 
-    private static final String[] BRIGHTNESS_BAR_OVERLAYS = {
-            "com.android.systemui.brightness_slider.acun",
-            "com.android.systemui.brightness_slider.bang",
-            "com.android.systemui.brightness_slider.cyberpunk",
-            "com.android.systemui.brightness_slider.gradientroundedbar",
-            "com.android.systemui.brightness_slider.leafyoutline",
-            "com.android.systemui.brightness_slider.minimalthumb",
-            "com.android.systemui.brightness_slider.outline",
-            "com.android.systemui.brightness_slider.roundedclip",
-            "com.android.systemui.brightness_slider.shaded",
-            "com.android.systemui.brightness_slider.thin",
-            "com.android.systemui.brightness_slider.translucent"
-    };
-
     private static final String[] HIDE_IME_OVERLAYS = {
             "com.android.system.theme.hide_ime_space_narrow",
             "com.android.system.theme.hide_ime_space_no_space",
@@ -88,7 +73,6 @@ public class Themes extends SettingsPreferenceFragment implements
     private Preference mProgressBarPref;
     private Preference mNotificationStylePref;
     private Preference mPowerMenuStylePref;
-    private Preference mBrightnessBarPref;
     private Preference mHideImePref;
 
     @Override
@@ -106,9 +90,6 @@ public class Themes extends SettingsPreferenceFragment implements
         mPowerMenuStylePref = findPreference(KEY_POWERMENU_STYLE);
         mPowerMenuStylePref.setOnPreferenceChangeListener(this);
 
-        mBrightnessBarPref = findPreference(KEY_PBB_STYLE);
-        mBrightnessBarPref.setOnPreferenceChangeListener(this);
-        
         mHideImePref = findPreference(KEY_HIDE_IME_STYLE);
         mHideImePref.setOnPreferenceChangeListener(this);
 
@@ -154,11 +135,7 @@ public class Themes extends SettingsPreferenceFragment implements
     private void updateProgressBarStyle() {
         updateStyle(KEY_PGB_STYLE, "android.theme.customization.progress_bar", "android", 0, PROGRESS_BAR_OVERLAYS, false);
     }
-    
-    private void updateBrightnessBarStyle() {
-        updateStyle(KEY_PBB_STYLE, "android.theme.customization.brightness", "android", 0, BRIGHTNESS_BAR_OVERLAYS, false);
-    }
-    
+
     private void updateHideImeSpaceStyle() {
         updateStyle(KEY_HIDE_IME_STYLE, "android.theme.customization.hide_ime_space", "android", 0, HIDE_IME_OVERLAYS, false);
     }
@@ -181,11 +158,6 @@ public class Themes extends SettingsPreferenceFragment implements
             Settings.System.putIntForUser(getActivity().getContentResolver(),
                     KEY_POWERMENU_STYLE, value, UserHandle.USER_CURRENT);
             updatePowerMenuStyle();
-            return true;
-        } else if (preference == mBrightnessBarPref) {
-            Settings.System.putIntForUser(getActivity().getContentResolver(),
-                    KEY_PBB_STYLE, value, UserHandle.USER_CURRENT);
-            updateBrightnessBarStyle();
             return true;
         } else if (preference == mHideImePref) {
             Settings.System.putIntForUser(getActivity().getContentResolver(),
