@@ -19,6 +19,10 @@
     <string name="now_bar_height_title">Nowbar height</string>
     <string name="now_bar_height_summary">Adjust the height of the Nowbar</string>
 
+    <!-- Ongoing action chip -->
+    <string name="ongoing_action_chip_title">Ongoing action chip</string>
+    <string name="ongoing_action_chip_summary">Show progress indicator in status bar for ongoing actions like downloads</string> 
+
     <!-- Notifications/Island notification -->
     <string name="notifications_island_notification_title">Island notification</string>
     <string name="notifications_island_notification_summary">Display heads-up notification in IOS \'Dynamic Island\' style</string>
