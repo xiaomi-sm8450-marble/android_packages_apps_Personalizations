@@ -16,6 +16,10 @@
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <!-- Nowbar height -->
+    <string name="notification_corner_radius_title">Notification corner radius</string>
+    <string name="notification_corner_radius_summary">Adjust the corner radius of notifications</string>
+
+    <!-- Nowbar height -->
     <string name="now_bar_height_title">Nowbar height</string>
     <string name="now_bar_height_summary">Adjust the height of the Nowbar</string>
 
